@@ -39,7 +39,7 @@ export async function get_status(){
 }
 
 export async function take(userid,lapid,kab,timestart){
-    const qer = `INSERT INTO story (userid,lapid,kab,timestart) VALUES (${userid},${lapid},${kab},${timestart});`
+    const qer = `INSERT INTO story (userid,lapid,kab,timestart,komm) VALUES (${userid},${lapid},${kab},${timestart},"Замечаний нет");`
     const [rows, fields] = await pool.query(qer)
     console.dir(rows);
     return rows.insertId;
