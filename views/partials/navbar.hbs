@@ -1,0 +1,42 @@
+ <nav class="#ff6f00 amber darken-4">
+  <div class="nav-wrapper">
+      <a href="/" class="brand-logo right hide-on-med-and-up">Онлайн Платоникс</a>
+      <a href="/" class="brand-logo center hide-on-small-only">Онлайн Платоникс</a>
+     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Управление<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- ВЫПАДАЮЩЕЕ МЕНЮ -->
+  <div class="dropdown-content row" id="dropdown1" >
+        <ul >
+        {{#if auth}}
+        <li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
+        {{else}}
+        <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons">account_circle</i></a></li>
+        {{/if}}    
+      </ul>
+  </div>
+
+ <!-- МЕНЮ ДЛЯ ТЕЛЕФОНА -->
+  <ul class="sidenav" id="mobile-demo">
+        {{#if auth}}
+        <li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
+        {{else}}
+        <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons">account_circle</i></a></li>
+        {{/if}}    
+  </ul>
+
+<script> 
+$( document ).ready(function () {
+  $(".dropdown-trigger").dropdown(
+    {
+    alignment:'right',
+    constrainWidth:false,
+    coverTrigger:false,
+    hover:true});
+  $('.sidenav').sidenav();
+})
+</script>    

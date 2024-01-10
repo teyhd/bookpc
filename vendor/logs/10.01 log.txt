@@ -1,0 +1,463 @@
+
+ 09:54:07 Сервер - запущен
+ 09:54:07 Порт: 708
+ 09:54:10 / undefined 1
+ 09:54:10 /auth undefined 1
+ 09:54:50 /auth undefined 1 
+ login:1 
+ pass:1
+ 09:54:50 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 09:54:50 /auth 1 1
+ 09:54:50 / 1 1
+ 09:55:54 / 1 1
+ 09:56:07 /take 1 1 
+ lapid:3 
+ kab:2
+ 09:56:07 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 10
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 09:56:07 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 10
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 10:04:10 Сервер - запущен
+ 10:04:10 Порт: 708
+ 10:04:15 / undefined 1
+ 10:04:15 /auth undefined 1
+ 10:04:17 /auth undefined 1 
+ login:1 
+ pass:1
+ 10:04:17 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 10:04:17 /auth 1 1
+ 10:04:17 / 1 1
+ 10:04:21 /take 1 1 
+ lapid:2 
+ kab:3
+ 10:04:21 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 11
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 10:04:21 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 11
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 10:05:10 Сервер - запущен
+ 10:05:10 Порт: 708
+ 10:05:10 /take undefined 1 
+ lapid:2 
+ kab:3
+ 10:05:10 /auth undefined 1
+ 10:05:13 / undefined 1
+ 10:05:13 /auth undefined 1
+ 10:05:15 /auth undefined 1 
+ login:1 
+ pass:1
+ 10:05:15 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 10:05:15 /auth 1 1
+ 10:05:15 / 1 1
+ 10:05:19 /take 1 1 
+ lapid:1 
+ kab:3
+ 10:06:16 /take 1 1 
+ lapid:1 
+ kab:3
+ 10:07:55 Сервер - запущен
+ 10:07:55 Порт: 708
+ 10:09:15 / undefined 1
+ 10:09:15 /auth undefined 1
+ 10:09:16 /auth undefined 1 
+ login:1 
+ pass:1
+ 10:09:16 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 10:09:16 /auth 1 1
+ 10:09:16 / 1 1
+ 10:09:43 / 1 1
+ 10:09:45 / 1 1
+ 10:10:00 / 1 1
+ 10:10:17 / 1 1
+ 10:10:25 /take 1 1 
+ lapid:4 
+ kab:3
+ 10:11:06 / 1 1
+ 10:11:10 /take 1 1 
+ lapid:3 
+ kab:2
+ 10:11:10 / 1 1
+ 10:11:50 / 1 1
+ 10:13:32 / 1 1
+ 10:16:52 / 1 1
+ 10:18:04 / 1 1
+ 10:19:04 / 1 1
+ 10:21:53 / 1 1
+ 10:22:05 / 1 1
+ 10:24:32 / 1 1
+ 10:36:47 Сервер - запущен
+ 10:36:47 Порт: 708
+ 10:36:53 / undefined 1
+ 10:36:53 /auth undefined 1
+ 10:36:54 /auth undefined 1 
+ login:1 
+ pass:1
+ 10:36:54 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 10:36:54 /auth 1 1
+ 10:36:54 / 1 1
+ 10:37:20 / 1 1
+ 10:38:16 / 1 1
+ 10:38:34 / 1 1
+ 10:39:32 / 1 1
+ 10:41:15 / 1 1
+ 10:41:26 / 1 1
+ 10:42:01 / 1 1
+ 10:42:14 / 1 1
+ 10:42:29 / 1 1
+ 10:45:02 / 1 1
+ 10:45:06 / 1 1
+ 10:45:06 / 1 1
+ 10:45:13 / 1 1
+ 10:45:13 / 1 1
+ 10:45:23 / 1 1
+ 10:45:28 /take 1 1 
+ lapid:2 
+ kab:1
+ 10:45:28 / 1 1
+ 11:26:29 / 1 1
+ 11:31:57 / 1 1
+ 11:32:25 / 1 1
+ 11:38:47 Сервер - запущен
+ 11:38:47 Порт: 708
+ 11:39:41 Сервер - запущен
+ 11:39:41 Порт: 708
+ 11:41:08 / undefined 1
+ 11:41:08 /auth undefined 1
+ 11:41:10 /auth undefined 1 
+ login:1 
+ pass:1
+ 11:41:10 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 11:41:10 /auth 1 1
+ 11:41:10 / 1 1
+ 11:44:17 Сервер - запущен
+ 11:44:17 Порт: 708
+ 11:44:20 / undefined 1
+ 11:44:20 /auth undefined 1
+ 11:44:22 /auth undefined 1 
+ login:1 
+ pass:1
+ 11:44:22 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 11:44:22 /auth 1 1
+ 11:44:22 / 1 1
+ 11:46:29 / 1 1
+ 11:46:33 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:
+ 11:46:33 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:54:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:47:11 / 1 1
+ 11:47:14 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:
+ 11:47:14 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:54:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:47:46 / 1 1
+ 11:47:48 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:
+ 11:47:48 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:54:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:48:25 / 1 1
+ 11:48:27 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:
+ 11:48:27 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:54:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:50:15 / 1 1
+ 11:50:17 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:3
+ 11:50:17 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:54:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:50:58 Сервер - запущен
+ 11:50:58 Порт: 708
+ 11:50:58 /retlap undefined 1 
+ komm:Замечаний нет 
+ lapid:3
+ 11:50:58 /auth undefined 1
+ 11:50:59 / undefined 1
+ 11:50:59 /auth undefined 1
+ 11:51:03 Сервер - запущен
+ 11:51:03 Порт: 708
+ 11:51:05 / undefined 1
+ 11:51:05 /auth undefined 1
+ 11:51:07 /auth undefined 1 
+ login:1 
+ pass:1
+ 11:51:07 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 11:51:07 /auth 1 1
+ 11:51:07 / 1 1
+ 11:51:10 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:4
+ 11:51:10 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:54:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:52:26 Сервер - запущен
+ 11:52:26 Порт: 708
+ 11:52:26 /retlap undefined 1 
+ komm:Замечаний нет 
+ lapid:4
+ 11:52:26 /auth undefined 1
+ 11:52:26 / undefined 1
+ 11:52:26 /auth undefined 1
+ 11:52:29 /auth undefined 127.0.0.1 
+ login:1 
+ pass:1
+ 11:52:29 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 11:52:29 /auth 1 127.0.0.1
+ 11:52:29 / 1 127.0.0.1
+ 11:52:31 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:3
+ 11:52:31 Глобальный косяк приложения!!!  Error: Unknown column 'undefined' in 'where clause'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at retlap (file:///C:/projects/wherePC/vendor/db.js:55:39)
+    at file:///C:/projects/wherePC/index.js:171:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:53:22 Сервер - запущен
+ 11:53:22 Порт: 708
+ 11:53:22 /retlap undefined 1 
+ komm:Замечаний нет 
+ lapid:3
+ 11:53:22 /auth undefined 1
+ 11:53:22 / undefined 1
+ 11:53:22 /auth undefined 1
+ 11:53:32 / undefined 1
+ 11:53:32 /auth undefined 1
+ 11:53:33 /auth undefined 1 
+ login:1 
+ pass:1
+ 11:53:33 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 11:53:34 /auth 1 1
+ 11:53:34 / 1 1
+ 11:53:41 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:3
+ 11:53:42 / 1 1
+ 11:53:51 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:4
+ 11:53:51 / 1 1
+ 11:54:17 /take 1 1 
+ lapid:5 
+ kab:
+ 11:54:17 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:164:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 11:54:28 /take 1 1 
+ lapid:5 
+ kab:1
+ 11:54:28 / 1 1
+ 11:54:33 / 1 1
+ 11:54:51 /take 1 1 
+ lapid:1 
+ kab:3
+ 11:54:51 / 1 1
+ 11:55:00 /take 1 1 
+ lapid:4 
+ kab:1
+ 11:55:00 / 1 1
+ 11:55:04 /take 1 1 
+ lapid:3 
+ kab:2
+ 11:55:04 / 1 1
+ 11:55:06 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:2
+ 11:55:06 / 1 1
+ 11:55:08 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:5
+ 11:55:08 / 1 1
+ 11:55:09 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:1
+ 11:55:10 / 1 1
+ 11:55:11 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:4
+ 11:55:11 / 1 1
+ 11:55:13 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:3
+ 11:55:13 / 1 1
+ 11:55:30 / 1 1
+ 11:56:03 / 1 1
+ 11:56:04 / 1 1
+ 11:56:05 / 1 1
+ 11:56:07 / 1 1
+ 11:56:16 / 1 1
+ 11:56:18 / 1 1
+ 11:56:19 / 1 1
+ 11:56:19 / 1 1
+ 11:56:28 / 1 1
+ 11:56:46 /retlap 1 1 
+ komm:Замечаний нет 
+ lapid:1
+ 11:56:46 / 1 1
+ 11:57:29 / 1 1
+ 11:57:30 / 1 1
+ 11:57:43 Сервер - запущен
+ 11:57:43 Порт: 708
+ 11:57:45 / undefined 1
+ 11:57:45 /auth undefined 1
+ 11:57:46 /auth undefined 1 
+ login:1 
+ pass:1
+ 11:57:46 
+ id:43 
+ login:1 
+ pass:1 
+ name:Система 
+ subj:1
+ 11:57:46 /auth Система 1
+ 11:57:46 / Система 1
+ 11:58:15 / Система 1
+ 12:04:03 / Система 1

@@ -1,0 +1,954 @@
+
+ 15:08:34 Глобальный косяк приложения!!!  ReferenceError: app is not defined
+    at file:///C:/projects/wherePC/index.js:18:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
+ 15:10:27 Глобальный косяк приложения!!!  ReferenceError: appDir is not defined
+    at file:///C:/projects/wherePC/index.js:60:30
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
+ 15:11:04 Глобальный косяк приложения!!!  ReferenceError: test is not defined
+    at file:///C:/projects/wherePC/index.js:72:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)
+ 15:11:29 Сервер - запущен
+ 15:11:29 Порт: 707
+ 15:12:36 Сервер - запущен
+ 15:12:36 Порт: 707
+ 15:12:36 / undefined 1
+ 15:12:36 /auth undefined 1
+ 15:12:41 /auth undefined 1
+ 15:15:18 Сервер - запущен
+ 15:15:18 Порт: 708
+ 15:15:23 / undefined 1
+ 15:15:23 /auth undefined 1
+ 15:16:13 Сервер - запущен
+ 15:16:13 Порт: 708
+ 15:16:15 /auth undefined 1
+ 15:16:25 undefined
+ 15:16:25 /auth undefined 1 
+ login:123 
+ pass:123
+ 15:16:25 /auth undefined 1
+ 15:18:35 Сервер - запущен
+ 15:18:35 Порт: 708
+ 15:51:47 Сервер - запущен
+ 15:51:47 Порт: 708
+ 15:52:23 Сервер - запущен
+ 15:52:23 Порт: 708
+ 15:52:31 Сервер - запущен
+ 15:52:31 Порт: 708
+ 15:52:40 Сервер - запущен
+ 15:52:40 Порт: 708
+ 15:52:55 Сервер - запущен
+ 15:52:55 Порт: 708
+ 15:53:04 Сервер - запущен
+ 15:53:04 Порт: 708
+ 15:53:38 Сервер - запущен
+ 15:53:38 Порт: 708
+ 15:54:08 Сервер - запущен
+ 15:54:08 Порт: 708
+ 15:54:31 /auth undefined 1 
+ login:1 
+ pass:1
+ 15:54:31 undefined
+ 15:54:48 /auth undefined 1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:54:48 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:54:48 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:131:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 15:55:13 Сервер - запущен
+ 15:55:13 Порт: 708
+ 15:55:13 /auth undefined 1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:55:13 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:55:13 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:131:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 15:55:30 Сервер - запущен
+ 15:55:30 Порт: 708
+ 15:55:30 /auth undefined 1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:55:30 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:55:30 /auth undefined 1
+ 15:55:43 /auth undefined 1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:55:43 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:55:43 /auth undefined 1
+ 15:55:47 / undefined 1
+ 15:55:47 /auth undefined 1
+ 15:55:48 / undefined 1
+ 15:55:48 /auth undefined 1
+ 15:55:48 / undefined 1
+ 15:55:48 /auth undefined 1
+ 15:55:59 /auth undefined 1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:55:59 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:55:59 /auth undefined 1
+ 15:56:13 Сервер - запущен
+ 15:56:13 Порт: 708
+ 15:56:15 / undefined 1
+ 15:56:15 /auth undefined 1
+ 15:56:21 /auth undefined 1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:56:21 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:56:21 /auth undefined 1
+ 15:56:21 / undefined 1
+ 15:56:21 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:117:15
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+    at file:///C:/projects/wherePC/index.js:106:16
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+ 15:56:38 Сервер - запущен
+ 15:56:38 Порт: 708
+ 15:56:39 / undefined 1
+ 15:56:39 /auth undefined 1
+ 15:56:40 / undefined 1
+ 15:56:40 /auth undefined 1
+ 15:56:49 /auth undefined 127.0.0.1 
+ login:teacher1 
+ pass:eZvzshMD
+ 15:56:49 
+ id:1 
+ login:teacher1 
+ pass:eZvzshMD 
+ name:Михайлов В.А. 
+ subj:Русский язык
+ 15:56:49 /auth undefined 127.0.0.1
+ 15:56:49 / undefined 127.0.0.1
+ 15:56:49 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:118:24
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+    at file:///C:/projects/wherePC/index.js:106:16
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+ 16:06:47 Сервер - запущен
+ 16:06:47 Порт: 708
+ 16:15:31 Сервер - запущен
+ 16:15:31 Порт: 708
+ 16:15:46 Сервер - запущен
+ 16:15:46 Порт: 708
+ 16:15:53 Сервер - запущен
+ 16:15:53 Порт: 708
+ 16:16:33 Сервер - запущен
+ 16:16:33 Порт: 708
+ 16:18:07 Сервер - запущен
+ 16:18:07 Порт: 708
+ 16:47:13 / undefined 1
+ 16:47:13 /auth undefined 1
+ 16:47:36 /auth undefined 1 
+ login:teacher20 
+ pass:eZvzshMD
+ 16:47:36 undefined
+ 16:47:41 /auth undefined 1 
+ login:eZvzshMD 
+ pass:eZvzshMD
+ 16:47:41 undefined
+ 16:49:41 /auth undefined 1 
+ login:1 
+ pass:1
+ 16:49:41 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 16:49:41 /auth undefined 1
+ 16:49:41 / undefined 1
+ 16:49:41 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:01 / undefined 1
+ 16:51:01 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:25 / undefined 1
+ 16:51:25 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:26 / undefined 1
+ 16:51:26 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:26 / undefined 1
+ 16:51:26 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:33 / undefined 1
+ 16:51:33 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:35 / undefined 1
+ 16:51:35 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:48 / undefined 1
+ 16:51:48 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:51:53 / undefined 1
+ 16:51:53 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:53:47 / undefined 1
+ 16:53:47 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:54:01 / undefined 1
+ 16:54:01 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:54:19 / undefined 1
+ 16:54:19 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:54:42 / undefined 1
+ 16:54:42 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:55:02 / undefined 1
+ 16:55:02 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:55:23 / undefined 1
+ 16:55:23 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:56:29 / undefined 1
+ 16:56:29 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:56:49 / undefined 1
+ 16:56:49 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:119:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:57:58 Сервер - запущен
+ 16:57:58 Порт: 708
+ 16:58:00 / undefined 1
+ 16:58:00 /auth undefined 1
+ 16:58:03 /auth undefined 1 
+ login:1 
+ pass:1
+ 16:58:03 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 16:58:03 /auth undefined 1
+ 16:58:03 / undefined 1
+ 16:58:03 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 16:59:38 / undefined 1
+ 16:59:38 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:00:53 / undefined 1
+ 17:00:53 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:01:27 / undefined 1
+ 17:01:27 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:01:38 / undefined 1
+ 17:01:38 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:01:38 / undefined 1
+ 17:01:38 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:01:38 / undefined 1
+ 17:01:38 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:01:43 / undefined 1
+ 17:01:43 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:01:51 / undefined 1
+ 17:01:51 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:02:47 / undefined 1
+ 17:02:47 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:02:48 / undefined 1
+ 17:02:48 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:02:48 / undefined 1
+ 17:02:48 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:02:48 / undefined 1
+ 17:02:48 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:03:14 / undefined 1
+ 17:03:14 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:03:32 / undefined 1
+ 17:03:32 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:04:29 / undefined 1
+ 17:04:29 Глобальный косяк приложения!!!  ReferenceError: body is not defined
+    at file:///C:/projects/wherePC/index.js:120:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:04:45 Сервер - запущен
+ 17:04:45 Порт: 708
+ 17:04:51 Сервер - запущен
+ 17:04:51 Порт: 708
+ 17:04:52 / undefined 1
+ 17:04:52 /auth undefined 1
+ 17:04:53 /auth undefined 1 
+ login:1 
+ pass:1
+ 17:04:53 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 17:04:53 /auth undefined 1
+ 17:04:53 / undefined 1
+ 17:08:17 / undefined 1
+ 17:08:44 / undefined 1
+ 17:11:04 / undefined 1
+ 17:13:16 / undefined 1
+ 17:13:34 / undefined 1
+ 17:13:45 / undefined 1
+ 17:14:03 / undefined 1
+ 17:15:29 / undefined 1
+ 17:15:40 / undefined 1
+ 17:15:57 / undefined 1
+ 17:17:33 / undefined 1
+ 17:19:27 Сервер - запущен
+ 17:19:27 Порт: 708
+ 17:20:18 / undefined 1
+ 17:20:18 /auth undefined 1
+ 17:20:20 /auth undefined 1 
+ login:1 
+ pass:1
+ 17:20:20 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 17:20:20 /auth undefined 1
+ 17:20:20 / undefined 1
+ 17:21:01 / undefined 1
+ 17:21:09 / undefined 1
+ 17:21:34 / undefined 1
+ 17:21:48 / undefined 1
+ 17:21:51 / undefined 1
+ 17:25:37 Сервер - запущен
+ 17:25:37 Порт: 708
+ 17:25:59 Сервер - запущен
+ 17:25:59 Порт: 708
+ 17:26:01 / undefined 1
+ 17:26:01 /auth undefined 1
+ 17:26:07 /auth undefined 1 
+ login:1 
+ pass:1
+ 17:26:07 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 17:26:07 /auth undefined 1
+ 17:26:07 / undefined 1
+ 17:27:08 / undefined 1
+ 17:27:09 / undefined 1
+ 17:27:10 / undefined 1
+ 17:27:49 Сервер - запущен
+ 17:27:49 Порт: 708
+ 17:27:52 / undefined 1
+ 17:27:52 /auth undefined 1
+ 17:27:53 /auth undefined 1 
+ login:1 
+ pass:1
+ 17:27:53 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 17:27:53 /auth undefined 1
+ 17:27:53 / undefined 1
+ 17:28:12 / undefined 1
+ 17:28:39 / undefined 1
+ 17:28:40 / undefined 1
+ 17:28:57 / undefined 1
+ 17:29:30 / undefined 1
+ 17:29:31 / undefined 1
+ 17:30:08 / undefined 1
+ 17:30:21 / undefined 1
+ 17:30:22 / undefined 1
+ 17:30:57 / undefined 1
+ 17:30:59 / undefined 1
+ 17:31:04 / undefined 1
+ 17:31:59 / undefined 1
+ 17:32:15 / undefined 1
+ 17:33:00 / undefined 1
+ 17:33:32 / undefined 1
+ 17:35:44 / undefined 1
+ 17:37:18 / undefined 1
+ 17:37:51 / undefined 1
+ 17:38:36 / undefined 1
+ 17:39:58 / undefined 1
+ 17:40:00 / undefined 1
+ 17:40:00 / undefined 1
+ 17:40:00 / undefined 1
+ 17:40:19 / undefined 1
+ 17:40:39 / undefined 1
+ 17:40:50 / undefined 1
+ 18:02:05 Сервер - запущен
+ 18:02:05 Порт: 708
+ 18:02:33 / undefined 1
+ 18:02:33 /auth undefined 1
+ 18:02:34 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:02:34 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:02:35 /auth undefined 1
+ 18:02:35 / undefined 1
+ 18:06:37 Сервер - запущен
+ 18:06:37 Порт: 708
+ 18:07:30 Сервер - запущен
+ 18:07:30 Порт: 708
+ 18:08:43 / undefined 1
+ 18:08:43 /auth undefined 1
+ 18:08:44 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:08:44 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:08:45 /auth undefined 1
+ 18:08:45 / undefined 1
+ 18:12:29 / undefined 1
+ 18:12:43 / undefined 1
+ 18:12:59 / undefined 1
+ 18:17:40 Сервер - запущен
+ 18:17:40 Порт: 708
+ 18:17:42 / undefined 1
+ 18:17:42 /auth undefined 1
+ 18:17:43 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:17:43 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:17:44 /auth undefined 1
+ 18:17:44 / undefined 1
+ 18:17:44 Глобальный косяк приложения!!!  ReferenceError: kabs is not defined
+    at file:///C:/projects/wherePC/index.js:117:10
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:17:46 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:17:54 Сервер - запущен
+ 18:17:54 Порт: 708
+ 18:17:54 / undefined 1
+ 18:17:54 / undefined 1
+ 18:17:54 /auth undefined 1
+ 18:17:54 /auth undefined 1
+ 18:17:55 / undefined 1
+ 18:17:55 /auth undefined 1
+ 18:17:56 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:17:56 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:17:56 /auth undefined 1
+ 18:17:56 / undefined 1
+ 18:17:56 Глобальный косяк приложения!!!  ReferenceError: i is not defined
+    at file:///C:/projects/wherePC/index.js:120:14
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:18:08 Сервер - запущен
+ 18:18:08 Порт: 708
+ 18:18:08 / undefined 1
+ 18:18:08 /auth undefined 1
+ 18:18:09 / undefined 1
+ 18:18:09 /auth undefined 1
+ 18:18:11 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:18:11 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:18:11 /auth undefined 1
+ 18:18:11 / undefined 1
+ 18:18:38 / undefined 127.0.0.1
+ 18:18:52 /sendcmd undefined 1 
+ cmd:fullstat
+ 18:19:28 / undefined 1
+ 18:19:43 / undefined 1
+ 18:20:26 / undefined 1
+ 18:21:31 / undefined 1
+ 18:21:34 / undefined 1
+ 18:21:47 /sendcmd undefined 1 
+ cmd:fullstat
+ 18:22:32 / undefined 1
+ 18:22:49 / undefined 1
+ 18:24:25 / undefined 1
+ 18:24:45 Сервер - запущен
+ 18:24:45 Порт: 708
+ 18:24:49 /sendcmd undefined 1 
+ cmd:fullstat
+ 18:24:49 /auth undefined 1
+ 18:26:36 Сервер - запущен
+ 18:26:36 Порт: 708
+ 18:31:42 Сервер - запущен
+ 18:31:42 Порт: 708
+ 18:40:06 Сервер - запущен
+ 18:40:06 Порт: 708
+ 18:40:09 / undefined 1
+ 18:40:09 /auth undefined 1
+ 18:40:12 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:40:12 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:40:12 /auth undefined 1
+ 18:40:12 / undefined 1
+ 18:41:24 / undefined 1
+ 18:41:44 /take undefined 1 
+ lapid:1 
+ kab:
+ 18:41:44 Глобальный косяк приложения!!!  Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',1704814904)' at line 1
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:164:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:41:47 /sendcmd undefined 1 
+ cmd:fullstat
+ 18:41:58 /take undefined 1 
+ lapid:1 
+ kab:1
+ 18:41:58 Глобальный косяк приложения!!!  Error: Unknown column 'lapid' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:164:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:42:09 / undefined 1
+ 18:43:41 Сервер - запущен
+ 18:43:41 Порт: 708
+ 18:43:45 / undefined 1
+ 18:43:45 /auth undefined 1
+ 18:43:47 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:43:47 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:43:47 /auth 1 1
+ 18:43:47 / 1 1
+ 18:43:50 /take 1 1 
+ lapid:1 
+ kab:
+ 18:43:50 Глобальный косяк приложения!!!  Error: Unknown column 'lapid' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:44:32 / 1 1
+ 18:44:32 Глобальный косяк приложения!!!  Error: Unknown column 'laptid' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at get_status (file:///C:/projects/wherePC/vendor/db.js:37:39)
+    at file:///C:/projects/wherePC/index.js:115:20
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:45:01 Сервер - запущен
+ 18:45:01 Порт: 708
+ 18:45:05 / undefined 1
+ 18:45:05 /auth undefined 1
+ 18:45:07 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:45:07 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:45:07 /auth 1 1
+ 18:45:07 / 1 1
+ 18:45:09 /take 1 1 
+ lapid: 
+ kab:
+ 18:45:09 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:45:10 /sendcmd 1 1 
+ cmd:fullstat
+ 18:45:11 /take 1 1 
+ lapid: 
+ kab:2
+ 18:45:11 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:45:59 Сервер - запущен
+ 18:45:59 Порт: 708
+ 18:45:59 /take undefined 1 
+ lapid: 
+ kab:
+ 18:45:59 /take undefined 1 
+ lapid: 
+ kab:2
+ 18:45:59 /auth undefined 1
+ 18:45:59 /auth undefined 1
+ 18:46:26 Сервер - запущен
+ 18:46:26 Порт: 708
+ 18:46:27 Сервер - запущен
+ 18:46:27 Порт: 708
+ 18:46:30 / undefined 1
+ 18:46:30 /auth undefined 1
+ 18:46:32 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:46:32 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:46:32 /auth 1 1
+ 18:46:32 / 1 1
+ 18:46:34 /take 1 1 
+ lapid:1 
+ kab:
+ 18:46:34 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:46:49 /take 1 1 
+ lapid:1 
+ kab:2
+ 18:46:49 Глобальный косяк приложения!!!  ReferenceError: mlog is not defined
+    at take (file:///C:/projects/wherePC/vendor/db.js:44:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///C:/projects/wherePC/index.js:165:17
+ 18:47:02 Сервер - запущен
+ 18:47:02 Порт: 708
+ 18:47:03 /take undefined 1 
+ lapid:1 
+ kab:
+ 18:47:03 /auth undefined 1
+ 18:47:06 /take undefined 1 
+ lapid:1 
+ kab:5
+ 18:47:06 /auth undefined 1
+ 18:47:08 / undefined 1
+ 18:47:08 /auth undefined 1
+ 18:47:09 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:47:09 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:47:09 /auth 1 1
+ 18:47:09 / 1 1
+ 18:47:45 / 1 1
+ 18:48:14 / 1 1
+ 18:48:35 / 1 1
+ 18:48:39 /take 1 1 
+ lapid:3 
+ kab:
+ 18:48:39 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:48:43 /take 1 1 
+ lapid:3 
+ kab:4
+ 18:48:43 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 5
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:48:43 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 5
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 18:49:38 Сервер - запущен
+ 18:49:38 Порт: 708
+ 18:49:38 /take undefined 1 
+ lapid:3 
+ kab:
+ 18:49:38 /auth undefined 1
+ 18:50:40 / undefined 1
+ 18:50:40 /auth undefined 1
+ 18:50:41 /auth undefined 1 
+ login:1 
+ pass:1
+ 18:50:41 
+ id:64 
+ login:1 
+ pass:1 
+ name:1 
+ subj:1
+ 18:50:41 /auth 1 1
+ 18:50:41 / 1 1
+ 18:51:01 /take 1 1 
+ lapid:2 
+ kab:
+ 18:51:01 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+ 18:51:13 /take 1 1 
+ lapid:2 
+ kab:1
+ 18:51:13 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 6
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:51:13 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 6
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 18:51:27 /take 1 1 
+ lapid:1 
+ kab:1
+ 18:51:27 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 7
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:51:27 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 7
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 18:51:52 /take 1 1 
+ lapid:1 
+ kab:1
+ 18:51:52 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 8
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:51:52 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 8
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 18:51:53 /take 1 1 
+ lapid:1 
+ kab:1
+ 18:51:53 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 9
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at writetop (C:\projects\wherePC\node_modules\express-session\index.js:276:15)
+    at ServerResponse.end (C:\projects\wherePC\node_modules\express-session\index.js:356:16)
+    at ServerResponse.send (C:\projects\wherePC\node_modules\express\lib\response.js:232:10)
+    at file:///C:/projects/wherePC/index.js:166:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 18:51:53 Глобальный косяк приложения!!!  RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: 9
+    at new NodeError (node:internal/errors:405:5)
+    at ServerResponse.writeHead (node:_http_server:347:11)
+    at ServerResponse.writeHead (C:\projects\wherePC\node_modules\on-headers\index.js:44:26)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at ServerResponse.end (node:_http_outgoing:1042:10)
+    at writeend (C:\projects\wherePC\node_modules\express-session\index.js:262:22)
+    at Immediate.ontouch (C:\projects\wherePC\node_modules\express-session\index.js:353:11)
+    at process.processImmediate (node:internal/timers:476:21)
+ 18:52:32 / 1 1
+ 18:52:49 / 1 1
+ 18:52:56 /take 1 1 
+ lapid:3 
+ kab:
+ 18:52:56 Глобальный косяк приложения!!!  Error: Unknown column 'NaN' in 'field list'
+    at PromisePool.query (C:\projects\wherePC\node_modules\mysql2\promise.js:356:22)
+    at take (file:///C:/projects/wherePC/vendor/db.js:43:39)
+    at file:///C:/projects/wherePC/index.js:165:23
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
