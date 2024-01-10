@@ -181,9 +181,9 @@ function getcurip(str) {
 }
 
 async function start(){
-    app.listen(708,()=> {
+    app.listen(80,()=> {
         mlog('Сервер - запущен')
-        mlog('Порт:',708);
+        mlog('Порт:',80);
     })
 }
 function getCurrentUnixTime() {

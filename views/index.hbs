@@ -6,15 +6,16 @@
             <div id="num{{id}}" class="input-field col s6 l6 m4">
                 <table class="centered">
                 <tr>
-                    <th class="center" >{{lapid}} ноут</th>  
+                    <th class="center" >Ноутбук №{{lapid}}</th>  
                     {{#if_eq timestop 0}} 
                      <th class="center #f06292 pink lighten-2" id="bis1">Занят</th>
                      {{else}}
                   <th class="center #a7ffeb teal accent-1" id="bis1">Свободен</th>
                      {{/if_eq}}
                 </tr> <!--ряд с ячейками заголовков-->
-                <tr><td>{{kab}} кабинет</td><td>{{startf}}</td></tr> <!--ряд с ячейками тела таблицы-->
-                <tr><td colspan="2">{{name}}</td></tr>
+                <tr><td>Последний раз был в {{kab}} кабинете</td><td>{{startf}}</td></tr> <!--ряд с ячейками тела таблицы-->
+                <tr><td colspan="2">Был у {{name}}</td></tr>
+                <tr><td colspan="2">{{komm}}</td></tr>
                 <tr> 
                     {{#if_eq timestop 0}} 
                         {{#if_eq me 1}} 
