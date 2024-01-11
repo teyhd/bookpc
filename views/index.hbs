@@ -2,13 +2,16 @@
   table{
     height: 35vh;
   }
+  .container {
+    width: 90%;
+}
 </style>
 <div class="container"> 
     <div class="row">
         <h5>Учет использования</h5>
         <p>{{name}}</p>
         {{#each pc}}    
-            <div id="num{{id}}" class="pcard input-field col s12 m6 l3">
+            <div id="num{{id}}" class="pcard input-field col s12 m6 l3 xl3">
                 <table class="centered">
                 <tr>
                     <th class="center" >Ноутбук №{{lapid}}</th>  
@@ -74,7 +77,6 @@
 </div>
 
 <script>
-
        $( "#retulbtn" ).click(function() {
             if (!$('#new_text').val()){
                 $('#new_text').val('Замечаний нет')
@@ -123,8 +125,26 @@
             console.dir($('#idkab').val());
             })
 
-            
+         var maxh = 0
+         function set(){
+         $('table').each(function (){ 
+          if ($(this).height()>maxh){
+            maxh = $(this).height()
+          }
+         
+          } )    
+           $('table').each(function (){ 
+            $(this).height(maxh)
+          } )  
+          $('table').height(maxh)
+         }
 
+
+          $(window).on('resize', function(){
+            set()
+          });
+            set()
+            setTimeout(set, 3000);
         function reload(p){
             if (p) setTimeout(reload, 350);
             else location.reload();
