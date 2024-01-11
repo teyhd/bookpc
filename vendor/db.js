@@ -55,7 +55,8 @@ export async function get_pc_story(id){
 }
 
 export async function take(userid,lapid,kab,timestart){
-    const qer = `INSERT INTO story (userid,lapid,kab,timestart,komm) VALUES (${userid},${lapid},${kab},${timestart},"Замечаний нет");`
+    let pass = Math.floor(Math.random() * (9*(Math.pow(10,5)))) + (Math.pow(10,5))
+    const qer = `INSERT INTO story (userid,lapid,kab,timestart,komm,pass) VALUES (${userid},${lapid},${kab},${timestart},"Замечаний нет",${pass});`
     const [rows, fields] = await pool.query(qer)
     console.dir(rows);
     return rows.insertId;

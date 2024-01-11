@@ -16,7 +16,11 @@
                 <tr>
                     <th class="center" >Ноутбук №{{lapid}}</th>  
                     {{#if_eq timestop 0}} 
-                     <th class="center #f06292 pink lighten-2" id="bis1">Занят</th>
+                        {{#if_eq me 1}} 
+                             <th class="center #f06292 pink lighten-2" id="bis1">{{pass}}</th>
+                        {{else}}
+                              <th class="center #f06292 pink lighten-2" id="bis1">Занят</th>
+                        {{/if_eq}}   
                      {{else}}
                   <th class="center #a7ffeb teal accent-1" id="bis1">Свободен</th>
                      {{/if_eq}}
