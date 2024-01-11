@@ -49,6 +49,9 @@
             data = JSON.parse(data)
             console.log(data);
             for (let k = 0; k < data.length; k++) {
+                if (data[k].timestop==0){
+                  data[k].stopf = 'Не вернул'
+                }
                 $('#content').append(`
                         <tr>
                             <td>${k+1}</td>
