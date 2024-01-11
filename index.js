@@ -160,6 +160,12 @@ app.get('/story',async (req,res)=>{
 app.get('/getstory',async (req,res)=>{
     let laps = await get_pc_story(req.query.lapid)
     for (let j = 0; j < laps.length; j++) {
+        if (laps[i].kab == 0) {
+            laps[i].kab = "13 ложе"
+        }
+        if (laps[i].kab == 30) {
+            laps[i].kab = "доме"
+        }
         laps[j].startf = formatUnixTime(laps[j].timestart)
         laps[j].stopf = formatUnixTime(laps[j].timestop)
     }
