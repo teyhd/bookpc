@@ -124,10 +124,10 @@ app.get('/',async (req,res)=>{
 
     for (let i = 0; i < pc.length; i++) {
         pc[i].startf = formatUnixTime(pc[i].timestart)
-        if (pc[i].kab = 0) {
+        if (pc[i].kab == 0) {
             pc[i].kab = "13 ложе"
         }
-        if (pc[i].kab = 30) {
+        if (pc[i].kab == 30) {
             pc[i].kab = "доме"
         }
         if (req.session.userid==pc[i].userid){
