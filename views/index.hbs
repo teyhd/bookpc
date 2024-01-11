@@ -139,7 +139,7 @@
           $('table').height(maxh)
          }
 
-
+$(document).click(function(){ $('li[id^="select-options"]').on('touchend', function (e) { e.stopPropagation(); }); });
           $(window).on('resize', function(){
             set()
           });
