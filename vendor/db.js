@@ -33,8 +33,24 @@ export async function get_status(){
         FROM story
         GROUP BY lapid
     ) latest ON s.lapid = latest.lapid AND s.timestart = latest.max_timestart
-    JOIN users u ON s.userid = u.id;`
+    JOIN users u ON s.userid = u.id
+    ORDER BY latest.lapid
+    ;`
     const [rows, fields] = await pool.query(qer)
+    return rows;
+}
+
+export async function get_pc(){
+    const qer = `SELECT lapid FROM story GROUP BY lapid ORDER BY lapid;`
+    const [rows, fields] = await pool.query(qer)
+    return rows;
+}
+
+export async function get_pc_story(id){
+    const qer = `SELECT story.* , users.name FROM story,users WHERE users.id = story.userid AND lapid=${id} ORDER BY timestart;`
+    
+    const [rows, fields] = await pool.query(qer)
+    console.log(rows);
     return rows;
 }
 
@@ -55,5 +71,7 @@ export async function retlap(timestop,komm,lapid,userid){
     const [rows, fields] = await pool.query(qer)
     return rows;
 }
+
+
 
 console.log(await get_status());

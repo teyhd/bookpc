@@ -1,9 +1,14 @@
+<style>
+  table{
+    height: 27vh;
+  }
+</style>
 <div class="container"> 
     <div class="row">
-        <h5>Управление ноутами</h5>
+        <h5>Учет использования</h5>
         <p>{{name}}</p>
         {{#each pc}}    
-            <div id="num{{id}}" class="input-field col s6 l6 m4">
+            <div id="num{{id}}" class="pcard input-field col s12 m6 l3">
                 <table class="centered">
                 <tr>
                     <th class="center" >Ноутбук №{{lapid}}</th>  
@@ -14,7 +19,7 @@
                      {{/if_eq}}
                 </tr> <!--ряд с ячейками заголовков-->
                 <tr><td colspan="2">В {{startf}} был в {{kab}} кабинете</td></tr> <!--ряд с ячейками тела таблицы-->
-                <tr><td colspan="2">Был у {{name}}</td></tr>
+                <tr><td colspan="2">Последний: {{name}}</td></tr>
                 <tr><td colspan="2">{{komm}}</td></tr>
                 <tr> 
                     {{#if_eq timestop 0}} 

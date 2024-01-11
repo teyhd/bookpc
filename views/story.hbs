@@ -1,0 +1,65 @@
+<div class="container"> 
+    <div class="row"> 
+    <div class="input-field col s12">
+        <select name="lapto" id="idlasp">
+            <option value="-1" selected disabled>Ноутбуки</option>
+            {{#each laps}}  
+                <option id="{{lapid}}" value="{{lapid}}">№{{lapid}}</option>
+            {{/each}}
+        </select>
+        <label>Выберите ноутбук</label>
+    </div>
+
+    <div class="input-field col s12">
+      <table>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Педагог</th>
+            <th>Брал</th>
+            <th>Вернул</th>
+            <th>Кабинет</th>
+            <th>Комментарий</th>
+          </tr>
+        </thead>
+
+        <tbody id="content">
+          <tr>
+            <td>1</td>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+            <td>$0.87</td>
+            <td>$0.87</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+</div>
+
+<script>
+    $('#content').html(``)
+    $('#idlasp').change(function(){
+        $('#content').html(``)
+        console.log($('#idlasp').val())
+        $.get( `/getstory`, { lapid:$('#idlasp').val()} ).done(function( data ) {
+            console.log(data);
+            data = JSON.parse(data)
+            console.log(data);
+            for (let k = 0; k < data.length; k++) {
+                $('#content').append(`
+                        <tr>
+                            <td>${k+1}</td>
+                            <td>${data[k].name}</td>
+                            <td>${data[k].startf}</td>
+                            <td>${data[k].stopf}</td>
+                            <td>${data[k].kab}</td>
+                            <td>${data[k].komm}</td>
+                        </tr>   
+                `)
+            }
+        })            
+    })
+</script>

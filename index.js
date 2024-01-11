@@ -19,7 +19,7 @@ import path from 'path'
 import fs from 'fs-extra'
 
 import urlencode from 'urlencode';
-import {auth_user,get_users,get_status,take,retlap} from './vendor/db.js'
+import {auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -123,9 +123,9 @@ app.get('/',async (req,res)=>{
     }
 
     for (let i = 0; i < pc.length; i++) {
+        pc[i].startf = formatUnixTime(pc[i].timestart)
         if (req.session.userid==pc[i].userid){
             pc[i].me = 1
-            pc[i].startf = formatUnixTime(pc[i].timestart)
         }
     }
     console.log(pc);
@@ -134,9 +134,31 @@ app.get('/',async (req,res)=>{
         kabs: kabs,
         meid: req.session.userid,
         name:req.session.name,
-        pc: pc
+        pc: pc,
+        auth: req.session.userid
     });
 
+})
+
+app.get('/story',async (req,res)=>{
+    let laps = await get_pc()
+    res.render('story',{
+        title: 'История использования',
+        meid: req.session.userid,
+        name:req.session.name,
+        laps: laps,
+        auth: req.session.userid
+    });
+})
+
+app.get('/getstory',async (req,res)=>{
+    let laps = await get_pc_story(req.query.lapid)
+    for (let j = 0; j < laps.length; j++) {
+        laps[j].startf = formatUnixTime(laps[j].timestart)
+        laps[j].stopf = formatUnixTime(laps[j].timestop)
+    }
+    res.json(JSON.stringify(laps))
+  //  res.send(laps)
 })
 
 app.get('/auth',async (req,res)=>{
@@ -154,7 +176,7 @@ app.get('/auth',async (req,res)=>{
     } else{
         res.render('auth',{
             title: 'Авторизация',
-            auth: req.session.auth
+            auth: req.session.userid
         });
     }
 })  
@@ -173,6 +195,22 @@ app.get('/retlap',async (req,res)=>{
     console.log(req.session.userid);
     res.send({st:"ok",id:resid})
 })  
+
+app.get('/logout', function(req, res) {
+    mlog( req.session.name,"вышел из системы");
+    req.session.auth = null;
+    req.session.name = null
+    req.session.userid = null
+    //res.send('ok');
+    console.dir(req.session)
+    req.session.save(function (err) {
+      if (err) next(err)
+      req.session.regenerate(function (err) {
+        if (err) next(err)
+        res.redirect('/')
+      })
+    })
+    })
 
 function getcurip(str) {
     let arr = str.split(':');
@@ -215,7 +253,5 @@ var formattedTime = day + '.' + month + ' ' + hours + ':' + minutes + ':' + seco
 
 return formattedTime;
 }
-  
- 
 
 await start()
