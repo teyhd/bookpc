@@ -13,7 +13,7 @@ namespace LastSecur
 {
     public partial class Form1 : Form
     {
-        const int timesstop = 15;
+        const int timesstop = 60;
         public int timeout = timesstop;
         public Form1()
         {
@@ -50,6 +50,7 @@ namespace LastSecur
                // Application.Exit();
                 if (LastSecur.Db.Isauth() == 0 && !LastSecur.Program.AdminMode)
                 {
+                    Program.Mylog("Блокировка ПК");
                     Process.Start("rundll32.exe", "user32.dll,LockWorkStation");
                 }
             }
@@ -73,6 +74,7 @@ namespace LastSecur
                 else
                 {
                     MessageBox.Show("Неверный пароль", "Ошибка", MessageBoxButtons.OK);
+                    Program.Mylog("Неверный пароль");
                     textBox1.Text = "";
                 }
             }
@@ -97,19 +99,21 @@ namespace LastSecur
                         else
                         {
                             MessageBox.Show("Укажите только цифру кабинета", "Ошибка", MessageBoxButtons.OK);
+                            Program.Mylog("Укажите только цифру кабинета");
                         }
                         //Авторизация
                     }
                     else
                     {
                         MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButtons.OK);
+                        Program.Mylog("Неверный логин или пароль");
                     }
                 } else
                 {
                     MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButtons.OK);
+                    Program.Mylog("Заполните все поля");
                 }
 
-               
             }
         }
 
@@ -139,7 +143,7 @@ namespace LastSecur
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-          //  e.Cancel = true;
+            e.Cancel = true;
         }
 
         private void Form1_VisibleChanged(object sender, EventArgs e)

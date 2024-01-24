@@ -26,13 +26,14 @@ namespace LastSecur
                     Console.WriteLine("В БД нет авторизации");
                    // Console.WriteLine(Program.first);
                     Application.Run(new Form1());
-
+                    Program.Mylog("В БД нет авторизации");
                 }
                 catch (Exception ex)
                 {
                     //myForm.Show();
                     Console.WriteLine("Ошибка");
                     Console.WriteLine(ex.ToString());
+                    Program.Mylog($"Ошибка {ex.ToString()}");
                 }
 
             }
@@ -52,7 +53,7 @@ namespace LastSecur
                     checkdb();
                 } 
                 Console.WriteLine("Фоновая задача выполняется...");
-
+                Program.Mylog("Фоновая задача выполняется...");
                 // Задержка между выполнениями задачи
                 await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
             }

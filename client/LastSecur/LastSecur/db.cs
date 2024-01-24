@@ -24,6 +24,7 @@ namespace LastSecur
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
+                    Program.Mylog(ex.ToString());
                     return 0;
                 }          
                 
@@ -36,6 +37,7 @@ namespace LastSecur
                         {
                             if (Int32.Parse(reader["timestop"].ToString()) !=0) return 0;
                             Console.WriteLine("Авторизация: "+reader["autor"].ToString());
+                            Program.Mylog("Авторизация: " + reader["autor"].ToString());
                             return Int32.Parse(reader["autor"].ToString());
                         }
                     }
@@ -58,6 +60,7 @@ namespace LastSecur
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
+                    Program.Mylog(ex.ToString());
                     return 0;
                 }
 
@@ -69,6 +72,7 @@ namespace LastSecur
                         while (reader.Read())
                         {
                             Console.WriteLine(reader["pass"].ToString());
+                            Program.Mylog(reader["pass"].ToString());
                             return Int32.Parse(reader["pass"].ToString());
                         }
                     }
@@ -90,6 +94,7 @@ namespace LastSecur
                 }
                 catch (Exception ex)
                 {
+                    Program.Mylog(ex.ToString());
                     Console.WriteLine(ex.ToString());
                     return 0;
                 }
@@ -102,6 +107,7 @@ namespace LastSecur
                         while (reader.Read())
                         {
                             Console.WriteLine(reader["id"].ToString());
+                            Program.Mylog(reader["id"].ToString());
                             return Int32.Parse(reader["id"].ToString());
                         }
                     }
@@ -124,6 +130,7 @@ namespace LastSecur
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
+                    Program.Mylog(ex.ToString());
                 }
                 Random random = new Random();
                 int pass = random.Next(10000, 100000);
@@ -131,6 +138,7 @@ namespace LastSecur
                 int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 string sql = $"INSERT INTO story (userid,lapid,kab,timestart,komm,pass,autor) VALUES ({userid},{lapid},{kab},{timestart},'Замечаний нет',{pass},1);";
                 Console.WriteLine(sql);
+                Program.Mylog(sql);
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -149,7 +157,8 @@ namespace LastSecur
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                   // return 0;
+                    Program.Mylog(ex.ToString());
+                    // return 0;
                 }
 
                 string sql = $"UPDATE story SET autor=1 WHERE lapid={LastSecur.Program.getid()} AND timestop=0 ORDER BY timestart DESC LIMIT 1;";
@@ -161,7 +170,7 @@ namespace LastSecur
                         while (reader.Read())
                         {
                             Console.WriteLine(reader.ToString());
-                           
+                            Program.Mylog(reader.ToString());
                         }
                     }
                 }
