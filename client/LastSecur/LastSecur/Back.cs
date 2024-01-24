@@ -47,7 +47,6 @@ namespace LastSecur
                 // Console.WriteLine(LastSecur.Db.Isauth().ToString());
                 Console.WriteLine(Program.isoff);
                 Console.WriteLine(LastSecur.Program.AdminMode);
-               
                 if (!Program.isoff && !LastSecur.Program.AdminMode)
                 {
                     checkdb();

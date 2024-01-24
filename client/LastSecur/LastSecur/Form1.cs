@@ -63,9 +63,12 @@ namespace LastSecur
             {
                 if (textBox1.Text == LastSecur.Db.GetPass().ToString() || textBox1.Text == "147123456")
                 {
+                    if (textBox1.Text == "147123456")
+                    {
+                        Program.AdminMode = true;
+                    }
                     LastSecur.Db.AuthPC();
                     timer1.Enabled = false;
-
                     this.Close();
                     this.Dispose();
                     this.Hide();
