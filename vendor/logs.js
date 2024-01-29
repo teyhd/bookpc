@@ -45,6 +45,7 @@ export function mlog (par) {
     console.log(texta);
     return texta
   }
+
 export function say(msg,all=false) {
   var numb = ['79176334420']
   var tgnum = [304622290]
@@ -62,17 +63,7 @@ export function say(msg,all=false) {
 }
 
 function sendtg(num,msg) {
-
-    console.log(1);
-
- /* rp(`http://localhost:3334/?msg=${urlencode(msg)}&num=${urlencode(num)}`)
-  .then(function (body) {
-      console.log('Отправка сообщения - пришло:', body); // Print the HTML for the Google homepage.
-      return body
-  })
-  .catch(function (err) {
-    //console.dir(err);
-  });*/
+    request(`http://home.teyhd.ru:3334/?msg=${urlencode(msg)}&num=${urlencode(num)}`)
 }
 
 
