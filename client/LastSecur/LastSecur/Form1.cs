@@ -13,7 +13,7 @@ namespace LastSecur
 {
     public partial class Form1 : Form
     {
-        const int timesstop = 60;
+        const int timesstop = 30;
         public int timeout = timesstop;
         public Form1()
         {

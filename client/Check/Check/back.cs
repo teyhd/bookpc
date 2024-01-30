@@ -28,7 +28,7 @@ namespace Check
                     var Lapnum = MyIni.Read("numb");
                     var Check = MyIni.Read("check");
                     // Ваш код фоновой задачи здесь
-                    Program.Mylog("Фоновая задача выполняется...");
+                    //Program.Mylog("Фоновая задача выполняется...");
                     Db.CheckHost();
                     string processName = "LastSecur";
                     if (Check == "true")
