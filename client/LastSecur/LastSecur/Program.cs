@@ -68,7 +68,7 @@ namespace LastSecur
         {
             try
             {
-                var MyIni = new MyProg.IniFile(@"C:\Windows\secur\settings.ini");
+                var MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
                 var Lapnum = MyIni.Read("numb", "Check");
                 Mylog(Lapnum);
                 return Int32.Parse(Lapnum);

@@ -150,8 +150,8 @@ namespace LastSecur
                     Program.Mylog(ex.ToString());
                     // return 0;
                 }
-
-                string sql = $"UPDATE hosts SET lock={Lock} WHERE lapid={Program.getid()};";
+                int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                string sql = $"UPDATE hosts SET lock={Lock},times={timestart} WHERE lapid={Program.getid()};";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())

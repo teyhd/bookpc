@@ -16,7 +16,7 @@ namespace Check
             [Obsolete]
             protected override async Task ExecuteAsync(CancellationToken stoppingToken)
             {
-                var MyIni = new MyProg.IniFile(@"C:\Windows\secur\settings.ini");
+                var MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
                 //MyIni.Write("numb", "11");
                 //MyIni.Write("check", "true");
                 // MyIni.Write("checklog", "true");

@@ -11,7 +11,7 @@ namespace Check
     {
         private static string IPstr = "0";
         public static string connectionString = "server=vr;database=laptop;uid=teyhd;password=258000;";
-        public static MyProg.IniFile MyIni = new MyProg.IniFile(@"C:\Windows\secur\settings.ini");
+        public static MyProg.IniFile MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
         public static int GetId()
         {
             
@@ -65,7 +65,9 @@ namespace Check
                 string Host = System.Net.Dns.GetHostName();
                 string IP = Dns.GetHostByName(Host).AddressList[0].ToString();
                 var Lapnum = MyIni.Read("numb");
-                string sql = $"INSERT INTO hosts (lapid,host,ip) VALUES ({Lapnum},'{Host}','{IP}');";
+
+                int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                string sql = $"INSERT INTO hosts (lapid,host,ip,times) VALUES ({Lapnum},'{Host}','{IP}',{timestart});";
                 Program.Mylog(sql);
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -92,7 +94,8 @@ namespace Check
                 string Host = System.Net.Dns.GetHostName();
                 string IP = Dns.GetHostByName(Host).AddressList[0].ToString();
                 var Lapnum = MyIni.Read("numb");
-                string sql = $"UPDATE hosts SET ip='{IP}',host='{Host}' WHERE lapid={Lapnum};";
+                int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                string sql = $"UPDATE hosts SET ip='{IP}',host='{Host}',times={timestart} WHERE lapid={Lapnum};";
                 Program.Mylog(sql);
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
