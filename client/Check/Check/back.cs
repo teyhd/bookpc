@@ -13,26 +13,38 @@ namespace Check
     {
         public class MyBackgroundService : BackgroundService
         {
+            [Obsolete]
             protected override async Task ExecuteAsync(CancellationToken stoppingToken)
             {
-                AddToStartup("syschecker.exe", GetApplicationPath());
+                var MyIni = new MyProg.IniFile(@"C:\Windows\secur\settings.ini");
+                //MyIni.Write("numb", "11");
+                //MyIni.Write("check", "true");
+                // MyIni.Write("checklog", "true");
+
+                var Checklog = MyIni.Read("checklog");
+                AddToStartup("Check.exe", GetApplicationPath());
                 while (!stoppingToken.IsCancellationRequested)
                 {
+                    var Lapnum = MyIni.Read("numb");
+                    var Check = MyIni.Read("check");
                     // Ваш код фоновой задачи здесь
-                    Console.WriteLine("Фоновая задача выполняется...");
+                    Program.Mylog("Фоновая задача выполняется...");
+                    Db.CheckHost();
                     string processName = "LastSecur";
-
-                    if (IsProcessRunning(processName))
+                    if (Check == "true")
                     {
-                        Console.WriteLine($"Процесс {processName} уже запущен.");
+                        Program.Mylog("Check");
+                        if (IsProcessRunning(processName))
+                        {
+                            Program.Mylog($"Процесс {processName} уже запущен.");
+                        }
+                        else
+                        {
+                            Program.Mylog($"Процесс {processName} не запущен. Запускаем...");
+                            string processPath = "C:\\Windows\\secur\\LastSecur.exe";
+                            StartProcess(processPath);
+                        }
                     }
-                    else
-                    {
-                        Console.WriteLine($"Процесс {processName} не запущен. Запускаем...");
-                        string processPath = "C:\\Windows\\secur\\LastSecur.exe";
-                        StartProcess(processPath);
-                    }
-
                     // Задержка между выполнениями задачи
                     await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
                 }
@@ -63,7 +75,7 @@ namespace Check
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при добавлении в автозагрузку: {ex.Message}");
+                Program.Mylog($"Ошибка при добавлении в автозагрузку: {ex.Message}");
             }
         }
 
@@ -78,11 +90,11 @@ namespace Check
             try
             {
                 Process.Start(processPath);
-                Console.WriteLine("Процесс успешно запущен.");
+                Program.Mylog("Процесс успешно запущен.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при запуске процесса: {ex.Message}");
+                Program.Mylog($"Ошибка при запуске процесса: {ex.Message}");
             }
         }
     }

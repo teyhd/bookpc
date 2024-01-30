@@ -204,3 +204,8 @@ C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.csproj.CoreCo
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.csproj.CopyComplete
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.exe
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.pdb
+C:\projects\wherePC\client\LastSecur\LastSecur\bin\Debug\LastSecur.exe.manifest
+C:\projects\wherePC\client\LastSecur\LastSecur\bin\Debug\LastSecur.application
+C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.TrustInfo.xml
+C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.exe.manifest
+C:\projects\wherePC\client\LastSecur\LastSecur\obj\Debug\LastSecur.application

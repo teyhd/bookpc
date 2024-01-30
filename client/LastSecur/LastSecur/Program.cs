@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.IO;
 using Microsoft.Win32;
-
+using static MyProg.IniFile;
 namespace LastSecur
 {
     static class Program
@@ -15,10 +12,13 @@ namespace LastSecur
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
-       
+        /// Pr
+        /// IniFile
+        
         static public Boolean AdminMode = false;
         static public Boolean first = true;
         static public Boolean isoff = false;
+
         [STAThread]
         static async Task Main()
         {
@@ -49,13 +49,15 @@ namespace LastSecur
             {
                 if (args.Reason == SessionSwitchReason.SessionLock)
                 {
-                    Console.WriteLine("Экран блокирован.");
+                    Mylog("Экран блокирован.");
                     isoff = true;
+                    Db.UpdatePCLock(1);
                 }
                 else if (args.Reason == SessionSwitchReason.SessionUnlock)
                 {
-                    Console.WriteLine("Экран разблокирован.");
+                    Mylog("Экран разблокирован.");
                     isoff = false;
+                    Db.UpdatePCLock(0);
                     //checkdb();
                     //Авторизация
                 }
@@ -66,25 +68,10 @@ namespace LastSecur
         {
             try
             {
-                // Путь к вашему файлу
-                string filePath = "C:\\Windows\\secur\\info.txt";
-
-                // Проверка существования файла
-                if (File.Exists(filePath))
-                {
-                    // Чтение содержимого файла
-                    string content = File.ReadAllText(filePath);
-
-                    // Вывод содержимого на консоль
-                    Console.WriteLine("Содержимое файла:");
-                    Console.WriteLine(content);
-                    
-                    return Int32.Parse(content);
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка конфигурации");
-                }
+                var MyIni = new MyProg.IniFile(@"C:\Windows\secur\settings.ini");
+                var Lapnum = MyIni.Read("numb", "Check");
+                Mylog(Lapnum);
+                return Int32.Parse(Lapnum);
             }
             catch (Exception ex)
             {
@@ -95,7 +82,10 @@ namespace LastSecur
 
         public static void Mylog(string LogsText)
         {
-            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n{LogsText}");
+            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n[{DateTime.Now}] {LogsText}");
+            Console.WriteLine($"\n[{DateTime.Now}] {LogsText}");
         }
+
+
     }
 }

@@ -236,6 +236,7 @@
   <ItemGroup>
     <Compile Include="Back.cs" />
     <Compile Include="db.cs" />
+    <Compile Include="IniFile.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

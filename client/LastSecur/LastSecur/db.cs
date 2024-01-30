@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using MySql.Data.MySqlClient;
 namespace LastSecur
 {
@@ -23,7 +18,7 @@ namespace LastSecur
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+
                     Program.Mylog(ex.ToString());
                     return 0;
                 }          
@@ -36,7 +31,6 @@ namespace LastSecur
                         while (reader.Read())
                         {
                             if (Int32.Parse(reader["timestop"].ToString()) !=0) return 0;
-                            Console.WriteLine("Авторизация: "+reader["autor"].ToString());
                             Program.Mylog("Авторизация: " + reader["autor"].ToString());
                             return Int32.Parse(reader["autor"].ToString());
                         }
@@ -95,7 +89,6 @@ namespace LastSecur
                 catch (Exception ex)
                 {
                     Program.Mylog(ex.ToString());
-                    Console.WriteLine(ex.ToString());
                     return 0;
                 }
 
@@ -106,7 +99,6 @@ namespace LastSecur
                     {
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader["id"].ToString());
                             Program.Mylog(reader["id"].ToString());
                             return Int32.Parse(reader["id"].ToString());
                         }
@@ -129,7 +121,6 @@ namespace LastSecur
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
                     Program.Mylog(ex.ToString());
                 }
                 Random random = new Random();
@@ -145,6 +136,39 @@ namespace LastSecur
             }
         }
 
+        public static void UpdatePCLock(int Lock)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    Console.WriteLine("Connecting to MySQL...");
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    Program.Mylog(ex.ToString());
+                    // return 0;
+                }
+
+                string sql = $"UPDATE hosts SET lock={Lock} WHERE lapid={Program.getid()};";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine(reader.Read().ToString());
+                        while (reader.Read())
+                        {
+                            Program.Mylog(reader.ToString());
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+        }
+
         public static void AuthPC()
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -156,7 +180,6 @@ namespace LastSecur
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
                     Program.Mylog(ex.ToString());
                     // return 0;
                 }
@@ -169,7 +192,6 @@ namespace LastSecur
                         Console.WriteLine(reader.Read().ToString());
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader.ToString());
                             Program.Mylog(reader.ToString());
                         }
                     }

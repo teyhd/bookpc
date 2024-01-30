@@ -16,6 +16,7 @@ namespace Check
         [STAThread]
         static async Task Main()
         {
+            
             var builder = new HostBuilder()
                  .ConfigureServices((hostContext, services) =>
                  {
@@ -23,6 +24,11 @@ namespace Check
                  });
 
             await builder.RunConsoleAsync();
+        }
+        public static void Mylog(string LogsText)
+        {
+            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n[{DateTime.Now}] {LogsText}");
+            Console.WriteLine($"\n[{DateTime.Now}] {LogsText}");
         }
     }
 }
