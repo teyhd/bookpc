@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,29 +19,37 @@ namespace LastSecur
         static public Boolean AdminMode = false;
         static public Boolean first = true;
         static public Boolean isoff = false;
+        static System.Threading.Mutex singleton = new Mutex(true, "My App Name");
 
         [STAThread]
         static async Task Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var builder = new HostBuilder()
-            .ConfigureServices((hostContext, services) =>
+            if (!singleton.WaitOne(TimeSpan.Zero, true))
             {
-                services.AddHostedService<MyBackgroundService>();
-            });
-            try
+                Mylog("Попытка запуска второго экземпляра");
+                Application.Exit();
+                return;
+            } else
             {
-                Events();
-                await builder.RunConsoleAsync();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                var builder = new HostBuilder()
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHostedService<MyBackgroundService>();
+                });
+                try
+                {
+                    Events();
+                    await builder.RunConsoleAsync();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Application.Run(new Form1());
+                    throw;
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                Application.Run(new Form1());
-                throw;
-            }
-            
         }
 
         public static void Events()
@@ -69,9 +78,9 @@ namespace LastSecur
             try
             {
                 var MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
-                var Lapnum = MyIni.Read("numb", "Check");
-                Mylog(Lapnum);
-                return Int32.Parse(Lapnum);
+                var Check = MyIni.Read("numb", "Check");
+                Mylog(Check);
+                return Int32.Parse(Check);
             }
             catch (Exception ex)
             {

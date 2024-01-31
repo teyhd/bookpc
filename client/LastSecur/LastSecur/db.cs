@@ -151,7 +151,8 @@ namespace LastSecur
                     // return 0;
                 }
                 int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                string sql = $"UPDATE hosts SET lock={Lock},times={timestart} WHERE lapid={Program.getid()};";
+                string sql = $"UPDATE hosts SET `lock`={Lock}, `times`={timestart} WHERE lapid={Program.getid()};";
+                Program.Mylog(sql);
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())

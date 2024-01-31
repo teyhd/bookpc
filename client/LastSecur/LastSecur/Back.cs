@@ -49,7 +49,7 @@ namespace LastSecur
                 } 
                 Program.Mylog("Фоновая задача выполняется...");
                 // Задержка между выполнениями задачи
-                await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
+                await Task.Delay(TimeSpan.FromSeconds(3), stoppingToken);
             }
         }
     }
