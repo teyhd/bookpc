@@ -13,6 +13,7 @@ namespace Check
     {
         public class MyBackgroundService : BackgroundService
         {
+            private static int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             [Obsolete]
             protected override async Task ExecuteAsync(CancellationToken stoppingToken)
             {
@@ -21,21 +22,31 @@ namespace Check
                 //MyIni.Write("check", "true");
                 // MyIni.Write("checklog", "true");
 
-                var Checklog = MyIni.Read("checklog");
                 AddToStartup("Check.exe", GetApplicationPath());
+                
                 while (!stoppingToken.IsCancellationRequested)
                 {
                     var Lapnum = MyIni.Read("numb");
-                    var Check = MyIni.Read("check");
-                    // Ваш код фоновой задачи здесь
-                    //Program.Mylog("Фоновая задача выполняется...");
-                    Db.CheckHost();
+                    var Check = Db.GetCheck();
+                    
                     string processName = "LastSecur";
-                    if (Check == "true")
+                    if (Check == 0)
                     {
                         Program.Mylog("Check");
+                        int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                        int gof = timenow - timestart;
+                        Console.WriteLine(gof);
+                        if (timenow - timestart >= 10)
+                        {
+                            Console.WriteLine($"ЗАмена {timestart}");
+                            timestart = timenow;
+                            Console.WriteLine($"ЗАмена {timestart}");
+                            Db.UpdatePC();
+                            Db.CheckHost();
+                        }
                         if (IsProcessRunning(processName))
                         {
+                           
                             Program.Mylog($"Процесс {processName} уже запущен.");
                         }
                         else
@@ -46,7 +57,7 @@ namespace Check
                         }
                     }
                     // Задержка между выполнениями задачи
-                    await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
+                    await Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
                 }
             }
         }

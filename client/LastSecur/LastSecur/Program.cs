@@ -19,7 +19,7 @@ namespace LastSecur
         static public Boolean AdminMode = false;
         static public Boolean first = true;
         static public Boolean isoff = false;
-        static System.Threading.Mutex singleton = new Mutex(true, "My App Name");
+        static System.Threading.Mutex singleton = new Mutex(true, "LastSecur");
 
         [STAThread]
         static async Task Main()

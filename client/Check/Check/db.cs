@@ -14,7 +14,6 @@ namespace Check
         public static MyProg.IniFile MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
         public static int GetId()
         {
-            
             var Lapnum = MyIni.Read("numb");
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -39,6 +38,63 @@ namespace Check
                         {
                             Program.Mylog("ID: " + reader["id"].ToString());
                             return Int32.Parse(reader["id"].ToString());
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+            return 0;
+        }
+        private static int check = 3;
+        private static int timeold = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+        public static int GetCheck()
+        {
+            int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            if (check == 3)
+            {
+                check = GetCheckDB();
+                Console.WriteLine($"ПЕРВЫЙЙЙЙЙ");
+            }
+            else
+            {
+                if (timenow - timeold >= 10)
+                {
+                    Console.WriteLine($"ОБНОВА {timeold}");
+                    timeold = timenow;
+                    check = GetCheckDB();
+                    Console.WriteLine($"ОБНОВА {timeold}");
+                }
+            }
+            return check;
+        }
+
+        public static int GetCheckDB()
+        {
+            var Lapnum = MyIni.Read("numb");
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    Console.WriteLine("Connecting to MySQL...");
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Program.Mylog(ex.ToString());
+                    return 0;
+                }
+
+                string sql = $"SELECT nocheck FROM hosts WHERE lapid={Lapnum};";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Program.Mylog("nocheck: " + reader["nocheck"].ToString());
+                            return Int32.Parse(reader["nocheck"].ToString());
                         }
                     }
                 }
