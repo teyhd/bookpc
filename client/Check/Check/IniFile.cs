@@ -24,9 +24,17 @@ namespace MyProg
 
         public string Read(string Key, string Section = null)
         {
-            var RetVal = new StringBuilder(255);
-            GetPrivateProfileString(Section ?? EXE, Key, "", RetVal, 255, Path);
-            return RetVal.ToString();
+            try
+            {
+                var RetVal = new StringBuilder(255);
+                GetPrivateProfileString(Section ?? EXE, Key, "", RetVal, 255, Path);
+                return RetVal.ToString();
+            }
+            catch
+            {
+                return "0";
+            }
+            
         }
 
         public void Write(string Key, string Value, string Section = null)

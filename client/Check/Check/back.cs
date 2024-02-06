@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
+
 namespace Check
 {
     class back
@@ -15,7 +17,7 @@ namespace Check
         {
             private static int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             [Obsolete]
-            protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+            protected override async System.Threading.Tasks.Task ExecuteAsync(CancellationToken stoppingToken)
             {
                 var MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
                 //MyIni.Write("numb", "11");
@@ -26,27 +28,29 @@ namespace Check
                 
                 while (!stoppingToken.IsCancellationRequested)
                 {
-                    var Lapnum = MyIni.Read("numb");
+                    var Lapnum = Int32.Parse(MyIni.Read("numb"));
                     var Check = Db.GetCheck();
                     
                     string processName = "LastSecur";
                     if (Check == 0)
                     {
-                        Program.Mylog("Check");
+                        
                         int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                         int gof = timenow - timestart;
                         Console.WriteLine(gof);
                         if (timenow - timestart >= 10)
                         {
+                            Program.Mylog("Check");
+                            Program.Mylog(gof.ToString());
                             Console.WriteLine($"ЗАмена {timestart}");
                             timestart = timenow;
                             Console.WriteLine($"ЗАмена {timestart}");
                             Db.UpdatePC();
                             Db.CheckHost();
+                            AddTask();
                         }
                         if (IsProcessRunning(processName))
                         {
-                           
                             Program.Mylog($"Процесс {processName} уже запущен.");
                         }
                         else
@@ -54,25 +58,46 @@ namespace Check
                             Program.Mylog($"Процесс {processName} не запущен. Запускаем...");
                             string processPath = "C:\\Windows\\secur\\LastSecur.exe";
                             StartProcess(processPath);
+                            StartProcess(@"C:\Windows\secur\LastSecur.exe");
                         }
                     }
                     // Задержка между выполнениями задачи
-                    await Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
+                    await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
+                }
+            }
+        }
+
+        static void AddTask()
+        {
+            string taskName = "Проверка";
+            string taskDescription = "Проверка обновлений системы";
+            string taskExecutablePath = @"C:\Windows\secur\Release\Check.exe";
+
+            // Создаем экземпляр планировщика задач
+            using (TaskService taskService = new TaskService())
+            {
+                // Проверяем, существует ли задача с таким именем
+                if (taskService.GetTask(taskName)!=null)
+                {
+                    TaskDefinition taskDefinition = taskService.NewTask();
+                    taskDefinition.RegistrationInfo.Description = taskDescription;
+                    taskDefinition.Triggers.Add(new LogonTrigger());
+                    taskDefinition.Actions.Add(new ExecAction(taskExecutablePath));
+                    taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
+                    Program.Mylog("Задача успешно добавлена в планировщик задач.");
+                }
+                else
+                {
+                    Program.Mylog("Задача с таким именем уже существует в планировщике задач.");
                 }
             }
         }
 
         static string GetApplicationPath()
         {
-            // Получение сборки текущего приложения
             var assembly = System.Reflection.Assembly.GetEntryAssembly();
-
-            // Получение пути к исполняемому файлу сборки
             string appPath = assembly.Location;
-
-            // Получение каталога, в котором находится исполняемый файл
             string appDirectory = System.IO.Path.GetDirectoryName(appPath);
-
             return appDirectory;
         }
 

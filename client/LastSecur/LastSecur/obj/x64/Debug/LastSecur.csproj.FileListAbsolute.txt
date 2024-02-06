@@ -95,7 +95,6 @@ C:\projects\wherePC\client\LastSecur\LastSecur\bin\x64\Debug\System.Text.Encodin
 C:\projects\wherePC\client\LastSecur\LastSecur\bin\x64\Debug\System.Text.Json.xml
 C:\projects\wherePC\client\LastSecur\LastSecur\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
 C:\projects\wherePC\client\LastSecur\LastSecur\bin\x64\Debug\System.ValueTuple.xml
-C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.csproj.AssemblyReference.cache
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.Form1.resources
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.Properties.Resources.resources
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.csproj.GenerateResource.cache
@@ -106,3 +105,9 @@ C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.applicati
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.csproj.CopyComplete
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.exe
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.pdb
+\\vr\info\secur\LastSecur.exe.config
+\\vr\info\secur\LastSecur.exe.manifest
+\\vr\info\secur\LastSecur.application
+\\vr\info\secur\LastSecur.exe
+\\vr\info\secur\LastSecur.pdb
+C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.csproj.AssemblyReference.cache

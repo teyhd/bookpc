@@ -100,3 +100,6 @@ C:\projects\wherePC\client\Check\Check\obj\x64\Release\Check.csproj.CoreCompileI
 C:\projects\wherePC\client\Check\Check\obj\x64\Release\Check.csproj.CopyComplete
 C:\projects\wherePC\client\Check\Check\obj\x64\Release\Check.exe
 C:\projects\wherePC\client\Check\Check\obj\x64\Release\Check.pdb
+\\vr\info\secur\Release\Check.exe.config
+\\vr\info\secur\Release\Check.exe
+\\vr\info\secur\Release\Check.pdb

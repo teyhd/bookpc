@@ -13,12 +13,11 @@ namespace LastSecur
             {
                 try
                 {
-                    Console.WriteLine("Connecting to MySQL...");
+                    Program.Mylog("Connecting to MySQL...");
                     connection.Open();
                 }
                 catch (Exception ex)
                 {
-
                     Program.Mylog(ex.ToString());
                     return 0;
                 }          
@@ -30,9 +29,18 @@ namespace LastSecur
                     {
                         while (reader.Read())
                         {
-                            if (Int32.Parse(reader["timestop"].ToString()) !=0) return 0;
-                            Program.Mylog("Авторизация: " + reader["autor"].ToString());
-                            return Int32.Parse(reader["autor"].ToString());
+                            try
+                            {
+                                if (Int32.Parse(reader["timestop"].ToString()) != 0) return 0;
+                                Program.Mylog("Авторизация: " + reader["autor"].ToString());
+                                return Int32.Parse(reader["autor"].ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                Program.Mylog(ex.ToString());
+                                return 0;
+                            }
+
                         }
                     }
                 }

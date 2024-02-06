@@ -13,12 +13,11 @@ namespace LastSecur
 {
     public class MyBackgroundService : BackgroundService
     {
-        
-        //public Boolean isoff = false;
         Form1 myForm = new Form1();
         public static Form globalForm;
         public void checkdb()
         {
+            Program.Mylog("Я работаю");
             if (LastSecur.Db.Isauth() == 0)
             {
                 try
@@ -31,24 +30,36 @@ namespace LastSecur
                     Console.WriteLine("Ошибка");
                     Program.Mylog($"Ошибка {ex.ToString()}");
                 }
-
+            } else
+            {
+                Program.Mylog("Я АВТОРИЗОВАН");
             }
         }
 
+        static bool IsProcessRunning(string processName)
+        {
+            Process[] processes = Process.GetProcessesByName(processName);
+            return processes.Length > 0;
+        }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-           while (!stoppingToken.IsCancellationRequested)
+            while (!stoppingToken.IsCancellationRequested)
             {
                 // Console.WriteLine(LastSecur.Db.Isauth().ToString());
-                Console.WriteLine(Program.isoff);
-                Console.WriteLine(LastSecur.Program.AdminMode);
-                if (!Program.isoff && !LastSecur.Program.AdminMode)
+               // Program.Mylog(Program.isoff.ToString());
+               // Program.Mylog(LastSecur.Program.AdminMode.ToString());
+               // if (!Program.isoff && !LastSecur.Program.AdminMode)
+                if (!LastSecur.Program.AdminMode)
                 {
                     checkdb();
                 } 
+                if (Program.first)
+                {
+                    Program.first = false;
+                    Application.Run(new Form1());
+                }
                 Program.Mylog("Фоновая задача выполняется...");
-                // Задержка между выполнениями задачи
                 await Task.Delay(TimeSpan.FromSeconds(3), stoppingToken);
             }
         }

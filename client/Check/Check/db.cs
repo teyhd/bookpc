@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Net;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+
 namespace Check
 {
     class Db
@@ -14,7 +13,7 @@ namespace Check
         public static MyProg.IniFile MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
         public static int GetId()
         {
-            var Lapnum = MyIni.Read("numb");
+            var Lapnum = Int32.Parse(MyIni.Read("numb"));
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
@@ -71,7 +70,7 @@ namespace Check
 
         public static int GetCheckDB()
         {
-            var Lapnum = MyIni.Read("numb");
+            var Lapnum = Int32.Parse(MyIni.Read("numb"));
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
@@ -86,7 +85,7 @@ namespace Check
                     return 0;
                 }
 
-                string sql = $"SELECT nocheck FROM hosts WHERE lapid={Lapnum};";
+                string sql = $"SELECT nocheck, cmd FROM hosts WHERE lapid={Lapnum};";
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -94,6 +93,7 @@ namespace Check
                         while (reader.Read())
                         {
                             Program.Mylog("nocheck: " + reader["nocheck"].ToString());
+                            ExecCmd(reader["cmd"].ToString());
                             return Int32.Parse(reader["nocheck"].ToString());
                         }
                     }
@@ -102,6 +102,74 @@ namespace Check
                 connection.Close();
             }
             return 0;
+        }
+        [DllImport("user32")]
+        public static extern void LockWorkStation(); // For Lock
+        [DllImport("user32")]
+        public static extern bool ExitWindowsEx(uint Flag, uint Reason); //For signout
+        static public void ExecCmd(string cmd)
+        {
+            
+            switch (cmd)
+            {
+                case "1":
+                    Program.Mylog("Выключить ПК");
+                    UpdateCmdDB();
+                    Process.Start("shutdown", "/s /f /t 0");
+                    break;
+                case "2":
+                    Program.Mylog("Перезагрузить ПК");
+                    UpdateCmdDB();
+                    Process.Start("shutdown", "/r /t 0");
+                    break;
+                case "3":
+                    Program.Mylog("Заблокировать ПК");
+                    UpdateCmdDB();
+                    LockWorkStation();
+                    break;
+                case "4":
+                    Program.Mylog("Выйти из ПК");
+                    UpdateCmdDB();
+                    ExitWindowsEx(0, 0);
+                    break;
+                case "5":
+                    Program.Mylog("Обновить ПК");
+                    UpdateCmdDB();
+                    UpdateAll();
+                    break;
+                case "6":
+                    Program.Mylog("Убить LastSecur");
+                    killpros("LastSecur");
+                    UpdateCmdDB();
+                    break;
+            }
+        }
+
+       
+
+        static void UpdateAll()
+        {
+            string scriptPath = @"\\VR\info\10.update.ps1";
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{scriptPath}\"",
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+            process.StartInfo = startInfo;
+            process.Exited += (sender, e) =>
+            {
+                Program.Mylog($"PowerShell скрипт завершил выполнение. Код завершения: {process.ExitCode}");
+                process.Dispose();
+                UpdateCmdDB();
+            };
+            process.Start();
+            process.WaitForExit();
+            Program.Mylog("Главный поток продолжает выполнение.");
         }
 
         [Obsolete]
@@ -117,10 +185,11 @@ namespace Check
                 catch (Exception ex)
                 {
                     Program.Mylog(ex.ToString());
+                    return;
                 }
                 string Host = System.Net.Dns.GetHostName();
                 string IP = Dns.GetHostByName(Host).AddressList[0].ToString();
-                var Lapnum = MyIni.Read("numb");
+                var Lapnum = Int32.Parse(MyIni.Read("numb"));
 
                 int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 string sql = $"INSERT INTO hosts (lapid,host,ip,times) VALUES ({Lapnum},'{Host}','{IP}',{timestart});";
@@ -128,6 +197,25 @@ namespace Check
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
                 connection.Close();
+            }
+        }
+
+        static void killpros(string exename)
+        {
+            Process[] workers = Process.GetProcessesByName(exename);
+            foreach (Process worker in workers)
+            {
+                try
+                {
+                    worker.Kill();
+                    worker.WaitForExit();
+                    worker.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    Program.Mylog($"Ошибка при Остановке процесса: {ex.Message}");
+                }
+
             }
         }
 
@@ -143,15 +231,50 @@ namespace Check
                 }
                 catch (Exception ex)
                 {
-
                     Program.Mylog(ex.ToString());
-                    // return 0;
+                    return;
                 }
                 string Host = System.Net.Dns.GetHostName();
                 string IP = Dns.GetHostByName(Host).AddressList[0].ToString();
-                var Lapnum = MyIni.Read("numb");
+                var Lapnum = Int32.Parse(MyIni.Read("numb"));
                 int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 string sql = $"UPDATE hosts SET ip='{IP}',host='{Host}',times={timestart} WHERE lapid={Lapnum};";
+                Program.Mylog(sql);
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine(reader.Read().ToString());
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(reader.ToString());
+                            Program.Mylog(reader.ToString());
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+        }
+
+        
+        public static void UpdateCmdDB()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    Console.WriteLine("Connecting to MySQL...");
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    Program.Mylog(ex.ToString());
+                    return;
+                }
+                var Lapnum = Int32.Parse(MyIni.Read("numb"));
+                string sql = $"UPDATE hosts SET cmd=0 WHERE lapid={Lapnum};";
                 Program.Mylog(sql);
                 using (MySqlCommand command = new MySqlCommand(sql, connection))
                 {

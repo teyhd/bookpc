@@ -36,8 +36,9 @@ namespace Check
         }
         public static void Mylog(string LogsText)
         {
-            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n[{DateTime.Now}] {LogsText}");
+            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n(Check)[{DateTime.Now}] {LogsText}");
             Console.WriteLine($"\n[{DateTime.Now}] {LogsText}");
         }
+        
     }
 }

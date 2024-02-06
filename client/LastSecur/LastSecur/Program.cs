@@ -10,11 +10,6 @@ namespace LastSecur
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
-        /// Pr
-        /// IniFile
         
         static public Boolean AdminMode = false;
         static public Boolean first = true;
@@ -45,7 +40,7 @@ namespace LastSecur
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Mylog(e.ToString());
                     Application.Run(new Form1());
                     throw;
                 }
@@ -91,10 +86,17 @@ namespace LastSecur
 
         public static void Mylog(string LogsText)
         {
-            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n[{DateTime.Now}] {LogsText}");
-            Console.WriteLine($"\n[{DateTime.Now}] {LogsText}");
+            try
+            {
+                System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n(Sec)[{DateTime.Now}] {LogsText}");
+                Console.WriteLine($"\n[{DateTime.Now}] {LogsText}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
+            }
+            
         }
-
 
     }
 }
