@@ -157,6 +157,20 @@ app.get('/story',async (req,res)=>{
     });
 })
 
+app.get('/ctrl',async (req,res)=>{
+    let laps = await get_info()
+    for (let i = 0; i < pc.length; i++) {
+        laps[i].startf = formatUnixTime(laps[i].times)
+    }
+    res.render('ctrl',{
+        title: 'Управление ПК',
+        meid: req.session.userid,
+        name:req.session.name,
+        laps: laps,
+        auth: req.session.userid
+    });
+})
+
 app.get('/getstory',async (req,res)=>{
     let laps = await get_pc_story(req.query.lapid)
     for (let j = 0; j < laps.length; j++) {
@@ -210,6 +224,8 @@ app.get('/retlap',async (req,res)=>{
     say(`${req.session.name} вернул ноутбук №${req.query.lapid}. \n Комментарий:${req.query.komm}`)
     res.send({st:"ok",id:resid})
 })  
+
+
 
 app.get('/logout', function(req, res) {
     mlog( req.session.name,"вышел из системы");

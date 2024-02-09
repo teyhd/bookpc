@@ -46,6 +46,12 @@ export async function get_pc(){
     return rows;
 }
 
+export async function get_info(){
+    const qer = `SELECT * FROM hosts ORDER BY lapid;`
+    const [rows, fields] = await pool.query(qer)
+    return rows;
+}
+
 export async function get_pc_story(id){
     const qer = `SELECT story.* , users.name FROM story,users WHERE users.id = story.userid AND lapid=${id} ORDER BY timestart;`
     
