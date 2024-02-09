@@ -1,0 +1,223 @@
+
+ 17:47:50 Сервер - запущен
+ 17:47:50 Порт: 80
+ 17:47:59 / undefined 1
+ 17:47:59 /auth undefined 1
+ 17:48:12 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 17:48:12 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 17:48:12 /auth Система 1
+ 17:48:12 / Система 1
+ 17:48:18 /ctrl Система 1
+ 17:48:18 Глобальный косяк приложения!!!  ReferenceError: get_info is not defined
+    at file:///C:/projects/wherePC/index.js:161:16
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\projects\wherePC\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+    at C:\projects\wherePC\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\projects\wherePC\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\projects\wherePC\node_modules\express\lib\router\index.js:280:10)
+    at file:///C:/projects/wherePC/index.js:106:16
+    at Layer.handle [as handle_request] (C:\projects\wherePC\node_modules\express\lib\router\layer.js:95:5)
+ 17:48:43 Сервер - запущен
+ 17:48:43 Порт: 80
+ 17:48:45 /ctrl undefined 1
+ 17:48:45 /auth undefined 1
+ 17:49:00 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 17:49:00 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 17:49:00 /auth Система 1
+ 17:49:00 / Система 1
+ 17:49:05 /ctrl Система 1
+ 17:49:05 Глобальный косяк приложения!!!  ReferenceError: pc is not defined
+    at file:///C:/projects/wherePC/index.js:162:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 17:49:20 Сервер - запущен
+ 17:49:20 Порт: 80
+ 17:49:20 /ctrl undefined 1
+ 17:49:20 /auth undefined 1
+ 17:49:25 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 17:49:25 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 17:49:25 /auth Система 1
+ 17:49:25 / Система 1
+ 17:49:29 /ctrl Система 1
+ 17:49:41 /ctrl Система 1
+ 17:50:06 Сервер - запущен
+ 17:50:06 Порт: 80
+ 17:50:44 Сервер - запущен
+ 17:50:44 Порт: 80
+ 17:50:48 /ctrl undefined 1
+ 17:50:48 /auth undefined 1
+ 17:50:52 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 17:50:52 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 17:50:52 /auth Система 1
+ 17:50:52 / Система 1
+ 17:50:56 /ctrl Система 1
+ 17:51:17 Сервер - запущен
+ 17:51:17 Порт: 80
+ 17:52:08 /ctrl undefined 1
+ 17:52:08 /auth undefined 1
+ 17:52:12 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 17:52:12 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 17:52:12 /auth Система 1
+ 17:52:12 / Система 1
+ 17:52:15 /ctrl Система 1
+ 17:53:28 /ctrl Система 1
+ 17:53:47 /ctrl Система 1
+ 17:53:53 /ctrl Система 1
+ 17:54:00 /ctrl Система 1
+ 17:54:25 /ctrl Система 1
+ 17:55:10 /ctrl Система 1
+ 17:55:11 /ctrl Система 1
+ 17:55:12 /ctrl Система 1
+ 17:55:12 /ctrl Система 1
+ 17:55:13 /ctrl Система 1
+ 17:55:13 /ctrl Система 1
+ 17:55:14 /ctrl Система 1
+ 17:55:15 /ctrl Система 1
+ 17:55:15 /ctrl Система 1
+ 17:55:16 /ctrl Система 1
+ 17:55:28 Сервер - запущен
+ 17:55:28 Порт: 80
+ 18:06:03 Сервер - запущен
+ 18:06:03 Порт: 80
+ 18:07:04 Сервер - запущен
+ 18:07:04 Порт: 80
+ 18:09:31 Сервер - запущен
+ 18:09:31 Порт: 80
+ 18:10:40 /ctrl undefined 1
+ 18:10:40 /auth undefined 1
+ 18:10:47 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 18:10:47 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 18:10:48 /auth Система 1
+ 18:10:48 / Система 1
+ 18:10:53 /ctrl Система 1
+ 18:10:58 /ctrl Система 1
+ 18:10:59 /ctrl Система 1
+ 18:23:22 /ctrl Система 1
+ 18:23:24 /ctrl Система 1
+ 18:23:26 /ctrl Система 1
+ 18:23:50 /ctrl Система 1
+ 18:24:35 /ctrl Система 1
+ 18:24:37 /ctrl Система 1
+ 18:25:26 Сервер - запущен
+ 18:25:26 Порт: 80
+ 18:25:32 /ctrl undefined 1
+ 18:25:32 /auth undefined 1
+ 18:25:38 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 18:25:38 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 18:25:39 /auth Система 1
+ 18:25:39 / Система 1
+ 18:25:42 /ctrl Система 1
+ 18:25:50 /ctrl Система 1
+ 18:25:51 /ctrl Система 1
+ 18:27:30 /ctrl Система 1
+ 18:27:31 /ctrl Система 1
+ 18:27:32 /ctrl Система 1
+ 18:27:33 /ctrl Система 1
+ 18:27:33 /ctrl Система 1
+ 18:27:37 /ctrl Система 1
+ 18:27:40 /ctrl Система 1
+ 18:27:41 /ctrl Система 1
+ 18:27:41 /ctrl Система 1
+ 18:27:44 /ctrl Система 1
+ 18:28:27 /ctrl Система 1
+ 18:31:23 /ctrl Система 1
+ 18:31:29 /ctrl Система 1
+ 18:31:30 /ctrl Система 1
+ 18:31:30 /ctrl Система 1
+ 18:31:30 /ctrl Система 1
+ 18:31:30 /ctrl Система 1
+ 18:40:04 /ctrl Система 1
+ 18:40:42 /ctrl Система 1
+ 18:40:43 /ctrl Система 1
+ 18:40:44 /ctrl Система 1
+ 18:40:45 /ctrl Система 1
+ 18:40:45 /ctrl Система 1
+ 18:40:46 /ctrl Система 1
+ 18:40:46 /ctrl Система 1
+ 18:40:47 /ctrl Система 1
+ 18:40:47 /ctrl Система 1
+ 18:40:48 /ctrl Система 1
+ 18:40:48 /ctrl Система 1
+ 18:41:18 /ctrl Система 1
+ 18:41:19 /ctrl Система 1
+ 18:41:19 /ctrl Система 1
+ 18:41:23 /ctrl Система 1
+ 18:41:24 /ctrl Система 1
+ 18:41:25 /ctrl Система 1
+ 18:41:26 /ctrl Система 1
+ 18:41:27 /ctrl Система 1
+ 18:41:27 /ctrl Система 1
+ 18:41:28 /ctrl Система 1
+ 18:42:36 /ctrl Система 1
+ 18:42:37 /ctrl Система 1
+ 18:42:39 /ctrl Система 1
+ 18:42:39 /ctrl Система 1
+ 18:42:40 /ctrl Система 1
+ 18:42:40 /ctrl Система 1
+ 18:42:41 /ctrl Система 1
+ 18:42:41 /ctrl Система 1
+ 18:42:41 /ctrl Система 1
+ 18:42:42 /ctrl Система 1
+ 18:42:42 /ctrl Система 1
+ 18:42:42 /ctrl Система 1
+ 18:42:43 /ctrl Система 1
+ 18:42:46 /ctrl Система 1
+ 18:42:46 /ctrl Система 1
+ 18:42:47 /ctrl Система 1
+ 18:42:48 /ctrl Система 1
+ 18:42:49 /ctrl Система 1
+ 18:42:50 /ctrl Система 1
+ 18:42:50 /ctrl Система 1
+ 18:42:50 /ctrl Система 1
+ 18:42:51 /ctrl Система 1
+ 18:42:51 /ctrl Система 1

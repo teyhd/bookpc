@@ -19,7 +19,7 @@ import path from 'path'
 import fs from 'fs-extra'
 
 import urlencode from 'urlencode';
-import {auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -159,17 +159,24 @@ app.get('/story',async (req,res)=>{
 
 app.get('/ctrl',async (req,res)=>{
     let laps = await get_info()
-    for (let i = 0; i < pc.length; i++) {
-        laps[i].startf = formatUnixTime(laps[i].times)
+    let infst = ['Разблокирован','Заблокирвоан','Не известно']
+    let cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','Убить LastSecur']
+    for (let i = 0; i < laps.length; i++) {
+        laps[i].times = formatUnixTime(laps[i].times)
+        laps[i].lock = infst[laps[i].lock];
+        laps[i].cmd = cmd[laps[i].cmd];
     }
+    console.log(laps);
     res.render('ctrl',{
         title: 'Управление ПК',
         meid: req.session.userid,
         name:req.session.name,
-        laps: laps,
+        laps: laps, 
         auth: req.session.userid
     });
 })
+
+
 
 app.get('/getstory',async (req,res)=>{
     let laps = await get_pc_story(req.query.lapid)

@@ -47,7 +47,7 @@ export async function get_pc(){
 }
 
 export async function get_info(){
-    const qer = `SELECT * FROM hosts ORDER BY lapid;`
+    const qer = `SELECT * FROM hosts ORDER BY times DESC;`
     const [rows, fields] = await pool.query(qer)
     return rows;
 }

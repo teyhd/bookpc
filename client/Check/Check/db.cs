@@ -57,7 +57,8 @@ namespace Check
             }
             else
             {
-                if (timenow - timeold >= 10)
+
+                if (timenow - timeold >= 5)
                 {
                     Console.WriteLine($"ОБНОВА {timeold}");
                     timeold = timenow;

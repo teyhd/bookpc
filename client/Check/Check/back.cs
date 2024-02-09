@@ -38,7 +38,7 @@ namespace Check
                         int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                         int gof = timenow - timestart;
                         Console.WriteLine(gof);
-                        if (timenow - timestart >= 10)
+                        if (timenow - timestart >= 5)
                         {
                             Program.Mylog("Check");
                             Program.Mylog(gof.ToString());
@@ -59,7 +59,17 @@ namespace Check
                             string processPath = "C:\\Windows\\secur\\LastSecur.exe";
                             StartProcess(processPath);
                             StartProcess(@"C:\Windows\secur\LastSecur.exe");
-
+                          
+                        }
+                    }
+                    else
+                    {
+                        int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                        if (timenow - timestart >= 10)
+                        {
+                            timestart = timenow;
+                            Console.WriteLine($"ЗАмена {timestart}");
+                            Db.UpdatePC();
                         }
                     }
                     // Задержка между выполнениями задачи
