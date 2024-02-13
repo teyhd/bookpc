@@ -257,10 +257,10 @@ function getcurip(str) {
 }
 
 async function start(){
-    app.listen(80,()=> {
+    app.listen(81,()=> {
         mlog('Сервер - запущен')
         say('Сервер - запущен')
-        mlog('Порт:',80);
+        mlog('Порт:',81);
     })
 }
 function getCurrentUnixTime() {
