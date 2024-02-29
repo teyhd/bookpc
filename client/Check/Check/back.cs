@@ -31,7 +31,20 @@ namespace Check
                     var Lapnum = Int32.Parse(MyIni.Read("numb"));
                     var Check = Db.GetCheck();
                     
-                    string processName = "LastSecur";
+                    string processName = "PlatonAlarm";
+                    if (IsProcessRunning(processName))
+                    {
+                        Program.Mylog($"Процесс {processName} уже запущен.");
+                    }
+                    else
+                    {
+                        Program.Mylog($"Процесс {processName} не запущен. Запускаем...");
+                        string processPath = "C:\\Windows\\secur\\1\\PlatonAlarm.exe";
+                        StartProcess(processPath);
+                        StartProcess(@"C:\Windows\secur\1\PlatonAlarm.exe");
+
+                    }
+                    processName = "LastSecur";
                     if (Check == 0)
                     {
                         
@@ -95,6 +108,12 @@ namespace Check
                     TaskDefinition taskDefinition = taskService.NewTask();
                     taskDefinition.RegistrationInfo.Description = taskDescription;
 
+                    TimeTrigger minuteTrigger = new TimeTrigger();
+                    minuteTrigger.Repetition.Interval = TimeSpan.FromMinutes(1);
+                    minuteTrigger.StartBoundary = DateTime.Now;
+
+                    taskDefinition.Triggers.Add(minuteTrigger);
+
                     taskDefinition.Triggers.Add(new LogonTrigger());
                     taskDefinition.Triggers.Add(new BootTrigger());
                     taskDefinition.Settings.DisallowStartIfOnBatteries = false;
@@ -103,6 +122,7 @@ namespace Check
                     taskDefinition.Settings.DeleteExpiredTaskAfter = TimeSpan.Zero;
                     taskDefinition.Settings.ExecutionTimeLimit = TimeSpan.Zero;
                     taskDefinition.Actions.Add(new ExecAction(taskExecutablePath));
+                    taskDefinition.Actions.Add(new ExecAction(@"C:\Windows\secur\1\PlatonAlarm.exe"));
                     taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
                  
                     Program.Mylog("Задача успешно добавлена в планировщик задач.");

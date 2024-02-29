@@ -84,7 +84,43 @@ namespace LastSecur
             }
             return 0;
         }
+        public static int GetCheckDB()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    Console.WriteLine("Connecting to MySQL...");
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Program.Mylog(ex.ToString());
+                    return 0;
+                }
 
+                string sql = $"SELECT nocheck, cmd FROM hosts WHERE lapid={LastSecur.Program.getid()};";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Program.Mylog("nocheck: " + reader["nocheck"].ToString());
+                            if (Int32.Parse(reader["nocheck"].ToString()) == 1)
+                            {
+                                Program.AdminMode = true;
+                            }
+                            return Int32.Parse(reader["nocheck"].ToString());
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+            return 0;
+        }
         public static int GetLoginPass(string login, string pass)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))

@@ -103,14 +103,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LastSecur.exe" size="93072">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LastSecur.exe" size="93584">
       <assemblyIdentity name="LastSecur" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WIdLURLNLvjJNf6SgfbmAP+usy5fKw35TrEwXuLZHl4=</dsig:DigestValue>
+        <dsig:DigestValue>dhkiDkl6qDiB9eAxPf6nSff2PGI1L/DgdImFF3qB2p8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

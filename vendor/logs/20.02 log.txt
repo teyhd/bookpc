@@ -1,0 +1,24 @@
+
+ 18:02:41 Сервер - запущен
+ 18:02:41 Порт: 81
+ 18:02:45 Глобальный косяк приложения!!!  Error: connect ECONNREFUSED 77.232.185.34:3334
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1495:16)
+ 18:02:48 / undefined 1
+ 18:02:48 /auth undefined 1
+ 18:02:50 /auth undefined 1 
+ login:adm 
+ pass:adm
+ 18:02:50 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 18:02:51 /auth Система 1
+ 18:02:51 / Система 1
+ 18:02:57 /ctrl Система 1
+ 18:03:32 /ctrl Система 1
+ 18:03:45 /ctrl Система 1
+ 18:04:01 /ctrl Система 1
+ 18:04:08 /ctrl Система 1
+ 18:05:21 / Система 1

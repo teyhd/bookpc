@@ -22,6 +22,7 @@ namespace LastSecur
             {
                 try
                 {
+                    LastSecur.Db.GetCheckDB();
                     Application.Run(new Form1());
                     Program.Mylog("В БД нет авторизации");
                 }
