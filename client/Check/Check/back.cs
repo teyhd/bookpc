@@ -42,22 +42,26 @@ namespace Check
                         string processPath = "C:\\Windows\\secur\\1\\PlatonAlarm.exe";
                         StartProcess(processPath);
                         StartProcess(@"C:\Windows\secur\1\PlatonAlarm.exe");
-
                     }
                     processName = "LastSecur";
+                    int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    if (timenow - timestart >= 5)
+                    {
+                        AddTask();
+                    }
+                        
                     if (Check == 0)
                     {
-                        
-                        int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                        timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                         int gof = timenow - timestart;
                         Console.WriteLine(gof);
                         if (timenow - timestart >= 5)
                         {
                             Program.Mylog("Check");
                             Program.Mylog(gof.ToString());
-                            Console.WriteLine($"ЗАмена {timestart}");
+                            Console.WriteLine($"Замена {timestart}");
                             timestart = timenow;
-                            Console.WriteLine($"ЗАмена {timestart}");
+                            Console.WriteLine($"Замена {timestart}");
                             Db.UpdatePC();
                             Db.CheckHost();
                             AddTask();
@@ -72,12 +76,11 @@ namespace Check
                             string processPath = "C:\\Windows\\secur\\LastSecur.exe";
                             StartProcess(processPath);
                             StartProcess(@"C:\Windows\secur\LastSecur.exe");
-                          
                         }
                     }
                     else
                     {
-                        int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                        timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                         if (timenow - timestart >= 10)
                         {
                             timestart = timenow;
@@ -96,15 +99,12 @@ namespace Check
             string taskName = "Проверка";
             string taskDescription = "Проверка обновлений системы";
             string taskExecutablePath = @"C:\Windows\secur\Release\Check.exe";
-            //
-
             // Создаем экземпляр планировщика задач
             using (TaskService taskService = new TaskService())
             {
                 // Проверяем, существует ли задача с таким именем
                 // if (taskService.GetTask(taskName)!=null)
-                if (null == null)
-                {
+               
                     TaskDefinition taskDefinition = taskService.NewTask();
                     taskDefinition.RegistrationInfo.Description = taskDescription;
 
@@ -126,11 +126,7 @@ namespace Check
                     taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
                  
                     Program.Mylog("Задача успешно добавлена в планировщик задач.");
-                }
-                else
-                {
-                    Program.Mylog("Задача с таким именем уже существует в планировщике задач.");
-                }
+               
             }
         }
 
