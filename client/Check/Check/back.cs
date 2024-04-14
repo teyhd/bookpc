@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using System.Runtime.InteropServices;
 
 namespace Check
 {
@@ -15,11 +16,23 @@ namespace Check
     {
         public class MyBackgroundService : BackgroundService
         {
+            [DllImport("user32.dll", CharSet = CharSet.Auto)]
+            static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+
+            const int SPI_SETDESKWALLPAPER = 20;
+            const int SPIF_UPDATEINIFILE = 0x01;
+            const int SPIF_SENDCHANGE = 0x02;
+            static void SetWallpaper(string path)
+            {
+                // Вызываем функцию SystemParametersInfo, чтобы установить заставку
+                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
+            }
             private static int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             [Obsolete]
             protected override async System.Threading.Tasks.Task ExecuteAsync(CancellationToken stoppingToken)
             {
                 var MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
+                string wallpaperPath = @"C:\Windows\secur\wallpapersvet.png";
                 //MyIni.Write("numb", "11");
                 //MyIni.Write("check", "true");
                 // MyIni.Write("checklog", "true");
@@ -48,6 +61,7 @@ namespace Check
                     if (timenow - timestart >= 5)
                     {
                         AddTask();
+                        SetWallpaper(wallpaperPath);
                     }
                         
                     if (Check == 0)
@@ -93,6 +107,7 @@ namespace Check
                 }
             }
         }
+        
 
         static void AddTask()
         {
