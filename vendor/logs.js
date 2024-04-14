@@ -46,13 +46,10 @@ export function mlog (par) {
     return texta
   }
 
-export function say(msg,all=false) {
+export function say(msg,all=true) {
   var numb = ['79176334420']
-  var tgnum = [304622290]
+  var tgnum = [304622290,5662630619]
   if (all===true){
-    numb.forEach(element => {
-      setTimeout(() => send(element,msg), 1500);
-    });
     tgnum.forEach(element => {
       setTimeout(() => sendtg(element,msg), 1500);
     });
