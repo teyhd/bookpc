@@ -1,11 +1,10 @@
 <div class="container"> 
     <div class="row"> 
-    <div class="input-field col s12">
 
     <div class="input-field col s12">
       <table>
         <thead>
-          <tr>
+          <tr >
             <th>№ ноутбук</th>
             <th>Хост</th>
             <th>IP</th>
@@ -20,21 +19,21 @@
         {{#each laps}}    
           <tr>
             <td>{{lapid}}</td>
-            <td>{{host}}</td>
-            <td>{{ip}}</td>
-            <td>{{lock}}</td>
-            <td>{{times}}</td>
-            <td>{{cmd}}</td>
+            <td id="host_{{lapid}}">{{host}}</td>
+            <td id="ip_{{lapid}}">{{ip}}</td>
+            <td id="lock_{{lapid}}">{{lock}}</td>
+            <td id="times_{{lapid}}">{{times}}</td>
+            <td id="cmd_{{lapid}}">{{cmd}}</td>
             <td>
-              <button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-<button class="btn input-field">Вкл</button>
-
+            <div class="input-field col s12">
+                <select class="cmdsf" id="idcmd_{{lapid}}">
+                    <option value="-1" selected disabled>Rоманды</option>
+                    {{#each cmds}}  
+                        <option id="{{@index}}" value="{{@index}}">{{this}}</option>
+                    {{/each}}
+                </select>
+                <label>Выберите команду</label>
+            </div>
 
             </td>
           </tr>
@@ -42,12 +41,38 @@
         </tbody>
       </table>
     </div>
-
-
+ </div>
 </div>
 
 <script>
-   // $('#content').html(``)
+  timerid = setInterval(inspect, 3000)
+   {{#each cmd}}
+   $('.cmdsf').append(`<option id="{{@index}}" value="{{@index}}">{{this}}</option>`)
+   {{/each}}
+
+    function inspect(){
+      $.get( `/lapchg` ).done(function( data ){
+        //console.log(data);
+        data = JSON.parse(data)
+        console.log(data);
+        for (const sparam in data) {
+            $(`#${sparam}`).text(data[sparam])
+            $(`#${sparam}`).parent().after($('#content tr:first-child'))
+        }
+      })
+    }
+
+    
+    $('.cmdsf').change(function(){
+        $.get( `/sendcmd`, {cmd:$(this).val(),lapid:$(this).attr('id').replace('idcmd_','') }).done(function( data ) {
+            console.log(data);
+            if (data=="ok"){
+              M.toast({html: 'Команда ушла', classes: '#26a69a teal lighten-1 rounded'});
+            }
+        })
+        inspect()
+    })
+
     $('#idlasp').change(function(){
         $('#content').html(``)
         console.log($('#idlasp').val())

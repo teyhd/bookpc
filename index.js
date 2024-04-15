@@ -19,7 +19,7 @@ import path from 'path'
 import fs from 'fs-extra'
 
 import urlencode from 'urlencode';
-import {get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {setcmd, get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -92,7 +92,7 @@ app.use(fileUpload({
 app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
 
-    if (page=='/data' || page=='/kabstart' || page=='/upload' || page=='/addmat' || page=='/stream' || page=='/info') {
+    if (page=='/data' || page=='/ctrlq' || page=='/lapchgq' || page=='/addmat') {
         next();
         return 1
     }
@@ -160,15 +160,12 @@ app.get('/story',async (req,res)=>{
 app.get('/ctrl',async (req,res)=>{
     let laps = await get_info()
     let infst = ['Разблокирован','Заблокирвоан','Не известно']
-    let cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','Убить LastSecur']
-    for (let i = 0; i < laps.length; i++) {
-        laps[i].times = formatUnixTime(laps[i].times)
-        laps[i].lock = infst[laps[i].lock];
-        laps[i].cmd = cmd[laps[i].cmd];
-    }
+    var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','Убить LastSecur']
+
     console.log(laps);
     res.render('ctrl',{
         title: 'Управление ПК',
+        cmd: cmd,
         meid: req.session.userid,
         name:req.session.name,
         laps: laps, 
@@ -176,7 +173,30 @@ app.get('/ctrl',async (req,res)=>{
     });
 })
 
+var pcinfo = await get_info()
+async function getchg() {
+    let pc = await get_info()
+    let ans = {}
+    for (let i = 0; i < pc.length; i++) {
+        for (const sparam in pc[i]) {
+            if (pcinfo[i][sparam] != pc[i][sparam]) {
+                ans[`${sparam}_${pc[i].id}`] = pc[i][sparam]
+            }
+        }
+    }
+    pcinfo = pc
+    return ans
+}
+app.get('/lapchg',async (req,res)=>{
+    let t = await getchg()
+    res.json(JSON.stringify(t))
+   // res.send(t)
+})
 
+app.get('/sendcmd',async (req,res)=>{
+    let t = await setcmd(req.query.lapid,req.query.cmd)
+    res.send("ok")
+})
 
 app.get('/getstory',async (req,res)=>{
     let laps = await get_pc_story(req.query.lapid)

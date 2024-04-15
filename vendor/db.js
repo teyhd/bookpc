@@ -1,6 +1,7 @@
 import mysql from 'mysql2'
 let sets = {
-    host: 'vr.local',
+    //host: 'vr.local',
+    host: '172.24.0.102',
     user: 'teyhd',
     password : '258000',
     database: 'laptop',
@@ -45,13 +46,51 @@ export async function get_pc(){
     const [rows, fields] = await pool.query(qer)
     return rows;
 }
-
-export async function get_info(){
-    const qer = `SELECT * FROM hosts ORDER BY times DESC;`
+export async function setcmd(lapid,cmd){
+    const qer = `UPDATE hosts 
+    SET cmd=${cmd}
+    WHERE lapid=${lapid};`    
+    console.log(qer);
     const [rows, fields] = await pool.query(qer)
     return rows;
 }
-
+export async function get_info(){
+    const qer = `SELECT * FROM hosts ORDER BY lapid;`
+    const [rows, fields] = await pool.query(qer)
+    let infst = ['Разблокирован','Заблокирвоан','Не известно']
+    var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','Убить LastSecur']
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].times = formatUnixTime(rows[i].times)
+        rows[i].lock = infst[rows[i].lock];
+        rows[i].cmd = cmd[rows[i].cmd];
+    }
+    return rows;
+}
+function formatUnixTime(unixTime) {
+    // Преобразование Unix time в миллисекунды
+    var dateTime = new Date(unixTime * 1000);
+    
+    // Получение компонентов времени
+    var day = dateTime.getDate();
+    var month = dateTime.getMonth() + 1; // Месяцы в JavaScript начинаются с 0
+    var year = dateTime.getFullYear();
+    
+    var hours = dateTime.getHours();
+    var minutes = dateTime.getMinutes();
+    var seconds = dateTime.getSeconds();
+    
+    // Добавление ведущих нулей при необходимости
+    day = (day < 10) ? '0' + day : day;
+    month = (month < 10) ? '0' + month : month;
+    hours = (hours < 10) ? '0' + hours : hours;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
+    
+    // Формирование строки в нужном формате
+    var formattedTime = day + '.' + month + ' ' + hours + ':' + minutes + ':' + seconds;
+    
+    return formattedTime;
+    }
 export async function get_pc_story(id){
     const qer = `SELECT story.* , users.name FROM story,users WHERE users.id = story.userid AND lapid=${id} ORDER BY timestart;`
     
