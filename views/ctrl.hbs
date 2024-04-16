@@ -17,11 +17,13 @@
 <div class="container"> 
     <div class="row"> 
       <h4 class="center-align">Управление ПК</h4>
-      <div class="input-field col s12 center-align">
       {{#each cmd}}
-        <button class="btn cmdsf" comd="{{@index}}">{{this}}</button>
-      {{/each}}
+      <div class="col s6 m3 l2 xl2 input-field center-align">
+        <button class="btn cmdsf mbtn" comd="{{@index}}">{{this}}</button>
       </div>
+       {{/each}}
+    </div>
+    <div class="row">
       {{#each laps}}
       <div class="input-field col s12 m12 l3">
         <div class="checkbox-card">
@@ -47,6 +49,8 @@
         </div>
       </div>
       {{/each}}
+    </div>
+
 
     </div>
 </div>
