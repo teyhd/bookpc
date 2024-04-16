@@ -12,6 +12,8 @@ FROM node:${NODE_VERSION}-alpine
 
 # Use production node environment by default.
 ENV NODE_ENV production
+ARG dbh
+ENV MDBHOST $dbh
 EXPOSE 81
 
 WORKDIR /usr/src/app
@@ -37,7 +39,6 @@ COPY . .
 VOLUME /logs
 
 # Expose the port that the application listens on.
-ARG dbh
-ENV MDBHOST=$dbh
+
 # Run the application.
 CMD node index.js

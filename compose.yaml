@@ -12,8 +12,8 @@ services:
     build:
       context: .
     environment:
-      - NODE_ENV: production
-      - MDBHOST:"vr1.local"
+      NODE_ENV: production
+      MDBHOST : 172.24.0.102
     volumes:
       - ./:/app
       - /app/vendor/logs
