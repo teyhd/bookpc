@@ -1,7 +1,11 @@
 import mysql from 'mysql2'
 let sets = {
     host: 'vr.local',
+<<<<<<< HEAD
    // host: '172.24.0.102',
+=======
+    //host: '172.24.0.102',
+>>>>>>> 7d58d2e344192642e696df2665c65b3c0070545e
     user: 'teyhd',
     password : '258000',
     database: 'laptop',
