@@ -1,5 +1,6 @@
 docker init
 docker compose up --build  
+docker build . --build-arg dbh=vr.local         
 
 docker ps -a  
 docker container commit 09f68b677ece vladteyhd/whereplatonpc:latest 

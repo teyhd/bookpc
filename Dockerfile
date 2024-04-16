@@ -37,6 +37,7 @@ COPY . .
 VOLUME /logs
 
 # Expose the port that the application listens on.
-
+ARG dbh
+ENV MDBHOST=$dbh
 # Run the application.
 CMD node index.js

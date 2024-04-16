@@ -1,6 +1,6 @@
 import mysql from 'mysql2'
 let sets = {
-    host: 'vr.local',
+    host: process.env.MDBHOST,
    // host: '172.24.0.102',
     user: 'teyhd',
     password : '258000',
@@ -14,6 +14,7 @@ let sets = {
     enableKeepAlive: true,
     keepAliveInitialDelay: 0
 }
+console.dir(sets)
 const pool = mysql.createPool(sets).promise()
 
 export async function auth_user(login, pass){
