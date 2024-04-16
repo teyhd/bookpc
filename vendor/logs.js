@@ -7,7 +7,7 @@ import urlencode from 'urlencode'
 var appDir = path.dirname(import.meta.url);
 appDir = appDir.split('///')
 appDir = appDir[1]
-let test = true
+let test = false
 if (!test){
   appDir = "//"+appDir
 }
@@ -34,12 +34,12 @@ export function mlog (par) {
       }
       
     } 
-    fs.writeFileSync(path.join(appDir,'logs',`${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} log.txt`),
+    fs.writeFileSync(path.join('/logs',`${curdate(datecreate.getDate())}.${curdate(datecreate.getMonth()+1)} log.txt`),
     texta,
     {
       encoding: "utf8",
       flag: "a+",
-      mode: 0o666
+      //mode: 0o666
     });
   
     console.log(texta);
