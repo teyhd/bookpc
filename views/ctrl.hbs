@@ -1,7 +1,96 @@
+<style>
+   .container {
+    width: 95%;
+    }
+    .checkbox-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+    [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative;
+    opacity: 100;
+      }
+</style>
+
 <div class="container"> 
     <div class="row"> 
+      <h4 class="center-align">Управление ПК</h4>
+      <div class="input-field col s12 center-align">
+      {{#each cmd}}
+        <button class="btn cmdsf" comd="{{@index}}">{{this}}</button>
+      {{/each}}
+      </div>
+      {{#each laps}}
+      <div class="input-field col s12 m12 l3">
+        <div class="checkbox-card">
+            <label>
+                <input type="checkbox" class="filled-in pcinp" name="d{{lapid}}" value="{{lapid}}">
+                ID:{{lapid}}
+            </label>
+            <span class="right" id="times_{{lapid}}">{{times}}</span>
+            <ul>
+                <li> 
+                  <span class="left" id="host_{{lapid}}">Host: {{host}}</span>
+                  <span class="right" id="ip_{{lapid}}">{{ip}}</span>
+                </li>
+                <li> 
+                  <span class="left">Состояние:</span>
+                  <span class="right" id="lock_{{lapid}}">{{lock}}</span>
+                </li>
+                <li> 
+                  <span class="left">Команда:</span>
+                  <span class="right" id="cmd_{{lapid}}">{{cmd}}</span>
+                </li>
+              </ul>
+        </div>
+      </div>
+      {{/each}}
 
-    <div class="input-field col s12">
+    </div>
+</div>
+
+<script>
+  timerid = setInterval(inspect, 3000)
+
+    function inspect(){
+      $.get( `/lapchg` ).done(function( data ){
+        //console.log(data);
+        data = JSON.parse(data)
+        console.log(data);
+        for (const sparam in data) {
+            $(`#${sparam}`).text(data[sparam])
+            $(`#${sparam}`).parent().after($('#content tr:first-child'))
+        }
+      })
+    }
+
+$('.cmdsf').click(function(){
+    var checked = [];
+    $('input:checkbox:checked').each(function() {
+      checked.push($(this).val());
+    }); 
+    if (checked.length==0){
+      M.toast({html: 'Выберите устройство!', classes: '#ef5350 red lighten-1 rounded'});
+      return 0;
+    }
+
+    $.get( `/sendcmd`, {cmd:$(this).attr('comd'),lapid:checked }).done(function( data ) {
+        console.log(data);
+        if (data=="ok"){
+          M.toast({html: 'Команда ушла', classes: '#26a69a teal lighten-1 rounded'});
+        }
+    })
+    inspect()
+
+})
+
+
+</script>
+
+<!-- 
+      <div class="input-field col s12">
       <table>
         <thead>
           <tr >
@@ -41,60 +130,5 @@
         </tbody>
       </table>
     </div>
- </div>
-</div>
 
-<script>
-  timerid = setInterval(inspect, 3000)
-   {{#each cmd}}
-   $('.cmdsf').append(`<option id="{{@index}}" value="{{@index}}">{{this}}</option>`)
-   {{/each}}
-
-    function inspect(){
-      $.get( `/lapchg` ).done(function( data ){
-        //console.log(data);
-        data = JSON.parse(data)
-        console.log(data);
-        for (const sparam in data) {
-            $(`#${sparam}`).text(data[sparam])
-            $(`#${sparam}`).parent().after($('#content tr:first-child'))
-        }
-      })
-    }
-
-    
-    $('.cmdsf').change(function(){
-        $.get( `/sendcmd`, {cmd:$(this).val(),lapid:$(this).attr('id').replace('idcmd_','') }).done(function( data ) {
-            console.log(data);
-            if (data=="ok"){
-              M.toast({html: 'Команда ушла', classes: '#26a69a teal lighten-1 rounded'});
-            }
-        })
-        inspect()
-    })
-
-    $('#idlasp').change(function(){
-        $('#content').html(``)
-        console.log($('#idlasp').val())
-        $.get( `/getstory`, { lapid:$('#idlasp').val()} ).done(function( data ) {
-            console.log(data);
-            data = JSON.parse(data)
-            console.log(data);
-            for (let k = 0; k < data.length; k++) {
-                if (data[k].timestop==0){
-                  data[k].stopf = 'Не вернул'
-                }
-                $('#content').append(`
-                        <tr>
-                            <td>${k+1}</td>
-                            <td>${data[k].name}</td>
-                            <td>${data[k].startf}</td>
-                            <td>${data[k].stopf}</td>
-                            <td>${data[k].kab}</td>
-                            <td>${data[k].komm}</td>
-                        </tr>   
-                `)
-            }
-        })            
-    })
-</script>
+ -->

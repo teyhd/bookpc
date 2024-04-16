@@ -1,7 +1,7 @@
 import mysql from 'mysql2'
 let sets = {
-    //host: 'vr.local',
-    host: '172.24.0.102',
+    host: 'vr.local',
+   // host: '172.24.0.102',
     user: 'teyhd',
     password : '258000',
     database: 'laptop',
@@ -47,12 +47,13 @@ export async function get_pc(){
     return rows;
 }
 export async function setcmd(lapid,cmd){
-    const qer = `UPDATE hosts 
-    SET cmd=${cmd}
-    WHERE lapid=${lapid};`    
-    console.log(qer);
-    const [rows, fields] = await pool.query(qer)
-    return rows;
+    for (let i = 0; i < lapid.length; i++) {
+        const qer = `UPDATE hosts 
+        SET cmd=${cmd}
+        WHERE lapid=${lapid[i]};`    
+       // console.log(qer);
+        const [rows, fields] = await pool.query(qer)
+    }
 }
 export async function get_info(){
     const qer = `SELECT * FROM hosts ORDER BY lapid;`

@@ -92,7 +92,7 @@ app.use(fileUpload({
 app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
 
-    if (page=='/data' || page=='/ctrlq' || page=='/lapchgq' || page=='/addmat') {
+    if (page=='/data' || page=='/ctrl' || page=='/lapchg' || page=='/addmat') {
         next();
         return 1
     }
@@ -134,7 +134,7 @@ app.get('/',async (req,res)=>{
             pc[i].me = 1
         }
     }
-    console.log(pc);
+    //console.log(pc);
     res.render('index',{
         title: 'Онлайн Платоникс',
         kabs: kabs,
