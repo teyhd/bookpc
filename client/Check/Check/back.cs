@@ -25,7 +25,7 @@ namespace Check
             static void SetWallpaper(string path)
             {
                 // Вызываем функцию SystemParametersInfo, чтобы установить заставку
-                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
+               // SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
             }
             private static int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             [Obsolete]
@@ -42,7 +42,11 @@ namespace Check
                 while (!stoppingToken.IsCancellationRequested)
                 {
                     var Lapnum = Int32.Parse(MyIni.Read("numb"));
+                    Program.Mylog(Lapnum.ToString());
+                    Console.WriteLine(Lapnum.ToString());
                     var Check = Db.GetCheck();
+                    Program.Mylog(Check.ToString());
+                    
                     
                     string processName = "PlatonAlarm";
                     if (IsProcessRunning(processName))
@@ -61,12 +65,13 @@ namespace Check
                     if (timenow - timestart >= 5)
                     {
                         AddTask();
-                        SetWallpaper(wallpaperPath);
+                       // SetWallpaper(wallpaperPath);
                     }
                         
                     if (Check == 0)
                     {
                         timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                        Program.Mylog((timenow - timestart).ToString());
                         int gof = timenow - timestart;
                         Console.WriteLine(gof);
                         if (timenow - timestart >= 5)
@@ -103,7 +108,7 @@ namespace Check
                         }
                     }
                     // Задержка между выполнениями задачи
-                    await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
+                    await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(3), stoppingToken);
                 }
             }
         }
@@ -114,12 +119,13 @@ namespace Check
             string taskName = "Проверка";
             string taskDescription = "Проверка обновлений системы";
             string taskExecutablePath = @"C:\Windows\secur\Release\Check.exe";
-            // Создаем экземпляр планировщика задач
-            using (TaskService taskService = new TaskService())
+            try
             {
-                // Проверяем, существует ли задача с таким именем
-                // if (taskService.GetTask(taskName)!=null)
-               
+                using (TaskService taskService = new TaskService())
+                {
+                    // Проверяем, существует ли задача с таким именем
+                    // if (taskService.GetTask(taskName)!=null)
+
                     TaskDefinition taskDefinition = taskService.NewTask();
                     taskDefinition.RegistrationInfo.Description = taskDescription;
 
@@ -139,10 +145,19 @@ namespace Check
                     taskDefinition.Actions.Add(new ExecAction(taskExecutablePath));
                     taskDefinition.Actions.Add(new ExecAction(@"C:\Windows\secur\1\PlatonAlarm.exe"));
                     taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
-                 
+
                     Program.Mylog("Задача успешно добавлена в планировщик задач.");
-               
+
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Program.Mylog(ex.ToString());
+            }
+
+            // Создаем экземпляр планировщика задач
+            
         }
 
         static string GetApplicationPath()

@@ -95,6 +95,7 @@ namespace Check
                         {
                             Program.Mylog("nocheck: " + reader["nocheck"].ToString());
                             ExecCmd(reader["cmd"].ToString());
+                            Program.Mylog(reader["cmd"].ToString());
                             return Int32.Parse(reader["nocheck"].ToString());
                         }
                     }

@@ -92,7 +92,7 @@ app.use(fileUpload({
 app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
 
-    if (page=='/data' || page=='/ctrl' || page=='/lapchg' || page=='/addmat') {
+    if (page=='/data' || page=='/ctrlqw' || page=='/lapchgqw' || page=='/addmat') {
         next();
         return 1
     }
