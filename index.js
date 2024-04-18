@@ -160,7 +160,7 @@ app.get('/story',async (req,res)=>{
 app.get('/ctrl',async (req,res)=>{
     let laps = await get_info()
     let infst = ['Разблокирован','Заблокирвоан','Не известно']
-    var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','Убить LastSecur']
+    var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','LastSecurOFF','ВЫКЛ звук','ВКЛ звук','WIN+D','ALT+F4']
 
     console.log(laps);
     res.render('ctrl',{

