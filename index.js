@@ -1,5 +1,5 @@
 import {mlog,say} from './vendor/logs.js'
-let test = true
+let test = false
 var appDir = path.dirname(import.meta.url);
 appDir = appDir.split('///')
 appDir = appDir[1]

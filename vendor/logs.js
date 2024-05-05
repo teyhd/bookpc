@@ -7,7 +7,7 @@ import urlencode from 'urlencode'
 var appDir = path.dirname(import.meta.url);
 appDir = appDir.split('///')
 appDir = appDir[1]
-let test = true
+let test = false
 if (!test){
   appDir = "//"+appDir
 }
