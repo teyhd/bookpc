@@ -149,16 +149,24 @@ namespace Check
                     UpdateCmdDB();
                     break;
                 case "7":
+                    Program.Mylog("Выключить звук");
                     OffSound();
+                    UpdateCmdDB();
+                    break;
+                case "8":
+                    Program.Mylog("Звук на максимум");
+                    MaxSound();
+                    UpdateCmdDB();
                     break;
                 case "9":
-                    MaxSound();
+                    Program.Mylog("Скрыть приложение");
+                    HideApps();
+                    UpdateCmdDB();
                     break;
                 case "10":
-                    HideApps();
-                    break;
-                case "11":
+                    Program.Mylog("Выключить приложение");
                     CloseApp();
+                    UpdateCmdDB();
                     break;
 
             }
