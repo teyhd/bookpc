@@ -1,0 +1,120 @@
+
+ 01:13:45 / undefined 198.199.113.95
+ 01:39:04 / undefined 127.0.0.1
+ 01:39:04 /auth undefined 127.0.0.1
+ 01:51:57 / undefined 179.43.188.106
+ 02:09:48 / undefined 127.0.0.1
+ 02:09:48 /auth undefined 127.0.0.1
+ 02:12:55 /ctrl undefined 127.0.0.1
+ 02:12:55 /auth undefined 127.0.0.1
+ 02:13:00 /auth undefined 127.0.0.1 
+ login:adm 
+ pass:adm
+ 02:13:00 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 02:13:00 /auth Система 127.0.0.1
+ 02:13:00 / Система 127.0.0.1
+ 02:13:10 /ctrl Система 127.0.0.1
+ 02:13:13 /lapchg Система 127.0.0.1
+ 02:13:16 /lapchg Система 127.0.0.1
+ 02:13:19 /lapchg Система 127.0.0.1
+ 02:13:22 /lapchg Система 127.0.0.1
+ 02:13:26 /lapchg Система 127.0.0.1
+ 02:13:29 /lapchg Система 127.0.0.1
+ 02:13:32 /lapchg Система 127.0.0.1
+ 02:13:35 /lapchg Система 127.0.0.1
+ 02:13:38 /lapchg Система 127.0.0.1
+ 02:13:41 /lapchg Система 127.0.0.1
+ 02:13:44 /lapchg Система 127.0.0.1
+ 02:16:56 /robots.txt undefined 127.0.0.1
+ 02:16:56 /auth undefined 127.0.0.1
+ 02:16:56 / undefined 127.0.0.1
+ 02:17:56 / undefined 127.0.0.1
+ 02:17:57 /auth undefined 127.0.0.1
+ 02:35:53 /lapchg Система 127.0.0.1
+ 02:35:56 /lapchg Система 127.0.0.1
+ 02:36:00 /lapchg Система 127.0.0.1
+ 02:36:03 /lapchg Система 127.0.0.1
+ 02:36:06 /lapchg Система 127.0.0.1
+ 02:36:09 /lapchg Система 127.0.0.1
+ 02:36:12 /lapchg Система 127.0.0.1
+ 02:36:15 /lapchg Система 127.0.0.1
+ 02:36:18 /lapchg Система 127.0.0.1
+ 02:37:01 /lapchg Система 127.0.0.1
+ 02:37:02 /lapchg Система 127.0.0.1
+ 02:37:03 /ctrl Система 127.0.0.1
+ 02:37:06 /ctrl Система 127.0.0.1
+ 02:37:09 /lapchg Система 127.0.0.1
+ 02:37:12 /lapchg Система 127.0.0.1
+ 02:37:15 /lapchg Система 127.0.0.1
+ 02:37:18 /lapchg Система 127.0.0.1
+ 02:37:21 /lapchg Система 127.0.0.1
+ 02:37:24 /lapchg Система 127.0.0.1
+ 02:48:30 / undefined 185.224.128.43
+ 03:27:14 / undefined 179.43.188.106
+ 05:41:14 / undefined 35.203.210.4
+ 05:41:15 /auth undefined 35.203.210.4
+ 05:45:31 / undefined 104.152.52.22
+ 05:45:37 /sdk undefined 104.152.52.22
+ 05:45:37 / undefined 104.152.52.22
+ 05:45:37 /nmaplowercheck1715395537 undefined 104.152.52.22
+ 05:45:38 /HNAP1 undefined 104.152.52.22
+ 05:45:38 /evox/about undefined 104.152.52.22
+ 05:45:38 /auth undefined 104.152.52.22
+ 05:45:38 / undefined 104.152.52.22
+ 05:45:39 / undefined 104.152.52.22
+ 06:16:56 /robots.txt undefined 127.0.0.1
+ 06:16:56 /auth undefined 127.0.0.1
+ 06:41:43 / undefined 179.43.188.106
+ 08:08:19 / undefined 185.224.128.43
+ 08:31:35 / undefined 185.191.126.213
+ 10:14:07 / undefined 162.142.125.216
+ 10:14:10 / undefined 162.142.125.216
+ 10:14:13 /auth undefined 162.142.125.216
+ 11:57:33 / undefined 185.191.126.213
+ 13:14:36 Сервер - запущен
+ 13:14:36 Порт: 81
+ 13:44:30 / undefined 185.224.128.43
+ 13:58:31 / undefined 31.220.1.83
+ 14:21:45 / undefined 185.191.126.213
+ 14:55:51 / undefined 179.43.188.106
+ 14:58:43 /image/lgbg.jpg undefined 78.11.84.52
+ 14:58:44 /auth undefined 78.11.84.52
+ 14:58:45 /skin/default_1/images/logo.png undefined 78.11.84.52
+ 14:58:45 /auth undefined 78.11.84.52
+ 14:58:46 / undefined 78.11.84.52
+ 14:58:46 /auth undefined 78.11.84.52
+ 14:58:46 /login.rsp undefined 78.11.84.52
+ 14:58:46 /auth undefined 78.11.84.52
+ 14:58:47 /device.rsp undefined 78.11.84.52 
+ opt:user 
+ cmd:list
+ 15:01:29 / undefined 64.62.197.200
+ 15:01:41 / undefined 64.62.197.209
+ 15:01:41 /auth undefined 64.62.197.209
+ 15:01:56 / undefined 64.62.197.210 
+ format:json
+ 15:35:21 / undefined 87.236.176.110
+ 15:35:21 /auth undefined 87.236.176.110
+ 18:05:01 / undefined 185.224.128.43
+ 18:20:51 / undefined 179.43.188.106
+ 19:00:58 / undefined 87.236.176.88
+ 19:00:59 /auth undefined 87.236.176.88
+ 19:47:01 / undefined 146.19.24.28
+ 22:09:48 /robots.txt undefined 127.0.0.1
+ 22:09:49 /auth undefined 127.0.0.1
+ 22:09:50 / undefined 127.0.0.1
+ 22:09:50 / undefined 127.0.0.1
+ 22:09:51 /auth undefined 127.0.0.1
+ 22:09:51 /auth undefined 127.0.0.1
+ 22:44:52 / undefined 172.105.156.54
+ 22:44:53 /auth undefined 172.105.156.54
+ 22:47:59 / undefined 115.231.78.10
+ 22:47:59 /auth undefined 115.231.78.10
+ 22:48:00 / undefined 115.231.78.10
+ 22:48:00 /auth undefined 115.231.78.10
+ 22:48:02 /robots.txt undefined 115.231.78.10

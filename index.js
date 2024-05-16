@@ -17,7 +17,7 @@ import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 import fs from 'fs-extra'
-
+import axios from 'axios';
 import urlencode from 'urlencode';
 import {setcmd, get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
@@ -109,7 +109,19 @@ app.use(async function (req, res, next) {
     mlog(page,req.session.name,getcurip(req.socket.remoteAddress),req.query)
     
 })
-
+var cook = null
+app.get('/data',async (req,res)=>{
+    let ans = await axios.get('https://platoniks.ru/', {headers: {
+        Cookie: req.headers.cookie
+    } })
+   // if (cook == null) cook = ans.headers['set-cookie'][0]
+   // mlog(cook);
+    //console.log(ans);
+    res.redirect('https://platoniks.ru/auth')
+    console.log(req.headers.cookie);
+    res.send(ans.headers)
+    //res.send(req.session)
+})
 
 app.get('/',async (req,res)=>{
     let pc = await get_status()
@@ -160,7 +172,7 @@ app.get('/story',async (req,res)=>{
 app.get('/ctrl',async (req,res)=>{
     let laps = await get_info()
     let infst = ['Разблокирован','Заблокирвоан','Не известно']
-    var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','LastSecurOFF','ВЫКЛ звук','ВКЛ звук','WIN+D','ALT+F4']
+    var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','LastSecurOFF','ВЫКЛ звук','ВКЛ звук','WIN+D','ALT+F4','CTRL+W','АнтиТим']
 
     console.log(laps);
     res.render('ctrl',{
@@ -252,8 +264,6 @@ app.get('/retlap',async (req,res)=>{
     res.send({st:"ok",id:resid})
 })  
 
-
-
 app.get('/logout', function(req, res) {
     mlog( req.session.name,"вышел из системы");
     req.session.auth = null;
@@ -268,7 +278,7 @@ app.get('/logout', function(req, res) {
         res.redirect('/')
       })
     })
-    })
+})
 
 function getcurip(str) {
     let arr = str.split(':');
@@ -279,7 +289,7 @@ function getcurip(str) {
 async function start(){
     app.listen(81,()=> {
         mlog('Сервер - запущен')
-        say('Сервер - запущен')
+        say('Сервер учета оборудования - запущен')
         mlog('Порт:',81);
     })
 }

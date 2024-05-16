@@ -1,0 +1,181 @@
+
+ 00:57:30 / undefined 185.224.128.43
+ 01:08:10 / undefined 185.191.126.213
+ 01:46:47 / undefined 162.243.139.35
+ 02:37:17 / undefined 87.236.176.185
+ 02:37:18 /auth undefined 87.236.176.185
+ 02:51:40 Сервер - запущен
+ 02:51:40 Порт: 81
+ 02:51:59 / undefined 127.0.0.1
+ 02:51:59 /auth undefined 127.0.0.1
+ 02:53:06 Сервер - запущен
+ 02:53:06 Порт: 81
+ 02:53:16 Сервер - запущен
+ 02:53:16 Порт: 81
+ 02:53:58 Сервер - запущен
+ 02:53:58 Порт: 81
+ 02:57:01 Сервер - запущен
+ 02:57:01 Порт: 81
+ 02:57:15 Сервер - запущен
+ 02:57:15 Порт: 81
+ 02:57:50 Сервер - запущен
+ 02:57:50 Порт: 81
+ 02:59:51 Сервер - запущен
+ 02:59:51 Порт: 81
+ 03:01:30 Сервер - запущен
+ 03:01:30 Порт: 81
+ 03:01:47 Сервер - запущен
+ 03:01:47 Порт: 81
+ 03:02:05 Сервер - запущен
+ 03:02:05 Порт: 81
+ 03:02:20 Сервер - запущен
+ 03:02:20 Порт: 81
+ 03:02:34 Сервер - запущен
+ 03:02:34 Порт: 81
+ 03:02:50 Сервер - запущен
+ 03:02:50 Порт: 81
+ 03:06:37 Сервер - запущен
+ 03:06:37 Порт: 81
+ 03:08:24 Сервер - запущен
+ 03:08:24 Порт: 81
+ 03:08:27 Глобальный косяк приложения!!!  TypeError: Cannot read properties of undefined (reading '0')
+    at file:///var/www/html/bookpc/index.js:114:68
+    at Layer.handle [as handle_request] (/var/www/html/bookpc/node_modules/express/lib/router/layer.js:95:5)
+    at next (/var/www/html/bookpc/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/var/www/html/bookpc/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/var/www/html/bookpc/node_modules/express/lib/router/layer.js:95:5)
+    at /var/www/html/bookpc/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/var/www/html/bookpc/node_modules/express/lib/router/index.js:346:12)
+    at next (/var/www/html/bookpc/node_modules/express/lib/router/index.js:280:10)
+    at file:///var/www/html/bookpc/index.js:96:9
+    at Layer.handle [as handle_request] (/var/www/html/bookpc/node_modules/express/lib/router/layer.js:95:5)
+ 03:08:52 Сервер - запущен
+ 03:08:52 Порт: 81
+ 03:09:18 Сервер - запущен
+ 03:09:18 Порт: 81
+ 03:09:21 login=s%3AoQhouN1VeNir_w7URExeEPD4knLNQc3M.17gX8vGGhFFkUroOtv5HkiTGwCyI%2B2D9rOqQlwBE%2Bjw; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:09:21 login=s%3ALqlehass_Z7gTAGY6C_FAdZZwurVHus0.Bg%2Bqty4k4KFhO%2BNJdbFPC%2FGqoff91PvJ4MsTqixXQME; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:10:51 login=s%3A5L-Dx_1YyLN0Fu6i32NPD3srju9gZoFH.qi327lht6xxCjXexAEFcrl49mxU%2Beb68iLMjxdrcSH8; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:10:51 login=s%3At7Dmvzo6wfUoW6aqYR9HpqXUmpes9tDg.9zYXq%2B8P5cQQ%2Fw8j%2F6ZjSaHYLUoB8aL%2Bx%2Fky%2FkmEmXc; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:12:34 Сервер - запущен
+ 03:12:34 Порт: 81
+ 03:12:40 login=s%3AApmp0yeyA5GVP1QBsOHMMf3_cDl7V3Pe.nIygLxbngNFkDfoHAzVI9u%2FIXLiV4BgtNkuAAyJd0zo; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:12:41 login=s%3A5zlnysrMvvFnhiY7jM0XbVkCc99ZXOOM.H52iqWgQSgDPdVIPF6o5P7FUpblOB3VMOD8FBZFVipU; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:13:23 login=s%3AHuw17NVkltHtU7URFfYnmrUqfUQohi_m.AlOCFVB4XWuQ4tPt%2BV497QP28m4fnoWeMnGSK5mgTCc; Domain=*.platoniks.ru; Path=/; HttpOnly
+ 03:13:23 login=s%3AFQh9OP9YzO-EMFW-tdHFTV5o0tD56IZM.CxY3oQfVocU8VFGY3ZCxyMEGmBsETuHKkFF0Qez0crs; Domain=*.platoniks.ru; Path=/; HttpOnly
+ 03:14:43 Сервер - запущен
+ 03:14:43 Порт: 81
+ 03:14:50 login=s%3AN9U_r51Dcct4L4I6q3MIC3CE7lfKn7Jm.lwF0isJ%2Fo8f8bTvw%2Fqw%2Bo5UsSnzl1LT2YeB14%2FQ78A8; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:14:51 Глобальный косяк приложения!!!  TypeError: Cannot read properties of undefined (reading '0')
+    at file:///var/www/html/bookpc/index.js:117:37
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 03:14:51 Глобальный косяк приложения!!!  TypeError: Cannot read properties of undefined (reading '0')
+    at file:///var/www/html/bookpc/index.js:117:37
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 03:16:07 Сервер - запущен
+ 03:16:07 Порт: 81
+ 03:16:12 login=s%3AlkS82MT-a6mTUQ8LN1h-r8lBoRoyLvLc.pebOQsyloXDdoK8cglkXZqUaoGVZMOIpT13b1gvVvUA; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:16:13 login=s%3AlkS82MT-a6mTUQ8LN1h-r8lBoRoyLvLc.pebOQsyloXDdoK8cglkXZqUaoGVZMOIpT13b1gvVvUA; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:16:14 login=s%3AlkS82MT-a6mTUQ8LN1h-r8lBoRoyLvLc.pebOQsyloXDdoK8cglkXZqUaoGVZMOIpT13b1gvVvUA; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:18:50 Сервер - запущен
+ 03:18:50 Порт: 81
+ 03:18:53 login=s%3ALq2qeZy9l8h95aSqEtiY7oiLieuAdd9o.galBKpI4O9bTEQ4JjNSveVmpfKwrplJ7nsCBQ%2FBI0g0; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:19:00 /auth undefined 127.0.0.1
+ 03:19:37 login=s%3ALq2qeZy9l8h95aSqEtiY7oiLieuAdd9o.galBKpI4O9bTEQ4JjNSveVmpfKwrplJ7nsCBQ%2FBI0g0; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:19:52 Сервер - запущен
+ 03:19:52 Порт: 81
+ 03:19:54 login=s%3ARXc_qYc0AoFEyCv3oJSc_ZqAVWQmt1xs.4PB7Y3uR%2FV7PPv0C2Bxe4HCbGZrEnRzIT0h39Ls4rX0; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:19:54 Глобальный косяк приложения!!!  TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+    at JSON.stringify (<anonymous>)
+    at stringify (/var/www/html/bookpc/node_modules/express/lib/response.js:1150:12)
+    at ServerResponse.json (/var/www/html/bookpc/node_modules/express/lib/response.js:271:14)
+    at ServerResponse.send (/var/www/html/bookpc/node_modules/express/lib/response.js:162:21)
+    at file:///var/www/html/bookpc/index.js:119:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 03:20:17 Сервер - запущен
+ 03:20:17 Порт: 81
+ 03:20:20 login=s%3AeX6Wg-CVI-X0jc_YC5QNikeiedmQysnb.D8CDhvhC9R32Kpx8mLtawfTXhHro%2B9%2BG13m5enVyEhk; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:25:03 Сервер - запущен
+ 03:25:03 Порт: 81
+ 03:25:06 login=s%3AyaXRosKYEk4QW44qVSodfaVGUkRwDEM9.lMMppWRlpAS%2BpqlNk3wcJZIY22c%2FC1%2Bo8bX7hnrMEFQ; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:25:47 Сервер - запущен
+ 03:25:47 Порт: 81
+ 03:25:50 login=s%3ASJrGPZEopjhUKk-mcvqiUvzFUvMwi7qV.ExSlGqRUFJ77g1GX1sCfxtlkG1kXM%2Btyo19%2FhHW%2BBvQ; Domain=platoniks.ru; Path=/; HttpOnly
+ 03:26:30 Сервер - запущен
+ 03:26:30 Порт: 81
+ 03:26:39 Глобальный косяк приложения!!!  TypeError: Cannot read properties of undefined (reading '0')
+    at file:///var/www/html/bookpc/index.js:117:55
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 03:27:10 Сервер - запущен
+ 03:27:10 Порт: 81
+ 03:34:44 / undefined 35.203.211.119
+ 03:34:44 /auth undefined 35.203.211.119
+ 03:35:00 Сервер - запущен
+ 03:35:00 Порт: 81
+ 03:35:39 / undefined 127.0.0.1
+ 03:35:39 /auth undefined 127.0.0.1
+ 03:35:41 / undefined 127.0.0.1
+ 03:35:41 /auth undefined 127.0.0.1
+ 03:35:43 /auth undefined 127.0.0.1
+ 03:35:53 /auth undefined 127.0.0.1 
+ login:adm 
+ pass:ADM
+ 03:35:53 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 03:35:53 /auth Система 127.0.0.1
+ 03:35:53 / Система 127.0.0.1
+ 03:35:58 / Система 127.0.0.1
+ 03:37:59 Сервер - запущен
+ 03:37:59 Порт: 81
+ 03:38:03 Глобальный косяк приложения!!!  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (/var/www/html/bookpc/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/var/www/html/bookpc/node_modules/express/lib/response.js:174:12)
+    at ServerResponse.json (/var/www/html/bookpc/node_modules/express/lib/response.js:278:15)
+    at ServerResponse.send (/var/www/html/bookpc/node_modules/express/lib/response.js:162:21)
+    at file:///var/www/html/bookpc/index.js:122:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 03:38:24 Сервер - запущен
+ 03:38:24 Порт: 81
+ 03:38:28 / undefined 127.0.0.1
+ 03:38:28 /auth undefined 127.0.0.1
+ 03:38:33 Глобальный косяк приложения!!!  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:652:11)
+    at ServerResponse.header (/var/www/html/bookpc/node_modules/express/lib/response.js:794:10)
+    at ServerResponse.send (/var/www/html/bookpc/node_modules/express/lib/response.js:174:12)
+    at ServerResponse.json (/var/www/html/bookpc/node_modules/express/lib/response.js:278:15)
+    at ServerResponse.send (/var/www/html/bookpc/node_modules/express/lib/response.js:162:21)
+    at file:///var/www/html/bookpc/index.js:122:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 03:39:19 Сервер - запущен
+ 03:39:19 Порт: 81
+ 03:43:42 / undefined 127.0.0.1
+ 03:43:42 /auth undefined 127.0.0.1
+ 03:49:17 / undefined 127.0.0.1
+ 03:49:17 /auth undefined 127.0.0.1
+ 03:49:24 /auth undefined 127.0.0.1 
+ login:adm 
+ pass:adm
+ 03:49:24 
+ id:43 
+ login:adm 
+ pass:adm 
+ name:Система 
+ subj:1
+ 03:49:24 /auth Система 127.0.0.1
+ 03:49:24 / Система 127.0.0.1
+ 03:49:57 Глобальный косяк приложения!!!  Error: listen EADDRINUSE: address already in use :::81
+    at Server.setupListenHandle [as _listen2] (node:net:1872:16)
+    at listenInCluster (node:net:1920:12)
+    at Server.listen (node:net:2008:7)
+    at Function.listen (/var/www/html/bookpc/node_modules/express/lib/application.js:635:24)
+    at start (file:///var/www/html/bookpc/bookpc.js:290:9)
+    at file:///var/www/html/bookpc/bookpc.js:326:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

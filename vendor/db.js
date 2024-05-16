@@ -1,7 +1,7 @@
 import mysql from 'mysql2'
 let sets = {
     host: process.env.MDBHOST,
-   // host: '172.24.0.102',
+    host: '172.24.0.102',
     user: 'teyhd',
     password : '258000',
     database: 'laptop',
