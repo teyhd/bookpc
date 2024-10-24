@@ -19,7 +19,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import axios from 'axios';
 import urlencode from 'urlencode';
-import {setcmd, get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -106,7 +106,7 @@ app.use(async function (req, res, next) {
         } else next();
     }
 
-    mlog(page,req.session.name,getcurip(req.socket.remoteAddress),req.query)
+    mlog(page,req.session.name,req.headers['nip'],req.query)
     
 })
 var cook = null
@@ -153,7 +153,8 @@ app.get('/',async (req,res)=>{
         meid: req.session.userid,
         name:req.session.name,
         pc: pc,
-        auth: req.session.userid
+        auth: req.session.userid,
+        role: req.session.role
     });
 
 })
@@ -235,6 +236,7 @@ app.get('/auth',async (req,res)=>{
         if (ans!=undefined){
             req.session.name = ans.name
             req.session.userid = ans.id
+            req.session.role = ans.role
             res.send('ok')
         } else {
             res.send('nok')
@@ -254,6 +256,21 @@ app.get('/take',async (req,res)=>{
     say(`${req.session.name} взял ноутбук №${req.query.lapid} в каб №${req.query.kab}`)
     res.send({st:"ok",id:resid})
 })  
+
+app.get('/rtake',async (req,res)=>{
+    console.log(req.query);
+    for (let i = 7; i < 16; i++) { 
+        setTimeout(thelp, 30 * i,req.session.userid,req.session.name,i)
+    }
+    
+    res.send({st:"ok"})
+})  
+
+async function thelp(userid,name,lapid){
+    let resid = await rtake(userid, lapid, 2 ,getCurrentUnixTime())
+    console.log(resid);
+    say(`${name} взял ноутбук №${lapid} в каб №2`) 
+}
 
 app.get('/retlap',async (req,res)=>{
     console.log(req.query);
@@ -289,7 +306,7 @@ function getcurip(str) {
 async function start(){
     app.listen(81,()=> {
         mlog('Сервер - запущен')
-        say('Сервер учета оборудования - запущен')
+        say('Сервер учета оборудования - запущен\nПорт:81');
         mlog('Порт:',81);
     })
 }

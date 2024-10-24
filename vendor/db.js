@@ -1,7 +1,7 @@
 import mysql from 'mysql2'
 let sets = {
     host: process.env.MDBHOST,
-    host: '172.24.0.102',
+    host: 'vr.local',
     user: 'teyhd',
     password : '258000',
     database: 'laptop',
@@ -104,6 +104,14 @@ export async function get_pc_story(id){
 export async function take(userid,lapid,kab,timestart){
     let pass = Math.floor(Math.random() * (9*(Math.pow(10,5)))) + (Math.pow(10,5))
     const qer = `INSERT INTO story (userid,lapid,kab,timestart,komm,pass) VALUES (${userid},${lapid},${kab},${timestart},"Замечаний нет",${pass});`
+    const [rows, fields] = await pool.query(qer)
+    console.dir(rows);
+    return rows.insertId;
+}
+
+export async function rtake(userid,lapid,kab,timestart){
+    let pass = 1701
+    const qer = `INSERT INTO story (userid,lapid,kab,timestart,komm,autor,pass) VALUES (${userid},${lapid},${kab},${timestart},"Замечаний нет",1,${pass});`
     const [rows, fields] = await pool.query(qer)
     console.dir(rows);
     return rows.insertId;

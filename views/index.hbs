@@ -9,6 +9,9 @@
 <div class="container"> 
     <div class="row">
         <h5>Учет использования</h5>
+         {{#if_eq role 1}} 
+            <a id="romabtn" class="modal-close btn mbtn">Взять все ноутбки 2-го кабинета</a>
+         {{/if_eq}} 
         <p>{{name}}</p>
         {{#each pc}}    
             <div id="num{{id}}" class="pcard input-field col s12 m6 l3 xl3">
@@ -81,6 +84,22 @@
 </div>
 
 <script>
+    //romabtn
+       $( "#romabtn" ).click(function() {
+            $.get( `/rtake`, {kab:2} ).done(function( data ) {
+                console.log(data);
+               // data = JSON.parse(data)
+                if (data.st=='ok') {
+                M.toast({html: 'Удачного пользования', classes: '#26a69a teal lighten-1 rounded'});
+                
+                } else {
+                M.toast({html: `Ошибка`, classes: '#ef5350 red lighten-1 rounded'});
+                }
+                reload(1)
+            })    
+  
+       })
+
        $( "#retulbtn" ).click(function() {
             if (!$('#new_text').val()){
                 $('#new_text').val('Замечаний нет')
@@ -113,6 +132,7 @@
         }
   
        })
+        
         $( "#takebtn" ).prop('disabled', true);
 
         $( ".aftr" ).click(function() {
