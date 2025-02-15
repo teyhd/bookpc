@@ -1,4 +1,15 @@
-<style>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Управление устройствами</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* Базовые стили */
     body {
       background-color: #f5f5f5;
     }
@@ -55,7 +66,83 @@
     .refresh-btn {
       margin-top: 10px;
     }
+    /* Стили расширенной аналитики */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .analytics-chart {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .chart-container {
+      position: relative;
+      height: 300px;
+      margin: 1rem 0;
+    }
+    .metric-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .time-filter {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .vendor-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .vendor-table td, .vendor-table th {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .subnet-distribution {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .subnet-item {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      position: relative;
+    }
+    .subnet-bar {
+      height: 6px;
+      background: #e0e0e0;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+    .subnet-progress {
+      height: 100%;
+      background: var(--primary-color, #2196F3);
+      transition: width 0.5s ease;
+    }
+    .export-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
   </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h3>Управление устройствами</h3>
+    </header>
 
     <!-- Поисковая строка -->
     <div class="row search-bar">
@@ -102,6 +189,7 @@
     <div class="row" id="devices-list">
       {{#each devices}}
       <div class="col s12 m6 l4 device-card"
+           data-device='{{{json this}}}'
            data-name="{{name}}"
            data-ip="{{ip}}"
            data-last_seen="{{last_seen}}"
@@ -113,7 +201,6 @@
             <!-- Заголовок карточки -->
             <span class="right card-title">{{formatDate last_seen}}</span>
             <span class="card-title">{{name}}</span>
-           
             <!-- Информация об устройстве -->
             <ul class="collection">
               <li class="collection-item">
@@ -133,11 +220,11 @@
               <li class="collection-item">
                 <i class="material-icons left">assignment</i>
                 <span id="mac{{id}}">{{mac}}</span>
-              </li> 
+              </li>
               <li class="collection-item">
                 <i class="material-icons left">perm_device_information</i>
                 <span id="vendor_{{id}}">{{vendor}}</span>
-              </li> 
+              </li>
             </ul>
           </div>
           <!-- Действия с устройством -->
@@ -154,19 +241,19 @@
     <!-- Модальные окна для истории устройства -->
     {{#each devices}}
     <div id="history-modal-{{id}}" class="modal">
-        <div class="modal-content">
-          <h4>История устройства – {{name}}</h4>
-          <ul class="collection" id="history-list-{{id}}">
-            <!-- История будет загружена динамически -->
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
-        </div>
+      <div class="modal-content">
+        <h4>История устройства – {{name}}</h4>
+        <ul class="collection" id="history-list-{{id}}">
+          <!-- История будет загружена динамически -->
+        </ul>
       </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+      </div>
+    </div>
     {{/each}}
 
-    <!-- Аналитическая панель -->
+    <!-- Аналитическая панель (базовая) -->
     <div class="row analytics-card">
       <div class="col s12 m8 offset-m2">
         <div class="card blue lighten-4">
@@ -183,199 +270,428 @@
         </div>
       </div>
     </div>
+
+    <!-- Расширенная аналитика -->
+    <div class="analytics-grid">
+      <!-- Статистика подключений -->
+      <div class="analytics-chart">
+        <div class="chart-header">
+          <h5>Статус подключений</h5>
+          <span class="metric-badge teal lighten-5">Реальное время</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="connectionChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Топ производителей -->
+      <div class="analytics-chart">
+        <h5>Топ производителей</h5>
+        <div class="chart-container">
+          <canvas id="vendorChart"></canvas>
+        </div>
+        <table class="vendor-table">
+          <thead>
+            <tr>
+              <th>Производитель</th>
+              <th>Устройства</th>
+              <th>Доля</th>
+            </tr>
+          </thead>
+          <tbody id="vendorTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Активность за 24 часа -->
+      <div class="analytics-chart">
+        <div class="chart-header">
+          <h5>Активность за 24 часа</h5>
+          <div class="time-filter">
+            <button class="btn-small" data-range="24h">24ч</button>
+            <button class="btn-small" data-range="7d">7д</button>
+            <button class="btn-small" data-range="30d">30д</button>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="activityChart"></canvas>
+        </div>
+        <div class="export-buttons">
+          <button class="btn-small" id="exportCSV">Экспорт CSV</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Распределение по подсетям -->
+    <div class="analytics-chart">
+      <h5>Распределение по подсетям</h5>
+      <div class="subnet-distribution" id="subnetDistribution">
+        <!-- Подсети будут добавлены динамически -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключаем jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-  $(document).ready(() => {
-    // Инициализация компонентов Materialize
-    $('select').formSelect();
-    $('.modal').modal();
+    $(document).ready(() => {
+      // Инициализация Materialize-компонентов
+      $('select').formSelect();
+      $('.modal').modal();
 
-    let ascendingOrder = true;
+      let ascendingOrder = true;
 
-    // Функция для преобразования IP в число для корректного сравнения
-    const ipToNum = ip => {
-      if (typeof ip !== 'string') return 0;
-      return ip.split('.').reduce((acc, octet) => acc * 256 + parseInt(octet, 10), 0);
-    };
+      // Преобразование IP в число
+      const ipToNum = ip => {
+        if (typeof ip !== 'string') return 0;
+        return ip.split('.').reduce((acc, octet) => acc * 256 + parseInt(octet, 10), 0);
+      };
 
-    // Функция для форматирования даты
-    const formatDate = date => {
-      const d = new Date(date);
-      const day = String(d.getDate()).padStart(2, '0');
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const year = d.getFullYear();
-      const hours = String(d.getHours()).padStart(2, '0');
-      const minutes = String(d.getMinutes()).padStart(2, '0');
-      const seconds = String(d.getSeconds()).padStart(2, '0');
-      return `${day}.${month} ${hours}:${minutes}:${seconds}`;
-    };
+      // Форматирование даты
+      const formatDate = date => {
+        const d = new Date(date);
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const year = d.getFullYear();
+        const hours = String(d.getHours()).padStart(2, '0');
+        const minutes = String(d.getMinutes()).padStart(2, '0');
+        const seconds = String(d.getSeconds()).padStart(2, '0');
+        return `${day}.${month} ${hours}:${minutes}:${seconds}`;
+      };
 
-    // Обновление аналитической панели
-    const updateAnalytics = () => {
-      const cards = $('.device-card');
-      const total = cards.length;
-      let connected = 0, disconnected = 0;
-      cards.each(function() {
-        const isConnected = $(this).data('connected');
-        if (isConnected === true || isConnected == "1") {
-          connected++;
-        } else {
-          disconnected++;
-        }
-      });
-      $('#total-devices').text(`Всего устройств: ${total}`);
-      $('#connected-devices').text(`Подключено: ${connected}`);
-      $('#disconnected-devices').text(`Отключено: ${disconnected}`);
-      $('#last-update').text(`Последнее обновление: ${formatDate(new Date())}`);
-    };
-
-    // Функция сортировки устройств
-    const sortDevices = (orderBy, ascending) => {
-      const cards = $('.device-card').get();
-      cards.sort((a, b) => {
-        let aVal = $(a).data(orderBy);
-        let bVal = $(b).data(orderBy);
-
-        if (orderBy === 'ip') {
-          aVal = ipToNum(aVal);
-          bVal = ipToNum(bVal);
-        } else if (orderBy === 'last_seen') {
-          aVal = new Date(aVal).getTime();
-          bVal = new Date(bVal).getTime();
-        } else {
-          // Если значение можно привести к числу, сортируем как число
-          if (!isNaN(aVal) && !isNaN(bVal)) {
-            aVal = parseFloat(aVal);
-            bVal = parseFloat(bVal);
+      // Обновление базовой аналитической панели
+      const updateAnalytics = () => {
+        const cards = $('.device-card:visible');
+        const total = cards.length;
+        let connected = 0, disconnected = 0;
+        cards.each(function() {
+          const isConnected = $(this).data('connected');
+          if (isConnected === true || isConnected == "1") {
+            connected++;
           } else {
-            aVal = aVal.toString().toLowerCase();
-            bVal = bVal.toString().toLowerCase();
+            disconnected++;
           }
-        }
-        if (aVal < bVal) return ascending ? -1 : 1;
-        if (aVal > bVal) return ascending ? 1 : -1;
-        return 0;
+        });
+        $('#total-devices').text(`Всего устройств: ${total}`);
+        $('#connected-devices').text(`Подключено: ${connected}`);
+        $('#disconnected-devices').text(`Отключено: ${disconnected}`);
+        $('#last-update').text(`Последнее обновление: ${formatDate(new Date())}`);
+      };
+
+      // Сортировка устройств
+      const sortDevices = (orderBy, ascending) => {
+        const cards = $('.device-card').get();
+        cards.sort((a, b) => {
+          let aVal = $(a).data(orderBy);
+          let bVal = $(b).data(orderBy);
+
+          if (orderBy === 'ip') {
+            aVal = ipToNum(aVal);
+            bVal = ipToNum(bVal);
+          } else if (orderBy === 'last_seen') {
+            aVal = new Date(aVal).getTime();
+            bVal = new Date(bVal).getTime();
+          } else {
+            if (!isNaN(aVal) && !isNaN(bVal)) {
+              aVal = parseFloat(aVal);
+              bVal = parseFloat(bVal);
+            } else {
+              aVal = aVal.toString().toLowerCase();
+              bVal = bVal.toString().toLowerCase();
+            }
+          }
+          if (aVal < bVal) return ascending ? -1 : 1;
+          if (aVal > bVal) return ascending ? 1 : -1;
+          return 0;
+        });
+        $('#devices-list').html(cards);
+      };
+
+      // Применение фильтров (по поиску и состоянию подключения)
+      const applyFilters = () => {
+        const searchText = $('#search').val().toLowerCase();
+        const filterState = $('input[name="device_filter"]:checked').val();
+
+        $('.device-card').each(function() {
+          const card = $(this);
+          const deviceText = card.text().toLowerCase();
+          let show = deviceText.includes(searchText);
+
+          const isConnected = card.data('connected');
+          if (filterState === 'connected') {
+            show = show && (isConnected === true || isConnected == "1");
+          } else if (filterState === 'disconnected') {
+            show = show && (isConnected === false || isConnected == "0");
+          }
+          card.toggle(show);
+        });
+
+        updateAnalytics();
+        initAnalytics();
+      };
+
+      // Обработчики событий
+      $('#sort-options').on('change', () => {
+        const orderBy = $('#sort-options').val();
+        sortDevices(orderBy, ascendingOrder);
       });
-      $('#devices-list').html(cards);
-    };
 
-    // Применение фильтров (по поиску и состоянию подключения)
-    const applyFilters = () => {
-      const searchText = $('#search').val().toLowerCase();
-      const filterState = $('input[name="device_filter"]:checked').val();
-
-      $('.device-card').each(function() {
-        const card = $(this);
-        const deviceText = card.text().toLowerCase();
-        let show = deviceText.includes(searchText);
-
-        // Фильтрация по состоянию подключения
-        const isConnected = card.data('connected');
-        if (filterState === 'connected') {
-          show = show && (isConnected === true || isConnected == "1");
-        } else if (filterState === 'disconnected') {
-          show = show && (isConnected === false || isConnected == "0");
-        }
-        card.toggle(show);
+      $('#toggle-order').on('click', function(e) {
+        e.preventDefault();
+        ascendingOrder = !ascendingOrder;
+        const orderBy = $('#sort-options').val();
+        sortDevices(orderBy, ascendingOrder);
+        $(this).text(`Порядок: ${ascendingOrder ? 'по возрастанию' : 'по убыванию'}`);
       });
+
+      $('#search').on('input', applyFilters);
+      $('input[name="device_filter"]').on('change', applyFilters);
+
+      $('#refresh-data').on('click', function(e) {
+        e.preventDefault();
+        M.toast({html: 'Данные обновлены', classes: 'teal lighten-1'});
+        applyFilters();
+      });
+
+      // Загрузка истории устройства по клику
+      $('.modal-trigger').on('click', function() {
+        const deviceId = $(this).attr('href').replace('#history-modal-', '');
+        const historyList = $(`#history-list-${deviceId}`);
+
+        $.get(`/device-history/${deviceId}`, history => {
+          historyList.empty();
+          history.forEach(event => {
+            historyList.append(`
+              <li class="collection-item">
+                <i class="material-icons left">${getEventIcon(event.event_type)}</i>
+                <span>${event.event_type}</span>
+                <span class="secondary-content">${formatDate(event.event_time)}</span>
+              </li>
+            `);
+          });
+        }).fail(() => {
+          historyList.html('<li class="collection-item red-text">Ошибка загрузки истории</li>');
+        });
+      });
+
+      // Управление устройством и копирование IP
+      $('.manage-device').on('click', function() {
+        const ip = $(this).data('ip');
+        openVNCViewer(ip);
+      });
+      $('.manage-device-ip').on('click', function() {
+        const ip = $(this).data('ip');
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(ip)
+            .then(() => {
+              M.toast({html: 'IP скопирован в буфер обмена!', classes: 'teal lighten-1 rounded'});
+            })
+            .catch(err => console.error("Ошибка копирования IP", err));
+        }
+      });
+
+      const openVNCViewer = ip => {
+        const vncUrl = `vnc://${ip}`;
+        window.location.href = vncUrl;
+        setTimeout(() => {
+          if (document.visibilityState === 'visible') {
+            M.toast({html: 'VNC-протокол не поддерживается!', classes: 'red lighten-1 rounded'});
+            if (navigator.clipboard) {
+              navigator.clipboard.writeText(ip)
+                .then(() => console.log("IP скопирован в буфер обмена:", ip))
+                .catch(err => console.error("Ошибка копирования IP", err));
+            }
+          }
+        }, 1000);
+      };
+
+      const getEventIcon = eventType => {
+        switch (eventType) {
+          case 'connected': return 'check_circle';
+          case 'disconnected': return 'cancel';
+          case 'ip_changed': return 'swap_horiz';
+          default: return 'info';
+        }
+      };
 
       updateAnalytics();
-    };
 
-    // Обработчик изменения параметров сортировки
-    $('#sort-options').on('change', () => {
-      const orderBy = $('#sort-options').val();
-      sortDevices(orderBy, ascendingOrder);
-    });
+      // Расширенная аналитика с Chart.js
+      const charts = {
+        connection: initChart('connectionChart', 'doughnut'),
+        vendor: initChart('vendorChart', 'bar'),
+        activity: initChart('activityChart', 'line')
+      };
 
-    // Обработчик переключения порядка сортировки
-    $('#toggle-order').on('click', function(e) {
-      e.preventDefault();
-      ascendingOrder = !ascendingOrder;
-      const orderBy = $('#sort-options').val();
-      sortDevices(orderBy, ascendingOrder);
-      $(this).text(`Порядок: ${ascendingOrder ? 'по возрастанию' : 'по убыванию'}`);
-    });
-
-    // Инициализация сортировки при загрузке
-    sortDevices($('#sort-options').val(), ascendingOrder);
-
-    // Обработка поиска и фильтра подключения
-    $('#search').on('input', applyFilters);
-    $('input[name="device_filter"]').on('change', applyFilters);
-
-    // Кнопка обновления аналитики (и данных, если требуется доработка AJAX)
-    $('#refresh-data').on('click', function(e) {
-      e.preventDefault();
-      // Здесь можно добавить AJAX-запрос для обновления данных
-      M.toast({html: 'Данные обновлены', classes: 'teal lighten-1'});
-      applyFilters();
-    });
-
-    // Обработка нажатия на "Подробнее" для загрузки истории устройства
-    $('.modal-trigger').on('click', function() {
-      const deviceId = $(this).attr('href').replace('#history-modal-', '');
-      const historyList = $(`#history-list-${deviceId}`);
-
-      $.get(`/device-history/${deviceId}`, history => {
-        historyList.empty();
-        history.forEach(event => {
-          historyList.append(`
-            <li class="collection-item">
-              <i class="material-icons left">${getEventIcon(event.event_type)}</i>
-              <span>${event.event_type}</span>
-              <span class="secondary-content">${formatDate(event.event_time)}</span>
-            </li>
-          `);
-        });
-      }).fail(() => {
-        historyList.html('<li class="collection-item red-text">Ошибка загрузки истории</li>');
-      });
-    });
-
-    // Обработка нажатия на "Управление" и "IP"
-    $('.manage-device').on('click', function() {
-      const ip = $(this).data('ip');
-      openVNCViewer(ip);
-    });
-    $('.manage-device-ip').on('click', function() {
-      const ip = $(this).data('ip');
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(ip)
-          .then(() => {
-            M.toast({html: 'IP скопирован в буфер обмена!', classes: 'teal lighten-1 rounded'});
-          })
-          .catch(err => console.error("Ошибка копирования IP", err));
+      function initAnalytics() {
+        updateConnectionChart();
+        updateVendorStats();
+        updateSubnetDistribution();
+        updateActivityChart();
+        updateMetrics();
       }
-    });
 
-    // Функция для открытия VNC Viewer
-    const openVNCViewer = ip => {
-      const vncUrl = `vnc://${ip}`;
-      window.location.href = vncUrl;
-      // Если VNC не открылся – уведомляем пользователя
-      setTimeout(() => {
-        if (document.visibilityState === 'visible') {
-          M.toast({html: 'VNC-протокол не поддерживается!', classes: 'red lighten-1 rounded'});
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText(ip)
-              .then(() => console.log("IP скопирован в буфер обмена:", ip))
-              .catch(err => console.error("Ошибка копирования IP", err));
+      function initChart(canvasId, type) {
+        const ctx = document.getElementById(canvasId).getContext('2d');
+        return new Chart(ctx, {
+          type: type,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom' },
+              tooltip: { enabled: true }
+            }
           }
-        }
-      }, 1000);
-    };
-
-    // Функция для получения иконки события
-    const getEventIcon = eventType => {
-      switch (eventType) {
-        case 'connected': return 'check_circle';
-        case 'disconnected': return 'cancel';
-        case 'ip_changed': return 'swap_horiz';
-        default: return 'info';
+        });
       }
-    };
 
-    // Первичное обновление аналитики
-    updateAnalytics();
-  });
+      function updateConnectionChart() {
+        const devices = getFilteredDevices();
+        const connected = devices.filter(d => d.connected).length;
+        charts.connection.data = {
+          labels: ['Подключены', 'Отключены'],
+          datasets: [{
+            data: [connected, devices.length - connected],
+            backgroundColor: ['#4CAF50', '#F44336']
+          }]
+        };
+        charts.connection.update();
+      }
+
+      function updateVendorStats() {
+        const vendors = {};
+        getFilteredDevices().forEach(device => {
+          vendors[device.vendor] = (vendors[device.vendor] || 0) + 1;
+        });
+        const sorted = Object.entries(vendors).sort((a, b) => b[1] - a[1]);
+        const topVendors = sorted.slice(0, 5);
+        charts.vendor.data = {
+          labels: topVendors.map(v => v[0]),
+          datasets: [{
+            label: 'Устройств',
+            data: topVendors.map(v => v[1]),
+            backgroundColor: '#2196F3'
+          }]
+        };
+        charts.vendor.update();
+
+        const tableBody = document.getElementById('vendorTableBody');
+        tableBody.innerHTML = sorted.map(([vendor, count]) => `
+          <tr>
+            <td>${vendor}</td>
+            <td>${count}</td>
+            <td>${((count / getFilteredDevices().length) * 100).toFixed(1)}%</td>
+          </tr>
+        `).join('');
+      }
+
+      function updateSubnetDistribution() {
+        const subnets = {};
+        getFilteredDevices().forEach(device => {
+          const subnet = device.ip.split('.').slice(0, 3).join('.') + '.0/24';
+          subnets[subnet] = (subnets[subnet] || 0) + 1;
+        });
+        const total = Object.values(subnets).reduce((a, b) => a + b, 0);
+        const container = document.getElementById('subnetDistribution');
+        container.innerHTML = Object.entries(subnets).map(([subnet, count]) => `
+          <div class="subnet-item">
+            <div class="subnet-header">${subnet}</div>
+            <div class="subnet-count">${count} устройств</div>
+            <div class="subnet-bar">
+              <div class="subnet-progress" style="width: ${(count / total) * 100}%"></div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function updateActivityChart() {
+        // Генерируем случайные данные (для примера)
+        const data = Array(24).fill().map((_, i) => ({
+          hour: i,
+          count: Math.floor(Math.random() * 50) + 10
+        }));
+        charts.activity.data = {
+          labels: data.map(d => `${d.hour}:00`),
+          datasets: [{
+            label: 'Активные подключения',
+            data: data.map(d => d.count),
+            borderColor: '#2196F3',
+            tension: 0.4,
+            fill: false
+          }]
+        };
+        charts.activity.update();
+      }
+
+      function updateMetrics() {
+        const devices = getFilteredDevices();
+        const avgActivity = devices.length > 0 
+          ? devices.reduce((sum, d) => sum + (d.activityScore || 0), 0) / devices.length 
+          : 0;
+        let avgActivityElem = document.getElementById('avg-activity');
+        if (!avgActivityElem) {
+          avgActivityElem = document.createElement('p');
+          avgActivityElem.id = 'avg-activity';
+          $('.analytics-card').first().append(avgActivityElem);
+        }
+        avgActivityElem.textContent = `Средняя активность: ${avgActivity.toFixed(1)}`;
+
+        let vendorCountElem = document.getElementById('vendor-count');
+        if (!vendorCountElem) {
+          vendorCountElem = document.createElement('p');
+          vendorCountElem.id = 'vendor-count';
+          $('.analytics-card').first().append(vendorCountElem);
+        }
+        vendorCountElem.textContent = `Количество производителей: ${new Set(devices.map(d => d.vendor)).size}`;
+      }
+
+      function getFilteredDevices() {
+        return Array.from(document.querySelectorAll('.device-card'))
+          .map(card => {
+            try {
+              return JSON.parse(card.dataset.device);
+            } catch (e) {
+              return {};
+            }
+          });
+      }
+
+      // Экспорт CSV
+      document.getElementById('exportCSV').addEventListener('click', () => {
+        const csvContent = convertToCSV(getFilteredDevices());
+        downloadFile(csvContent, 'devices.csv');
+      });
+
+      function convertToCSV(data) {
+        if (!data.length) return '';
+        const headers = Object.keys(data[0]);
+        return [
+          headers.join(','),
+          ...data.map(row => headers.map(field => JSON.stringify(row[field])).join(','))
+        ].join('\n');
+      }
+
+      function downloadFile(content, filename) {
+        const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        if (link.download !== undefined) {
+          const url = URL.createObjectURL(blob);
+          link.setAttribute('href', url);
+          link.setAttribute('download', filename);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      }
+
+      // Инициализация расширенной аналитики
+      initAnalytics();
+    });
   </script>
+</body>
+</html>
