@@ -147,19 +147,36 @@
       <h3>Управление устройствами</h3>
     </header>
     
+    <!-- Объединённая карточка аналитики сети и статуса подключений -->
+    <div class="analytics-card">
+      <div class="row">
+        <!-- Метрики -->
+        <div class="col s12 m6">
+          <h5>Аналитика сети</h5>
+          <p id="total-devices">Всего устройств: 0</p>
+          <p id="connected-devices">Подключено: 0</p>
+          <p id="disconnected-devices">Отключено: 0</p>
+          <p id="last-update">Последнее обновление: -</p>
+        </div>
+        <!-- График подключений -->
+        <div class="col s12 m6">
+          <canvas id="connectionChart" style="height: 220px;"></canvas>
+          <!-- Метка с дополнительной метрикой -->
+          <span class="metric-badge"></span>
+        </div>
+      </div>
+    </div>    
+    <br>
     <div class="analytics-card">
       <div class="row">
           
-    <!-- Поисковая строка -->
-    <div class="row search-bar">
-      <div class="input-field col s12">
-        <input type="text" id="search" placeholder="Поиск устройств...">
-      </div>
-    </div>
 
     <!-- Панель сортировки и порядка -->
     <div class="row sort-bar">
-      <div class="input-field col s12 m6">
+      <div class="input-field col s12 l4">
+        <input type="text" id="search" placeholder="Поиск устройств...">
+      </div>
+      <div class="input-field col s12 m6 l4">
         <select id="sort-options">
           <option value="name" selected>Сортировать по имени</option>
           <option value="ip">Сортировать по IP</option>
@@ -168,8 +185,8 @@
           <option value="vendor">Сортировать по производителю</option>
         </select>
       </div>
-      <div class="input-field col s12 m6">
-        <a href="#" id="toggle-order" class="btn">Порядок: по возрастанию</a>
+      <div class="input-field col s12 m6 l2">
+        <a href="#" id="toggle-order" class="btn">По возрастанию</a>
       </div>
     </div>
 
@@ -257,26 +274,6 @@
       </div>
     </div>
     {{/each}}
-
-    <!-- Объединённая карточка аналитики сети и статуса подключений -->
-    <div class="analytics-card">
-      <div class="row">
-        <!-- Метрики -->
-        <div class="col s12 m6">
-          <h5>Аналитика сети</h5>
-          <p id="total-devices">Всего устройств: 0</p>
-          <p id="connected-devices">Подключено: 0</p>
-          <p id="disconnected-devices">Отключено: 0</p>
-          <p id="last-update">Последнее обновление: -</p>
-        </div>
-        <!-- График подключений -->
-        <div class="col s12 m6">
-          <canvas id="connectionChart" style="height: 200px;"></canvas>
-          <!-- Метка с дополнительной метрикой -->
-          <span class="metric-badge"></span>
-        </div>
-      </div>
-    </div>
 
     <!-- Расширенная аналитика -->
     <div class="analytics-grid">
@@ -427,7 +424,7 @@
         ascendingOrder = !ascendingOrder;
         const orderBy = $('#sort-options').val();
         sortDevices(orderBy, ascendingOrder);
-        $(this).text(`Порядок: ${ascendingOrder ? 'по возрастанию' : 'по убыванию'}`);
+        $(this).text(`${ascendingOrder ? 'По возрастанию' : 'По убыванию'}`);
       });
 
       $('#search').on('input', applyFilters);
@@ -512,7 +509,7 @@
         updateConnectionChart();
         updateVendorStats();
         updateActivityChart(currentActivityRange);
-        updateSubnetDistribution();
+        //updateSubnetDistribution();
         updateMetrics();
       }
 
@@ -580,34 +577,47 @@
 
       // Обновление графика активности с учётом выбранного интервала
       function updateActivityChart(range) {
-        let labels = [], dataPoints = [];
-        if (range === '24h') {
-          for (let i = 0; i < 24; i++) {
-            labels.push(`${i}:00`);
-            dataPoints.push(Math.floor(Math.random() * 50) + 10);
-          }
-        } else if (range === '7d') {
-          for (let i = 0; i < 7; i++) {
-            labels.push(`День ${i+1}`);
-            dataPoints.push(Math.floor(Math.random() * 300) + 50);
-          }
-        } else if (range === '30d') {
-          for (let i = 0; i < 30; i++) {
-            labels.push(`День ${i+1}`);
-            dataPoints.push(Math.floor(Math.random() * 300) + 50);
-          }
-        }
-        charts.activity.data = {
-          labels: labels,
-          datasets: [{
-            label: 'Активные подключения',
-            data: dataPoints,
-            borderColor: '#2196F3',
-            tension: 0.4,
-            fill: false
-          }]
-        };
-        charts.activity.update();
+       
+        if (range == '24h'){
+            range = 24
+        } else if (range === '7d'){
+            range = 24 * 7
+        } else {
+            range = 24 * 30
+        } 
+        $.get(`/device-activ/${range}`, activ => {
+            let labels = [], dataPointsConn = [], dataPointsDisConn = [];
+            console.log(activ)
+            activ.forEach(item => {
+             labels.push(`${item.time_interval}`)
+             dataPointsConn.push(parseInt(item.connects))
+             dataPointsDisConn.push(parseInt(item.disconnects))
+            });
+            
+            
+            charts.activity.data = {
+              labels: labels,
+              datasets: [{
+                label: 'Активные подключения',
+                data: dataPointsConn,
+                borderColor: '#2196F3',
+                tension: 0.4,
+                fill: false
+              },{
+                label: 'Отключения',
+                data: dataPointsDisConn,
+                borderColor: '#f33d21',
+                tension: 0.4,
+                fill: false
+              }]
+            };
+            charts.activity.update();
+        
+        }).fail(() => {
+            alert(range)
+
+        })
+        
       }
 
       // Обработка клика по кнопкам выбора интервала активности
@@ -618,26 +628,6 @@
         updateActivityChart(currentActivityRange);
       });
 
-      // Обновление распределения по подсетям
-      function updateSubnetDistribution() {
-        const subnets = {};
-        getFilteredDevices().forEach(device => {
-          const subnet = device.ip.split('.').slice(0, 3).join('.') + '.0/24';
-          subnets[subnet] = (subnets[subnet] || 0) + 1;
-        });
-        const total = Object.values(subnets).reduce((a, b) => a + b, 0);
-        $('#subnetDistribution').html(
-          Object.entries(subnets).map(([subnet, count]) => `
-            <div class="subnet-item">
-              <div class="subnet-header">${subnet}</div>
-              <div class="subnet-count">${count} устройств</div>
-              <div class="subnet-bar">
-                <div class="subnet-progress" style="width: ${(count / total) * 100}%"></div>
-              </div>
-            </div>
-          `).join('')
-        );
-      }
 
       // Обновление дополнительных метрик (например, средней активности)
       function updateMetrics() {
@@ -646,7 +636,7 @@
           ? devices.reduce((sum, d) => sum + (d.activityScore || 0), 0) / devices.length 
           : 0;
         const $badge = $('.metric-badge');
-        $badge.text(`Средняя активность: ${avgActivity.toFixed(1)}`);
+       // $badge.text(`Средняя активность: ${avgActivity.toFixed(1)}`);
       }
 
       // Получение данных устройств из data-атрибутов карточек

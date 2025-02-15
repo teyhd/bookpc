@@ -17,6 +17,21 @@ let sets = {
 console.dir(sets)
 const pool = mysql.createPool(sets).promise()
 
+export async function getActiv(hours) {
+    const query = `
+        SELECT 
+    DATE_FORMAT(event_time, '%Y-%m-%d %H:00') AS time_interval,
+    SUM(CASE WHEN event_type = 'connected' THEN 1 ELSE 0 END) AS connects,
+    SUM(CASE WHEN event_type = 'disconnected' THEN 1 ELSE 0 END) AS disconnects
+    FROM device_history
+    WHERE event_time > NOW() - INTERVAL ${hours} HOUR -- По умолчанию 24 часа
+    GROUP BY time_interval
+    ORDER BY time_interval;
+    `;
+    const[rows, fields] = await pool.query(query);
+    return rows;
+}
+
 export async function getDevicesStory(deviceId) {
     const query = `
         SELECT event_type, event_time, old_ip, new_ip

@@ -19,7 +19,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import axios from 'axios';
 import urlencode from 'urlencode';
-import {getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {getActiv, getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -182,7 +182,15 @@ app.get('/story',async (req,res)=>{
         auth: req.session.userid
     });
 })
-
+app.get('/device-activ/:hour', async (req, res) => {
+    try {
+        const activ = await getActiv(req.params.hour);
+        res.json(activ);
+    } catch (error) {
+        console.error('Ошибка при получении activ устройства:', error);
+        res.status(500).json({ error: 'Ошибка сервера' });
+    }
+});
 app.get('/device-history/:deviceId', async (req, res) => {
     try {
         const history = await getDevicesStory(req.params.deviceId);
