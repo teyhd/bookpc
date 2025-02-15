@@ -19,13 +19,23 @@ import path from 'path'
 import fs from 'fs-extra'
 import axios from 'axios';
 import urlencode from 'urlencode';
-import {setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
 defaultLayout: 'main',
 extname: 'hbs',
 helpers: {
+    formatDate: function(date) {
+        const d = new Date(date);
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const year = d.getFullYear();
+        const hours = String(d.getHours()).padStart(2, '0');
+        const minutes = String(d.getMinutes()).padStart(2, '0');
+        const seconds = String(d.getSeconds()).padStart(2, '0');
+        return `${day}.${month} ${hours}:${minutes}:${seconds}`; // Форматируем дату
+    },
     OK: function(){
     i_count = 1
     },
@@ -92,7 +102,7 @@ app.use(fileUpload({
 app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
 
-    if (page=='/data' || page=='/ctrlqw' || page=='/lapchgqw' || page=='/addmat') {
+    if (page=='/data' || page=='/ctrlqw' || page=='/lapchgqw' || page=='/addmat' || page=='/device-history'  ) {
         next();
         return 1
     }
@@ -169,6 +179,48 @@ app.get('/story',async (req,res)=>{
         auth: req.session.userid
     });
 })
+
+app.get('/device-history/:deviceId', async (req, res) => {
+    try {
+        const history = await getDevicesStory(req.params.deviceId);
+
+        res.json(history);
+    } catch (error) {
+        console.error('Ошибка при получении истории устройства:', error);
+        res.status(500).json({ error: 'Ошибка сервера' });
+    }
+});
+
+app.get('/devs', async (req, res) => {
+    try {
+        // Получаем данные об устройствах из базы данных
+        const devices = await getDevicesInfo(); // Предположим, что эта функция возвращает массив устройств
+
+        // Опционально: добавляем пагинацию
+        const page = parseInt(req.query.page) || 1; // Текущая страница (из query-параметра)
+        const limit = 500; // Количество устройств на странице
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+
+        const paginatedDevices = devices.slice(startIndex, endIndex); // Устройства для текущей страницы
+        const totalPages = Math.ceil(devices.length / limit); // Общее количество страниц
+
+        // Рендерим страницу с данными
+        res.render('devs', {
+            title: 'Управление устройствами',
+            devices: devices, // Передаем устройства для текущей страницы
+            totalDevices: devices.length, // Общее количество устройств
+            currentPage: page, // Текущая страница
+            totalPages: totalPages, // Общее количество страниц
+            meid: req.session.userid, // ID пользователя из сессии
+            name: req.session.name, // Имя пользователя из сессии
+            auth: req.session.userid // Флаг авторизации
+        });
+    } catch (error) {
+        console.error('Ошибка при получении данных об устройствах:', error);
+        res.status(500).send('Ошибка сервера');
+    }
+});
 
 app.get('/ctrl',async (req,res)=>{
     let laps = await get_info()

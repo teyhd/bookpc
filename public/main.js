@@ -45,7 +45,7 @@
     }
 
     function reload(p){
-      if (p) setTimeout(reload, 50);
+      if (p) setTimeout(reload, 950);
       else location.reload();
     }
     

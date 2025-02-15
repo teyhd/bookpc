@@ -1,0 +1,276 @@
+<style>
+  .container {
+    width: 95%;
+    margin-top: 20px;
+  }
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  .sort-bar {
+    margin-bottom: 20px;
+  }
+  .device-card {
+    margin-bottom: 20px;
+  }
+  .device-card .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  .device-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .device-card .collection {
+    border: none;
+    margin: 0;
+  }
+  .device-card .collection-item {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .device-card .card-action {
+    border-top: 1px solid #eee;
+    padding: 10px 20px;
+  }
+  .device-card .card-action a {
+    margin-right: 10px;
+  }
+  .modal .collection-item {
+    border: none;
+    padding: 8px 0;
+  }
+</style>
+
+<div class="container">
+  <h4 class="center-align">Управление устройствами</h4>
+
+  <!-- Поисковая строка -->
+  <div class="row search-bar">
+    <div class="input-field col s12">
+      <input type="text" id="search" placeholder="Поиск устройств...">
+    </div>
+  </div>
+
+  <!-- Панель сортировки -->
+  <div class="row sort-bar">
+    <div class="input-field col s12 m6">
+      <select id="sort-options">
+        <option value="name" selected>Сортировать по имени</option>
+        <option value="ip">Сортировать по IP</option>
+        <option value="last_seen">Сортировать по дате</option>
+      </select>
+    </div>
+    <div class="input-field col s12 m6">
+      <a href="#" id="toggle-order" class="btn">Порядок: по возрастанию</a>
+    </div>
+  </div>
+
+  <!-- Список устройств -->
+  <div class="row" id="devices-list">
+    {{#each devices}}
+    <div class="col s12 m6 l4 device-card" data-name="{{name}}" data-ip="{{ip}}" data-last_seen="{{last_seen}}">
+      <div class="card hoverable z-depth-3">
+        <div class="card-content">
+          <!-- Заголовок карточки -->
+           <span class="right card-title">{{formatDate last_seen}}</span>
+          <span class="card-title">{{name}}</span>
+         
+          <!-- Информация об устройстве -->
+          <ul class="collection">
+          <!--    <li class="collection-item">
+              <i class="material-icons left">desktop_windows</i>
+              <span id="name_{{id}}">{{name}}</span>
+            </li>-->
+
+            <li class="collection-item">
+              <i class="material-icons left">power_settings_new</i>
+              <span id="connected_{{id}}">
+                {{#if connected}}
+                  <span class="green-text"><b>Подключен</b></span>
+                {{else}}
+                  <span class="red-text"><b>Отключен</b></span>
+                {{/if}}
+              </span>
+            </li>
+            <li class="collection-item">
+              <i class="material-icons left">language</i>
+              <span id="ip_{{id}}">{{ip}}</span>
+            </li>
+            <li class="collection-item">
+              <i class="material-icons left">assignment</i>
+              <span id="mac{{id}}">{{mac}}</span>
+            </li> 
+            <li class="collection-item">
+              <i class="material-icons left">perm_device_information</i>
+              <span id="vendor_{{id}}">{{vendor}}</span>
+            </li> 
+          </ul>
+        </div>
+        <!-- Действия с устройством -->
+        <div class="card-action">
+          <a href="#history-modal-{{id}}" class="blue-text modal-trigger">Подробнее</a>
+          <a href="javascript:void(0)" class="red-text manage-device-ip" data-ip="{{ip}}">IP</a>
+          <a href="javascript:void(0)" class="green-text manage-device" data-ip="{{ip}}">Управление</a>
+        </div>
+      </div>
+    </div>
+    <!-- Модальное окно для истории устройства -->
+    
+    {{/each}}
+  </div>
+  {{#each devices}}
+  <div id="history-modal-{{id}}" class="modal">
+      <div class="modal-content">
+        <h4>История устройства – {{name}}</h4>
+        <ul class="collection" id="history-list-{{id}}">
+          <!-- История будет загружена динамически -->
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+
+<script>
+$(document).ready(function() {
+  // Инициализация Materialize Select и Modal
+ // $('select').formSelect();
+ // $('.modal').modal();
+
+  let ascendingOrder = true;
+
+  // Функция для форматирования даты
+  function formatDate(date) {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    const hours = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    const seconds = String(d.getSeconds()).padStart(2, '0');
+    return `${day}.${month} ${hours}:${minutes}:${seconds}`;
+  }
+
+  // Функция сортировки устройств
+  function sortDevices(orderBy, ascending) {
+    let cards = $('.device-card').get();
+    cards.sort(function(a, b) {
+      let aVal = $(a).data(orderBy);
+      let bVal = $(b).data(orderBy);
+      if (orderBy === 'last_seen') {
+        aVal = new Date(aVal).getTime();
+        bVal = new Date(bVal).getTime();
+      } else {
+        aVal = aVal.toString().toLowerCase();
+        bVal = bVal.toString().toLowerCase();
+      }
+      if (aVal < bVal) return ascending ? -1 : 1;
+      if (aVal > bVal) return ascending ? 1 : -1;
+      return 0;
+    });
+    $('#devices-list').html(cards);
+  }
+
+  // Обработчик изменения параметра сортировки
+  $('#sort-options').on('change', function() {
+    const orderBy = $(this).val();
+    sortDevices(orderBy, ascendingOrder);
+  });
+
+  // Обработчик переключения порядка сортировки
+  $('#toggle-order').on('click', function(e) {
+    e.preventDefault();
+    ascendingOrder = !ascendingOrder;
+    const orderBy = $('#sort-options').val();
+    sortDevices(orderBy, ascendingOrder);
+    $(this).text(`Порядок: ${ascendingOrder ? 'по возрастанию' : 'по убыванию'}`);
+  });
+
+  // Инициализация сортировки при загрузке
+  sortDevices($('#sort-options').val(), ascendingOrder);
+
+  // Инициализация поиска
+  $('#search').on('input', function() {
+    const searchText = $(this).val().toLowerCase();
+    $('.device-card').each(function() {
+      const deviceText = $(this).text().toLowerCase();
+      $(this).toggle(deviceText.includes(searchText));
+    });
+  });
+
+  // Обработка нажатия на "Подробнее"
+  $('.modal-trigger').on('click', function() {
+    const deviceId = $(this).attr('href').replace('#history-modal-', '');
+    const historyList = $(`#history-list-${deviceId}`);
+
+    $.get(`/device-history/${deviceId}`, function(history) {
+      historyList.empty();
+      history.forEach(event => {
+        historyList.append(`
+          <li class="collection-item">
+            <i class="material-icons left">${getEventIcon(event.event_type)}</i>
+            <span>${event.event_type}</span>
+            <span class="secondary-content">${formatDate(event.event_time)}</span>
+          </li>
+        `);
+      });
+    }).fail(function() {
+      historyList.html('<li class="collection-item red-text">Ошибка загрузки истории</li>');
+    });
+  });
+
+  // Обработка нажатия на "Управление"
+  $('.manage-device').on('click', function() {
+    const ip = $(this).data('ip');
+    openVNCViewer(ip);
+  });
+  $('.manage-device-ip').on('click', function() {
+    const ip = $(this).data('ip');
+    M.toast({html: 'IP скопирован в буфер обмена!', classes: '#26a69a teal lighten-1 rounded'});
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(ip).then(() => {
+                    console.log("Ссылка скопирована в буфер обмена:", ip);
+                }).catch(err => {
+                    console.error("Ошибка копирования в буфер обмена", err);
+                });
+            } 
+  });
+// Функция для открытия VNC Viewer
+function openVNCViewer(ip) {
+    const vncUrl = `vnc://${ip}`;
+
+    // Открываем ссылку через window.location
+    window.location.href = vncUrl;
+
+    // Ждем небольшую задержку и проверяем, была ли ошибка открытия
+    setTimeout(() => {
+        if (document.visibilityState === 'visible') {
+             M.toast({html: 'VNC-протокол не поддерживается!', classes: '#ef5350 red lighten-1 rounded'});
+             M.toast({html: 'IP скопирован в буфер обмена', classes: '#ef5350 red lighten-2 rounded'});
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(ip).then(() => {
+                    console.log("Ссылка скопирована в буфер обмена:", ip);
+                }).catch(err => {
+                    console.error("Ошибка копирования в буфер обмена", err);
+                });
+            } else alert(15)
+        }
+    }, 1000);
+}
+
+  // Функция для получения иконки события
+  function getEventIcon(eventType) {
+    switch (eventType) {
+      case 'connected': return 'check_circle';
+      case 'disconnected': return 'cancel';
+      case 'ip_changed': return 'swap_horiz';
+      default: return 'info';
+    }
+  }
+});
+</script>

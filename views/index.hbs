@@ -17,7 +17,7 @@
             <div id="num{{id}}" class="pcard input-field col s12 m6 l3 xl3">
                 <table class="centered">
                 <tr>
-                    <th class="center" >Ноутбук №{{lapid}}</th>  
+                    <th class="center">Ноутбук №{{lapid}}</th>  
                     {{#if_eq timestop 0}} 
                         {{#if_eq me 1}} 
                              <th class="center #f06292 pink lighten-2" id="bis1">{{pass}}</th>
@@ -77,7 +77,7 @@
             <label for="new_text">Нужно что-то чинить, исправлять</label>
       </div>
         <input hidden type="text" name="laps" id="lapidr">
-      <a id="retulbtn" class="modal-close btn mbtn">Вернул на место</a>
+      <button id="retulbtn" class="modal-close btn mbtn">Вернул на место</button>
     </div>
   </div>
 
@@ -170,7 +170,7 @@ $(document).click(function(){ $('li[id^="select-options"]').on('touchend', funct
             set()
             setTimeout(set, 3000);
         function reload(p){
-            if (p) setTimeout(reload, 350);
+            if (p) setTimeout(reload, 3350);
             else location.reload();
             }
 </script>

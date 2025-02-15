@@ -527,3 +527,253 @@
  lapid:7
  16:11:49 / Система 1
  16:13:56 / Система 1
+ 00:02:54 / undefined undefined
+ 00:29:14 / undefined undefined
+ 00:29:21 /sdk undefined undefined
+ 00:29:21 /nmaplowercheck1736458161 undefined undefined
+ 00:29:21 / undefined undefined
+ 00:29:21 /evox/about undefined undefined
+ 00:29:21 /HNAP1 undefined undefined
+ 00:29:21 /auth undefined undefined
+ 00:29:22 / undefined undefined
+ 00:29:23 / undefined undefined
+ 00:36:26 / undefined undefined
+ 00:36:38 / undefined undefined
+ 00:36:38 /auth undefined undefined
+ 02:03:19 /robots.txt undefined 52.167.144.54
+ 02:03:19 /auth undefined 52.167.144.54
+ 02:03:26 /atom.xml undefined 157.55.39.15
+ 02:03:27 /auth undefined 157.55.39.15
+ 02:03:28 /atom.xml undefined 157.55.39.15
+ 02:03:28 /auth undefined 157.55.39.15
+ 02:03:29 /sitemaps.xml undefined 157.55.39.15
+ 02:03:34 /sitemap.txt undefined 40.77.167.71
+ 02:03:35 /auth undefined 40.77.167.71
+ 02:03:35 /sitemap.txt undefined 40.77.167.71
+ 02:03:36 /auth undefined 40.77.167.71
+ 02:03:38 /auth undefined 157.55.39.15
+ 02:03:41 /sitemaps.xml undefined 157.55.39.15
+ 02:03:41 /auth undefined 157.55.39.15
+ 02:13:09 / undefined undefined
+ 02:19:16 / undefined undefined
+ 03:22:26 / undefined undefined
+ 03:27:05 / undefined undefined
+ 06:49:54 / undefined undefined
+ 06:52:11 / undefined undefined
+ 07:33:20 / undefined undefined
+ 08:12:14 / undefined undefined
+ 08:17:10 / undefined undefined
+ 08:31:45 / undefined undefined
+ 08:55:06 / undefined 77.232.185.34
+ 08:55:06 /auth undefined 77.232.185.34
+ 08:55:15 /auth undefined 77.232.185.34 
+ login:roma 
+ pass:Fr22264802024ujlf!
+ 08:55:15 
+ id:54 
+ login:roma 
+ pass:Fr22264802024ujlf! 
+ name:Рома Кудрин 
+ subj:Робототехник 
+ role:1
+ 08:55:15 /auth Рома Кудрин 77.232.185.34
+ 08:55:15 / Рома Кудрин 77.232.185.34
+ 08:55:16 /rtake Рома Кудрин 77.232.185.34 
+ kab:2
+ 08:55:16 / Рома Кудрин 77.232.185.34
+ 08:55:17 / Рома Кудрин 77.232.185.34
+ 09:07:37 / undefined 77.232.185.34
+ 09:07:37 /auth undefined 77.232.185.34
+ 09:07:58 / undefined 77.232.185.34
+ 09:07:58 /auth undefined 77.232.185.34
+ 09:08:12 /auth undefined 77.232.185.34 
+ login:m.unikova 
+ pass:985176
+ 09:08:12 
+ id:64 
+ login:m.unikova 
+ pass:985176 
+ name:Юникова Марина 
+ subj:Наставник 
+ role:0
+ 09:08:12 /auth Юникова Марина 77.232.185.34
+ 09:08:12 / Юникова Марина 77.232.185.34
+ 09:08:31 /take Юникова Марина 77.232.185.34 
+ lapid:21 
+ kab:2
+ 09:08:32 / Юникова Марина 77.232.185.34
+ 09:30:05 / undefined 77.232.185.34
+ 09:30:05 /auth undefined 77.232.185.34
+ 09:30:16 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 09:30:16 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В.  
+ subj:Русский язык 
+ role:0
+ 09:30:16 /auth Мёд С.В.  77.232.185.34
+ 09:30:17 / Мёд С.В.  77.232.185.34
+ 09:30:31 /take Мёд С.В.  77.232.185.34 
+ lapid:23 
+ kab:17
+ 09:30:32 / Мёд С.В.  77.232.185.34
+ 09:44:34 / Елисеева З.В. 176.59.3.87
+ 09:44:42 /take Елисеева З.В. 176.59.3.87 
+ lapid:24 
+ kab:14
+ 09:44:42 / Елисеева З.В. 176.59.3.87
+ 09:49:13 / Рома Кудрин 77.232.185.34
+ 09:49:21 / Рома Кудрин 77.232.185.34
+ 09:49:28 / Рома Кудрин 77.232.185.34
+ 09:50:27 / Юникова Марина 77.232.185.34
+ 09:53:06 / Рома Кудрин 77.232.185.34
+ 11:06:12 /9pAr undefined undefined
+ 11:06:13 /auth undefined undefined
+ 11:06:13 /Dx8i undefined undefined
+ 11:06:13 /auth undefined undefined
+ 11:06:14 /aab8 undefined undefined
+ 11:06:14 /auth undefined undefined
+ 11:06:14 /aab9 undefined undefined
+ 11:06:15 /auth undefined undefined
+ 11:42:39 / undefined undefined
+ 12:05:54 / undefined 77.232.185.34
+ 12:05:54 /auth undefined 77.232.185.34
+ 12:10:42 /retlap undefined 176.59.7.10 
+ komm:Замечаний нет 
+ lapid:24
+ 12:10:42 /auth undefined 176.59.7.10
+ 12:10:42 / undefined 176.59.7.10
+ 12:10:42 /auth undefined 176.59.7.10
+ 12:10:47 /auth undefined 176.59.7.10 
+ login:teacher5 
+ pass:bde3QopB
+ 12:10:47 
+ id:5 
+ login:teacher5 
+ pass:bde3QopB 
+ name:Елисеева З.В. 
+ subj:Математика 
+ role:0
+ 12:10:47 /auth Елисеева З.В. 176.59.7.10
+ 12:10:47 / Елисеева З.В. 176.59.7.10
+ 12:10:50 /retlap Елисеева З.В. 176.59.7.10 
+ komm:Замечаний нет 
+ lapid:24
+ 12:10:50 / Елисеева З.В. 176.59.7.10
+ 12:13:41 / undefined undefined
+ 12:15:38 / undefined undefined
+ 12:48:17 / undefined 205.210.31.195
+ 13:12:47 / undefined 77.232.185.34
+ 13:12:47 /auth undefined 77.232.185.34
+ 13:12:53 /auth undefined 77.232.185.34 
+ login:teacher32 
+ pass:nT9cFbdo
+ 13:12:53 
+ id:32 
+ login:teacher32 
+ pass:nT9cFbdo 
+ name:Наставнический аккаунт  
+ subj:Наставничество  
+ role:0
+ 13:12:53 /auth Наставнический аккаунт  77.232.185.34
+ 13:12:53 / Наставнический аккаунт  77.232.185.34
+ 13:12:53 /apple-touch-icon-precomposed.png undefined 77.232.185.34
+ 13:12:53 /auth undefined 77.232.185.34
+ 13:12:53 /apple-touch-icon.png undefined 77.232.185.34
+ 13:12:53 /auth undefined 77.232.185.34
+ 13:13:01 /take Наставнический аккаунт  77.232.185.34 
+ lapid:22 
+ kab:1
+ 13:13:02 / Наставнический аккаунт  77.232.185.34
+ 13:19:37 / undefined 77.232.185.34
+ 13:19:37 /auth undefined 77.232.185.34
+ 13:19:46 /auth undefined 77.232.185.34 
+ login:adm 
+ pass:adms
+ 13:19:46 
+ id:43 
+ login:adm 
+ pass:adms 
+ name:Система 
+ subj:1 
+ role:1
+ 13:19:46 /auth Система 77.232.185.34
+ 13:19:46 / Система 77.232.185.34
+ 13:29:11 / undefined undefined
+ 13:57:50 / Наставнический аккаунт  77.232.185.34
+ 13:58:44 /retlap Наставнический аккаунт  77.232.185.34 
+ komm:лежит в 3 кабинете ждет Влада для сноса аренды пк 
+ lapid:22
+ 13:58:44 / Наставнический аккаунт  77.232.185.34
+ 14:07:00 / undefined undefined
+ 14:28:11 / undefined 77.232.185.34
+ 14:28:11 /auth undefined 77.232.185.34
+ 14:28:41 /auth undefined 77.232.185.34 
+ login:adm 
+ pass:adms
+ 14:28:41 
+ id:43 
+ login:adm 
+ pass:adms 
+ name:Система 
+ subj:1 
+ role:1
+ 14:28:41 /auth Система 77.232.185.34
+ 14:28:41 / Система 77.232.185.34
+ 14:28:47 Система вышел из системы
+ 14:28:47 /logout 77.232.185.34
+ 14:28:47 / undefined 77.232.185.34
+ 14:28:48 /auth undefined 77.232.185.34
+ 14:29:14 /robots.txt undefined 5.255.231.158
+ 14:29:14 /auth undefined 5.255.231.158
+ 14:29:14 / undefined 87.250.224.50
+ 14:29:15 /auth undefined 5.255.231.99
+ 14:46:13 / undefined undefined
+ 15:36:13 / undefined undefined
+ 15:50:50 / Рома Кудрин 77.232.185.34
+ 16:30:28 / Рома Кудрин 77.232.185.34
+ 16:30:30 / Рома Кудрин 77.232.185.34
+ 16:31:17 / Рома Кудрин 77.232.185.34
+ 16:58:12 / undefined undefined
+ 17:36:28 / undefined undefined
+ 18:41:49 / undefined undefined
+ 19:06:07 / undefined undefined
+ 20:44:52 / undefined undefined
+ 20:50:31 / undefined undefined
+ 20:57:58 / undefined 198.235.24.32
+ 22:02:11 /auth undefined 176.59.23.53
+ 22:02:12 /apple-touch-icon-120x120-precomposed.png undefined 176.59.23.53
+ 22:02:13 /auth undefined 176.59.23.53
+ 22:02:13 /apple-touch-icon-120x120.png undefined 176.59.23.53
+ 22:02:13 /auth undefined 176.59.23.53
+ 22:02:13 /apple-touch-icon-precomposed.png undefined 176.59.23.53
+ 22:02:13 /auth undefined 176.59.23.53
+ 22:02:13 /apple-touch-icon.png undefined 176.59.23.53
+ 22:02:13 /auth undefined 176.59.23.53
+ 22:03:01 / undefined undefined
+ 22:03:01 /auth undefined undefined
+ 22:08:47 / undefined undefined
+ 22:08:47 /auth undefined undefined
+ 22:13:38 / undefined undefined
+ 22:33:18 / undefined undefined
+ 22:34:57 / undefined 185.97.201.95
+ 22:34:58 /auth undefined 185.97.201.95
+ 22:35:23 / undefined 185.97.201.95
+ 22:35:23 /auth undefined 185.97.201.95
+ 22:35:36 /auth undefined 185.97.201.95 
+ login:m.unikova 
+ pass:985176
+ 22:35:36 
+ id:64 
+ login:m.unikova 
+ pass:985176 
+ name:Юникова Марина 
+ subj:Наставник 
+ role:0
+ 22:35:36 /auth Юникова Марина 185.97.201.95
+ 22:35:36 / Юникова Марина 185.97.201.95
+ 22:57:12 / undefined undefined
+ 23:22:29 / undefined undefined

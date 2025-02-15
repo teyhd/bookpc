@@ -1,7 +1,7 @@
 import mysql from 'mysql2'
 let sets = {
     host: process.env.MDBHOST,
-    host: 'vr.local',
+    host: '172.24.0.227',
     user: 'teyhd',
     password : '258000',
     database: 'laptop',
@@ -16,6 +16,25 @@ let sets = {
 }
 console.dir(sets)
 const pool = mysql.createPool(sets).promise()
+
+export async function getDevicesStory(deviceId) {
+    const query = `
+        SELECT event_type, event_time, old_ip, new_ip
+        FROM device_history
+        WHERE device_id = ${deviceId}
+        ORDER BY event_time DESC
+    `;
+    const[rows, fields] = await pool.query(query);
+    return rows;
+}
+
+export async function getDevicesInfo() {
+    const query = `
+        SELECT * FROM devices ORDER BY last_seen DESC;
+    `;
+    const[rows, fields] = await pool.query(query);
+    return rows;
+}
 
 export async function auth_user(login, pass){
     const qer = `SELECT * from users WHERE login='${login}' AND pass='${pass}'`
