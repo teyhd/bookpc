@@ -9,9 +9,9 @@
 <div class="container"> 
     <div class="row">
         <h5>Учет использования</h5>
-         {{#if_eq role 1}} 
+         {{#if_more role 1}} 
             <a id="romabtn" class="modal-close btn mbtn">Взять все ноутбки 2-го кабинета</a>
-         {{/if_eq}} 
+         {{/if_more}} 
         <p>{{name}}</p>
         {{#each pc}}    
             <div id="num{{id}}" class="pcard input-field col s12 m6 l3 xl3">

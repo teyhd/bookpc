@@ -1,7 +1,11 @@
 <li class="divider"></li>
 <li><a href="/">Главная страница<i class="material-icons">exit_to_app</i></a></li>
 <li><a href="/story">История<i class="material-icons">info</i></a></li>
-
+{{#if_more role 2}} 
+    <li class="divider"></li>
+    <li><a href="/ctrl">Управление ПК<i class="material-icons">devices</i></a></li>
+    <li><a href="/devs">Локальная сеть<i class="material-icons">wifi</i></a></li>
+{{/if_more}} 
 <!--
 <li><a href="/print">Отчет<i class="material-icons">local_printshop</i></a></li>
 <li><a href="/allstat">Общая статистика<i class="material-icons">info</i></a></li>

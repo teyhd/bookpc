@@ -179,7 +179,8 @@ app.get('/story',async (req,res)=>{
         meid: req.session.userid,
         name:req.session.name,
         laps: laps,
-        auth: req.session.userid
+        auth: req.session.userid,
+        role: req.session.role
     });
 })
 app.get('/device-activ/:hour', async (req, res) => {
@@ -212,8 +213,7 @@ app.get('/devs', async (req, res) => {
             title: 'Управление устройствами',
             devices: devices, // Передаем устройства для текущей страницы
             totalDevices: devices.length, // Общее количество устройств
-            meid: req.session.userid, // ID пользователя из сессии
-            name: req.session.name, // Имя пользователя из сессии
+            role: req.session.role,
             auth: req.session.userid // Флаг авторизации
         });
     } catch (error) {
@@ -234,6 +234,7 @@ app.get('/ctrl',async (req,res)=>{
         meid: req.session.userid,
         name:req.session.name,
         laps: laps, 
+         role: req.session.role,
         auth: req.session.userid
     });
 })
