@@ -1,0 +1,109 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2025-02-23 04:21 MSK
+Nmap scan report for 172.24.0.1
+Host is up (0.00023s latency).
+MAC Address: 4C:5E:0C:59:86:69 (Routerboard.com)
+Nmap scan report for 172.24.0.2
+Host is up (0.000096s latency).
+MAC Address: 5C:B9:01:D9:15:94 (Hewlett Packard)
+Nmap scan report for 172.24.0.5
+Host is up (0.00050s latency).
+MAC Address: F0:9F:C2:C8:B4:C5 (Ubiquiti Networks)
+Nmap scan report for 172.24.0.6
+Host is up (0.00097s latency).
+MAC Address: F0:9F:C2:A6:43:9A (Ubiquiti Networks)
+Nmap scan report for 172.24.0.8
+Host is up (0.00017s latency).
+MAC Address: 78:8A:20:46:75:FB (Ubiquiti Networks)
+Nmap scan report for 172.24.0.13
+Host is up (0.00087s latency).
+MAC Address: D8:EC:5E:56:B8:B4 (Unknown)
+Nmap scan report for 172.24.0.14
+Host is up (0.011s latency).
+MAC Address: 2C:DD:5F:2D:85:A8 (Unknown)
+Nmap scan report for 172.24.0.17
+Host is up (0.013s latency).
+MAC Address: 2C:DD:5F:2D:12:84 (Unknown)
+Nmap scan report for 172.24.0.18
+Host is up (0.013s latency).
+MAC Address: 2C:DD:5F:2B:BB:40 (Unknown)
+Nmap scan report for 172.24.0.19
+Host is up (0.015s latency).
+MAC Address: D8:D6:68:91:28:12 (Unknown)
+Nmap scan report for 172.24.0.31
+Host is up (0.31s latency).
+MAC Address: B2:05:3A:65:B2:56 (Unknown)
+Nmap scan report for 172.24.0.35
+Host is up (0.35s latency).
+MAC Address: C0:95:6D:25:7D:7F (Unknown)
+Nmap scan report for 172.24.0.46
+Host is up (0.00045s latency).
+MAC Address: 60:A4:B7:F1:BA:F6 (Unknown)
+Nmap scan report for 172.24.0.49
+Host is up (0.16s latency).
+MAC Address: 92:45:C2:86:CB:B4 (Unknown)
+Nmap scan report for 172.24.0.56
+Host is up (0.00044s latency).
+MAC Address: 74:AC:B9:51:0B:19 (Ubiquiti Networks)
+Nmap scan report for 172.24.0.81
+Host is up (0.076s latency).
+MAC Address: C0:B5:D7:3E:9E:D4 (Chongqing Fugui Electronics)
+Nmap scan report for 172.24.0.84
+Host is up (0.00039s latency).
+MAC Address: 68:D7:9A:47:46:01 (Ubiquiti Networks)
+Nmap scan report for 172.24.0.85
+Host is up (0.00044s latency).
+MAC Address: 68:D7:9A:47:44:91 (Ubiquiti Networks)
+Nmap scan report for 172.24.0.88
+Host is up (0.00025s latency).
+MAC Address: C8:5A:CF:64:88:51 (Unknown)
+Nmap scan report for 172.24.0.100
+Host is up (0.0015s latency).
+MAC Address: F8:F0:82:77:2D:D4 (NAG)
+Nmap scan report for 172.24.0.105
+Host is up (0.00031s latency).
+MAC Address: 74:FE:CE:91:3C:64 (Unknown)
+Nmap scan report for 172.24.0.130
+Host is up (0.060s latency).
+MAC Address: 2E:BC:8D:E0:22:5B (Unknown)
+Nmap scan report for 172.24.0.131
+Host is up (0.00017s latency).
+MAC Address: E4:8D:8C:E9:89:93 (Routerboard.com)
+Nmap scan report for 172.24.0.147
+Host is up (0.31s latency).
+MAC Address: B0:52:16:42:FA:AD (Hon Hai Precision Ind.)
+Nmap scan report for 172.24.0.166
+Host is up (0.0031s latency).
+MAC Address: 2C:DD:5F:2D:11:4E (Unknown)
+Nmap scan report for 172.24.0.167
+Host is up (0.010s latency).
+MAC Address: 2C:DD:5F:2D:05:F6 (Unknown)
+Nmap scan report for 172.24.0.188
+Host is up (0.0070s latency).
+MAC Address: 00:22:56:A9:F4:45 (Cisco Systems)
+Nmap scan report for 172.24.0.199
+Host is up (0.0040s latency).
+MAC Address: 50:57:9C:49:AF:90 (Seiko Epson)
+Nmap scan report for 172.24.0.201
+Host is up (0.0014s latency).
+MAC Address: A8:93:4A:B8:0D:8D (Unknown)
+Nmap scan report for 172.24.0.225
+Host is up (0.000047s latency).
+MAC Address: 5C:B9:01:D9:15:94 (Hewlett Packard)
+Nmap scan report for 172.24.0.227
+Host is up (0.000044s latency).
+MAC Address: BC:24:11:D6:39:8C (Unknown)
+Nmap scan report for 172.24.0.229
+Host is up (0.00026s latency).
+MAC Address: 00:F1:F5:2D:5C:00 (Unknown)
+Nmap scan report for 172.24.0.230
+Host is up (0.00044s latency).
+MAC Address: BC:24:11:F4:96:B5 (Unknown)
+Nmap scan report for 172.24.0.231
+Host is up (0.00023s latency).
+MAC Address: BC:24:11:0B:16:F1 (Unknown)
+Nmap scan report for 172.24.0.232
+Host is up (0.00022s latency).
+MAC Address: BC:24:11:52:46:F1 (Unknown)
+Nmap scan report for 172.24.0.226
+Host is up.
+Nmap done: 256 IP addresses (36 hosts up) scanned in 2.34 seconds

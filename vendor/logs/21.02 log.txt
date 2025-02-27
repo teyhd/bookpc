@@ -1,2 +1,194 @@
 
  10:38:33 / Система 1
+ 00:04:50 / undefined undefined
+ 00:08:26 / undefined undefined
+ 00:37:40 / undefined undefined
+ 00:43:28 / undefined undefined
+ 00:43:28 /auth undefined undefined
+ 01:26:14 / undefined undefined
+ 01:28:04 / undefined undefined
+ 01:28:04 /auth undefined undefined
+ 01:35:18 / undefined undefined
+ 01:41:04 / undefined undefined
+ 02:01:38 / undefined undefined
+ 02:24:25 / undefined undefined
+ 02:44:06 / undefined undefined
+ 03:12:34 / undefined undefined
+ 03:15:28 / undefined undefined
+ 03:24:40 / undefined undefined
+ 03:36:40 / undefined undefined
+ 03:43:57 / undefined undefined
+ 04:16:37 / undefined undefined
+ 04:20:36 / undefined undefined
+ 04:48:15 / undefined undefined
+ 04:54:51 / undefined undefined
+ 05:03:09 / undefined undefined
+ 05:33:21 / undefined undefined
+ 05:45:45 / undefined undefined
+ 05:45:53 /nmaplowercheck1740105952 undefined undefined
+ 05:45:53 /sdk undefined undefined
+ 05:45:53 /evox/about undefined undefined
+ 05:45:53 /HNAP1 undefined undefined
+ 05:45:53 /auth undefined undefined
+ 05:45:59 / undefined undefined
+ 05:46:00 / undefined undefined
+ 05:54:22 / undefined undefined
+ 05:58:34 / undefined undefined
+ 06:21:41 / undefined undefined
+ 06:38:58 / undefined undefined
+ 06:58:18 / undefined undefined
+ 07:16:43 / undefined undefined
+ 07:33:00 / undefined undefined
+ 07:33:01 / undefined undefined
+ 07:41:52 /robots.txt undefined 5.255.231.170
+ 07:41:53 /auth undefined 5.255.231.170
+ 07:41:53 /ctrl undefined 87.250.224.86
+ 07:43:41 / undefined undefined
+ 07:44:14 /auth undefined 213.180.203.16
+ 07:45:02 /robots.txt undefined 51.222.253.14
+ 07:45:02 /auth undefined 51.222.253.14
+ 07:45:12 /auth undefined 54.36.148.144
+ 07:54:54 / undefined undefined
+ 08:06:32 / undefined undefined
+ 08:27:00 / undefined undefined
+ 08:31:42 / undefined undefined
+ 08:44:01 / undefined undefined
+ 08:47:32 /robots.txt undefined 5.255.231.100
+ 08:47:32 /auth undefined 5.255.231.100
+ 08:54:20 / undefined undefined
+ 09:00:55 / undefined 77.232.185.34
+ 09:00:55 /auth undefined 77.232.185.34
+ 09:01:06 /auth undefined 77.232.185.34 
+ login:roma 
+ pass:Fr22264802024ujlf!
+ 09:01:06 
+ id:54 
+ login:roma 
+ pass:Fr22264802024ujlf! 
+ name:Рома Кудрин 
+ subj:Робототехник 
+ role:2
+ 09:01:07 /auth Рома Кудрин 77.232.185.34
+ 09:01:07 / Рома Кудрин 77.232.185.34
+ 09:01:08 /rtake Рома Кудрин 77.232.185.34 
+ kab:2
+ 09:01:09 / Рома Кудрин 77.232.185.34
+ 09:01:29 / undefined undefined
+ 09:03:40 / undefined 147.185.132.135
+ 09:04:55 / undefined undefined
+ 09:11:20 /helpdesk/WebObjects/Helpdesk.woa undefined undefined
+ 09:11:20 /auth undefined undefined
+ 09:21:20 / undefined undefined
+ 09:30:13 / undefined undefined
+ 09:41:46 / undefined undefined
+ 09:43:23 / undefined undefined
+ 10:44:39 / undefined undefined
+ 10:45:14 / undefined 77.232.185.34
+ 10:45:14 /auth undefined 77.232.185.34
+ 10:45:22 / undefined undefined
+ 10:45:24 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 10:45:24 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В.  
+ subj:Русский язык 
+ role:0
+ 10:45:25 /auth Мёд С.В.  77.232.185.34
+ 10:45:25 / Мёд С.В.  77.232.185.34
+ 10:45:33 /take Мёд С.В.  77.232.185.34 
+ lapid:23 
+ kab:15
+ 10:45:36 / Мёд С.В.  77.232.185.34
+ 11:01:26 / undefined undefined
+ 11:12:10 / undefined undefined
+ 11:21:54 / undefined undefined
+ 11:22:35 / undefined undefined
+ 11:29:18 / undefined undefined
+ 11:48:46 / undefined undefined
+ 12:11:01 / undefined undefined
+ 12:24:22 / undefined undefined
+ 12:29:13 / undefined undefined
+ 12:29:13 /auth undefined undefined
+ 12:41:04 / undefined undefined
+ 13:00:05 / undefined undefined
+ 13:00:11 / undefined undefined
+ 13:22:10 / undefined undefined
+ 13:22:11 /auth undefined undefined
+ 13:24:25 /robots.txt undefined 52.167.144.55
+ 13:24:26 /auth undefined 52.167.144.55
+ 13:24:28 /auth undefined 40.77.167.72
+ 13:58:18 / undefined undefined
+ 14:09:17 / undefined undefined
+ 14:12:30 / undefined undefined
+ 14:54:17 / undefined undefined
+ 15:01:56 / undefined undefined
+ 15:56:41 / undefined undefined
+ 16:00:17 / undefined undefined
+ 16:04:13 / undefined undefined
+ 16:38:05 / undefined undefined
+ 17:11:05 / undefined undefined
+ 17:33:14 / undefined undefined
+ 17:54:14 / undefined undefined
+ 18:19:37 / undefined undefined
+ 18:30:56 / undefined undefined
+ 18:33:03 / undefined undefined
+ 18:59:54 / undefined 95.26.105.182
+ 18:59:54 /auth undefined 95.26.105.182
+ 19:00:06 /auth undefined 95.26.105.182 
+ login:adm 
+ pass:adms
+ 19:00:06 
+ id:43 
+ login:adm 
+ pass:adms 
+ name:Система 
+ subj:1 
+ role:2
+ 19:00:07 /auth Система 95.26.105.182
+ 19:00:07 / Система 95.26.105.182
+ 19:00:11 /devs Система 95.26.105.182
+ 19:00:11 /device-activ/24 Система 95.26.105.182
+ 19:00:17 /device-activ/6 Система 95.26.105.182
+ 19:00:18 /device-activ/12 Система 95.26.105.182
+ 19:00:20 /device-activ/720 Система 95.26.105.182
+ 19:01:48 /device-activ/168 Система 95.26.105.182
+ 19:01:48 /device-activ/24 Система 95.26.105.182
+ 19:01:49 /device-activ/720 Система 95.26.105.182
+ 19:02:37 /device-activ/24 Система 10.10.88.2
+ 19:02:39 /devs Система 10.10.88.2
+ 19:02:39 /device-activ/24 Система 10.10.88.2
+ 19:04:48 /device-history/25 Система 95.26.105.182
+ 19:05:53 / undefined undefined
+ 19:06:14 /device-activ/24 Система 10.10.88.2
+ 19:06:14 /device-activ/24 Система 10.10.88.2
+ 19:06:15 /device-activ/24 Система 10.10.88.2
+ 19:07:12 /device-activ/24 Система 10.10.88.2
+ 19:07:12 /device-activ/24 Система 10.10.88.2
+ 19:07:12 /device-activ/24 Система 10.10.88.2
+ 19:07:17 /device-activ/24 Система 10.10.88.2
+ 19:07:17 /device-activ/24 Система 10.10.88.2
+ 19:33:57 / undefined undefined
+ 20:05:12 / undefined undefined
+ 20:07:30 / undefined undefined
+ 20:20:46 / undefined undefined
+ 20:20:52 / undefined undefined
+ 20:42:29 / undefined undefined
+ 21:17:08 / undefined undefined
+ 21:29:54 / undefined undefined
+ 21:41:33 / undefined undefined
+ 21:41:34 /auth undefined undefined
+ 22:06:43 /robots.txt undefined 95.108.213.136
+ 22:06:43 /auth undefined 95.108.213.136
+ 22:06:43 / undefined 213.180.203.250
+ 22:06:54 / undefined 87.250.224.134
+ 22:06:55 /auth undefined 95.108.213.188
+ 22:10:33 / undefined undefined
+ 22:19:41 / undefined undefined
+ 22:33:35 / undefined undefined
+ 22:50:14 / undefined undefined
+ 23:38:38 / undefined undefined
+ 23:46:22 / undefined undefined
+ 23:55:54 / undefined undefined

@@ -1,0 +1,10 @@
+172.24.0.131|Running: Linux 2.6.X|3.X
+172.24.0.13|Running: Linux 3.X|4.X
+172.24.0.16|Running: Linux 4.X
+172.24.0.188|Running: Cisco IOS 12.X
+172.24.0.1|Running: Linux 2.6.X|3.X
+172.24.0.56|Running: Linux 3.X|4.X
+172.24.0.5|Running: Linux 3.X|4.X
+172.24.0.6|Running: Linux 3.X|4.X
+172.24.0.88|Running: Linux 3.X|4.X
+172.24.0.8|Running: Linux 3.X|4.X

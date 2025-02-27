@@ -1,0 +1,53 @@
+2025-02-27 22:03:01 [WARNING] - Скрипт уже запущен. Выход.
+2025-02-27 22:03:06 [DEBUG] - SQL: SELECT id, mac, ip FROM devices WHERE mac = 'BC:24:11:F4:96:B5' LIMIT 1;
+2025-02-27 22:03:06 [DEBUG] - Устройство не найдено в БД, вставляем: name=fs ip=172.24.0.230 vendor=
+2025-02-27 22:03:06 [DEBUG] - SQL: 
+          INSERT INTO devices (name, ip, mac, vendor, connected, last_seen)
+          VALUES ('fs', '172.24.0.230', 'BC:24:11:F4:96:B5', '', TRUE, NOW())
+        
+2025-02-27 22:03:06 [DEBUG] - SQL: SELECT LAST_INSERT_ID();
+2025-02-27 22:03:06 [DEBUG] - SQL: 
+              INSERT INTO device_history (device_id, event_type)
+              VALUES (0, 'connected')
+            
+2025-02-27 22:03:06 [ERROR] - SQL-запрос не выполнен: 
+              INSERT INTO device_history (device_id, event_type)
+              VALUES (0, 'connected')
+            ; Ошибка: ERROR 1452 (23000) at line 2: Cannot add or update a child row: a foreign key constraint fails (`laptop`.`device_history`, CONSTRAINT `device_history_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`))
+2025-02-27 22:03:06 [INFO] - Добавлено новое устройство (id=0): name=fs ip=172.24.0.230 vendor=
+2025-02-27 22:03:06 [INFO] - === Обработка IP=172.24.0.231 MAC=BC:24:11:0B:16:F1 ===
+2025-02-27 22:03:15 [DEBUG] - SQL: SELECT id, mac, ip FROM devices WHERE mac = 'BC:24:11:0B:16:F1' LIMIT 1;
+2025-02-27 22:03:15 [DEBUG] - Устройство не найдено в БД, вставляем: name=cams ip=172.24.0.231 vendor=
+2025-02-27 22:03:15 [DEBUG] - SQL: 
+          INSERT INTO devices (name, ip, mac, vendor, connected, last_seen)
+          VALUES ('cams', '172.24.0.231', 'BC:24:11:0B:16:F1', '', TRUE, NOW())
+        
+2025-02-27 22:03:15 [DEBUG] - SQL: SELECT LAST_INSERT_ID();
+2025-02-27 22:03:15 [DEBUG] - SQL: 
+              INSERT INTO device_history (device_id, event_type)
+              VALUES (0, 'connected')
+            
+2025-02-27 22:03:15 [ERROR] - SQL-запрос не выполнен: 
+              INSERT INTO device_history (device_id, event_type)
+              VALUES (0, 'connected')
+            ; Ошибка: ERROR 1452 (23000) at line 2: Cannot add or update a child row: a foreign key constraint fails (`laptop`.`device_history`, CONSTRAINT `device_history_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`))
+2025-02-27 22:03:15 [INFO] - Добавлено новое устройство (id=0): name=cams ip=172.24.0.231 vendor=
+2025-02-27 22:03:15 [INFO] - === Обработка IP=172.24.0.232 MAC=BC:24:11:52:46:F1 ===
+2025-02-27 22:03:41 [DEBUG] - Имя пустое/неподходящее, сгенерировали: unknown-0-232
+2025-02-27 22:03:41 [DEBUG] - SQL: SELECT id, mac, ip FROM devices WHERE mac = 'BC:24:11:52:46:F1' LIMIT 1;
+2025-02-27 22:03:41 [DEBUG] - Устройство не найдено в БД, вставляем: name=unknown-0-232 ip=172.24.0.232 vendor=
+2025-02-27 22:03:41 [DEBUG] - SQL: 
+          INSERT INTO devices (name, ip, mac, vendor, connected, last_seen)
+          VALUES ('unknown-0-232', '172.24.0.232', 'BC:24:11:52:46:F1', '', TRUE, NOW())
+        
+2025-02-27 22:03:41 [DEBUG] - SQL: SELECT LAST_INSERT_ID();
+2025-02-27 22:03:41 [DEBUG] - SQL: 
+              INSERT INTO device_history (device_id, event_type)
+              VALUES (0, 'connected')
+            
+2025-02-27 22:03:41 [ERROR] - SQL-запрос не выполнен: 
+              INSERT INTO device_history (device_id, event_type)
+              VALUES (0, 'connected')
+            ; Ошибка: ERROR 1452 (23000) at line 2: Cannot add or update a child row: a foreign key constraint fails (`laptop`.`device_history`, CONSTRAINT `device_history_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`))
+2025-02-27 22:03:41 [INFO] - Добавлено новое устройство (id=0): name=unknown-0-232 ip=172.24.0.232 vendor=
+2025-02-27 22:03:41 [INFO] - === Обработка IP=172.24.0.24 MAC=3C:91:80:37:24:CF ===

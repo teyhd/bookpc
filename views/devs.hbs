@@ -636,7 +636,7 @@
           ? devices.reduce((sum, d) => sum + (d.connected || 0), 0) / devices.length 
           : 0;
         const $badge = $('.metric-badge');
-        $badge.text(`Средняя активность: ${avgActivity.toFixed(1)}`);
+        $badge.text(`Средняя активность: ${avgActivity.toFixed(1)*100}%`);
       }
 
       // Получение данных устройств из data-атрибутов карточек
