@@ -93,16 +93,16 @@ export function makeSsoClient(opts) {
       try { let h = await axios.get(LOGOUT);
         console.log(h.data);
         res.clearCookie("sso.sid", {
-        path: "/",
+       // path: "/",
         httpOnly: true,
         sameSite: "none",       // если фронт на другом домене — можно 'none' + secure:true
-        secure: true          // true если HTTPS
+        secure: false          // true если HTTPS
       });
        res.clearCookie("wherepc", {
-        path: "/",
+        //path: "/",
         httpOnly: true,
         sameSite: "none",       // если фронт на другом домене — можно 'none' + secure:true
-        secure: true          // true если HTTPS
+        secure: false          // true если HTTPS
       });
       
         //req.session.state = Math.random().toString(36).slice(2);
