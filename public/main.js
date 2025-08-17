@@ -20,7 +20,7 @@
        // $( "#btnl" ).submit();
         let tosend = $( "#pass" ).val();
         let logins = $( "#logins" ).val();
-        $.get( "/auth", {login:logins,pass: tosend} )
+        $.get( "http://localhost:777/sso/auth", {pin: tosend} )
         .done(function( data ) {
           console.log( "Data Loaded: " + data );
             if (data=='ok'){

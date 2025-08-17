@@ -12,6 +12,7 @@
   <!-- ВЫПАДАЮЩЕЕ МЕНЮ -->
   <div class="dropdown-content row" id="dropdown1" >
         <ul >
+          {{log auth}}
         {{#if auth}}
         <li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
         {{else}}

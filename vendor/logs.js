@@ -3,16 +3,10 @@ import path from 'path'
 
 import request from 'request'
 import urlencode from 'urlencode'
-
-var appDir = path.dirname(import.meta.url);
-appDir = appDir.split('//')
-appDir = appDir[1]
-let test = false
-if (!test){
-  appDir = "//"+appDir
-}
-
-console.log(appDir);
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+export let appDir = __dirname;
 
 function curdate(minute){
     minute = (minute < 10) ? '0' + minute : minute;
@@ -39,7 +33,6 @@ export function mlog (par) {
     {
       encoding: "utf8",
       flag: "a+",
-      //mode: 0o666
     });
   
     console.log(texta);

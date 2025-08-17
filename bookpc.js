@@ -1,9 +1,9 @@
 import {mlog,say} from './vendor/logs.js'
-let test = false
-var appDir = path.dirname(import.meta.url);
-appDir = appDir.split('///')
-appDir = appDir[1]
-console.log(appDir);
+import { fileURLToPath } from 'url';
+let test = true
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+export let appDir = __dirname;
 
 process.on('uncaughtException', (err) => {
     mlog('Глобальный косяк приложения!!! ', err.stack);
@@ -19,6 +19,8 @@ import path from 'path'
 import fs from 'fs-extra'
 import axios from 'axios';
 import urlencode from 'urlencode';
+import 'dotenv/config'
+import { makeSsoClient } from "./vendor/ssoClient.js";
 import {getActiv, getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
@@ -82,6 +84,11 @@ const TEMPFOLDER = path.join(appDir,'public/temp');
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views','views');
+app.set('trust proxy', 1); // за Nginx/Traefik/Cloudflare
+app.use(session({name: 'wherepc',resave:true,saveUninitialized:false, secret: 'TEyhdsecurservice1345no', cookie: 
+  {secure: false, // ⚠️ обязательно false на HTTP!
+  httpOnly: true}
+}))
 
 if (test){
     app.use(express.static(path.join(appDir, 'public')));
@@ -92,35 +99,51 @@ if (test){
 }
 
 console.log(path.join(appDir, 'public'));
+app.use(express.json()); // для application/json
 app.use(cookieParser());
 //app.use(fileUpload());
-app.use(session({resave:false,saveUninitialized:false, secret: 'keyboard cat', cookie: {  }}))
+
+
+const sso = makeSsoClient({ //process.env.M
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  redirectUri: process.env.REDIRECT_URI,
+  ssoBase: process.env.SSO_BASE,
+  jwtSecret: process.env.JWT_SECRET,  // такой же, как на SSO             // srv_id из таблицы srvs (например 1 = "portal")
+});
+
 app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : TEMPFOLDER,
     defCharset: 'utf8',
     defParamCharset: 'utf8'
 }));
+// Роуты SSO
+app.get("/dbg", (req, res) => {
+    req.session.usertt = 15
+  res.json({
+    cookie: req.headers.cookie || null,
+    session: req.session || null,
+  });
+  console.log(req.session);
+  console.log("cookie header:", req.headers.cookie);
+   
+});
 
+app.get("/cb", sso.callback);
+
+app.get("/er", sso.ensureAuth, (req, res) => {
+  res.send(`Привет, user=${req.session.user.id}, роли=${req.session.user.right}`);
+});
+app.get("/wer", sso.ensureAuth, sso.requireRole("admin"), (req, res) => {
+  res.send("Только для админов");
+});
 app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
-
-    if (page=='/data' || page=='/ctrlqw' || page=='/lapchgqw' || page=='/addmat' || page=='/device-history'  ) {
-        next();
-        return 1
-    }
-    if (req.session.name==undefined) {
-        if (page!='/auth') {
-            res.redirect("/auth")
-        } else next();
-    } else {
-        if (page=='/auth') {
-            res.redirect("/")
-        } else next();
-    }
-
-    mlog(page,req.session.name,req.headers['nip'],req.query)
-    
+    //console.log('Cookie:', req.headers);
+    //.log('Session:', req.session);
+     mlog(page,req.session.uid,req.session.name,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
+     next();
 })
 var cook = null
 app.get('/data',async (req,res)=>{
@@ -136,7 +159,7 @@ app.get('/data',async (req,res)=>{
     //res.send(req.session)
 })
 
-app.get('/',async (req,res)=>{
+app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
     let pc = await get_status()
 
     var kabs = []
@@ -144,7 +167,6 @@ app.get('/',async (req,res)=>{
     for (let j = 0; j < 24; j++) {
         kabs[j] = {kab:j}
        // const element = array[j];
-        
     }
 
     for (let i = 0; i < pc.length; i++) {
@@ -163,16 +185,16 @@ app.get('/',async (req,res)=>{
     res.render('index',{
         title: 'Онлайн Платоникс',
         kabs: kabs,
-        meid: req.session.userid,
-        name:req.session.name,
+        meid: req.session.user.id,
+        name:req.session.user.name,
         pc: pc,
-        auth: req.session.userid,
-        role: req.session.role
+        auth: req.session.user.right,
+        role: req.session.user.right
     });
 
 })
 
-app.get('/story',async (req,res)=>{
+app.get('/story',sso.requireRole(1),async (req,res)=>{
     let laps = await get_pc()
     res.render('story',{
         title: 'История использования',
@@ -203,7 +225,7 @@ app.get('/device-history/:deviceId', async (req, res) => {
     }
 });
 
-app.get('/devs', async (req, res) => {
+app.get('/devs',sso.requireRole(5), async (req, res) => {
     try {
         // Получаем данные об устройствах из базы данных
         const devices = await getDevicesInfo(); // Предположим, что эта функция возвращает массив устройств
@@ -222,7 +244,7 @@ app.get('/devs', async (req, res) => {
     }
 });
 
-app.get('/ctrl',async (req,res)=>{
+app.get('/ctrl',sso.requireRole(5),async (req,res)=>{
     let laps = await get_info()
     let infst = ['Разблокирован','Заблокирвоан','Не известно']
     var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','LastSecurOFF','ВЫКЛ звук','ВКЛ звук','WIN+D','ALT+F4','CTRL+W','АнтиТим']
@@ -280,7 +302,7 @@ app.get('/getstory',async (req,res)=>{
     res.json(JSON.stringify(laps))
   //  res.send(laps)
 })
-
+/*
 app.get('/auth',async (req,res)=>{
     console.log(req.query);
     if (req.query.pass!=undefined) {
@@ -301,7 +323,7 @@ app.get('/auth',async (req,res)=>{
         });
     }
 })  
-
+*/
 app.get('/take',async (req,res)=>{
     console.log(req.query);
     let resid = await take(req.session.userid, parseInt(req.query.lapid), parseInt(req.query.kab) ,getCurrentUnixTime())
@@ -334,22 +356,7 @@ app.get('/retlap',async (req,res)=>{
     res.send({st:"ok",id:resid})
 })  
 
-app.get('/logout', function(req, res) {
-    mlog( req.session.name,"вышел из системы");
-    req.session.auth = null;
-    req.session.name = null
-    req.session.userid = null
-    //res.send('ok');
-    console.dir(req.session)
-    req.session.save(function (err) {
-      if (err) next(err)
-      req.session.regenerate(function (err) {
-        if (err) next(err)
-        res.redirect('/')
-      })
-    })
-})
-
+app.get("/logout", sso.logout);
 function getcurip(str) {
     let arr = str.split(':');
     arr = arr[arr.length-1];

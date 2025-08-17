@@ -27,6 +27,7 @@
           <div x-show="open" @click.away="open = false" 
                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
             <ul>
+              {{log auth}}
               {{#if auth}}
                 <li><a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-amber-100 flex items-center">
                   Выход <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
@@ -53,6 +54,7 @@
         <span class="text-lg font-bold text-gray-800">Меню</span>
       </div>
       <ul class="py-2">
+        
         {{#if auth}}
           <li><a href="/logout" class="block px-4 py-3 text-gray-800 hover:bg-amber-50 flex items-center">
             Выход <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
