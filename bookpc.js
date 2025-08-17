@@ -356,7 +356,22 @@ app.get('/retlap',async (req,res)=>{
     res.send({st:"ok",id:resid})
 })  
 
-app.get("/logout", sso.logout);
+//app.get("/logout", sso.logout);
+// bookpc
+app.get('/logout', (req, res) => {
+  const returnTo = process.env.BOOKPC_BASE + '/'; // куда вернуться после SSO-логаута
+  const ssoLogout = new URL('/logout', process.env.SSO_BASE);
+  ssoLogout.searchParams.set('post_logout_redirect_uri', returnTo);
+  ssoLogout.searchParams.set('client_id', process.env.CLIENT_ID);
+
+  req.session.destroy(() => {
+    // Стираем только СВОЙ cookie (домен bookpc)
+    res.clearCookie('wherepc', { path: '/' /* , domain: process.env.COOKIE_DOMAIN (если задавали при set) */ });
+    // НЕ пытаемся чистить sso.sid — это другой домен
+    res.redirect(ssoLogout.toString());
+  });
+});
+
 function getcurip(str) {
     let arr = str.split(':');
     arr = arr[arr.length-1];
