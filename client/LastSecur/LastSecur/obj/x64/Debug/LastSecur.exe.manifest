@@ -110,7 +110,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dhkiDkl6qDiB9eAxPf6nSff2PGI1L/DgdImFF3qB2p8=</dsig:DigestValue>
+        <dsig:DigestValue>aSIxyfKwRljS+wwDA4LbB9Sgh7RvtjCFuwMrsUlxrXI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -463,6 +463,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySqlConnector.dll" size="821096">
+      <assemblyIdentity name="MySqlConnector" version="2.0.0.0" publicKeyToken="D33D3E53AA5F8C92" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CD4kQSlZX3kqhymy1Nypqt91QSwf487exFlwmY0qnRg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Buffers.dll" size="20856">
       <assemblyIdentity name="System.Buffers" version="4.0.3.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -627,13 +639,13 @@
       <dsig:DigestValue>vWwdFVeSVOiHmtoHN2+Tyy6Vn0VnA3SJL94u+vQZT2w=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LastSecur.exe.config" size="802">
+  <file name="LastSecur.exe.config" size="1326">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>FyTPvLEarHPqdtdvsujjeT2A7astNpbMXO05MyY94gc=</dsig:DigestValue>
+      <dsig:DigestValue>n43ufwhs11Hz//vuEL1WD1Rr4qw3DrBymNe/QO98rkY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="padlock.ico" size="67646">

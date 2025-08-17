@@ -111,3 +111,8 @@ C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.pdb
 \\vr\info\secur\LastSecur.exe
 \\vr\info\secur\LastSecur.pdb
 C:\projects\wherePC\client\LastSecur\LastSecur\obj\x64\Debug\LastSecur.csproj.AssemblyReference.cache
+\\fs.local\info\secur\LastSecur.exe.config
+\\fs.local\info\secur\LastSecur.exe.manifest
+\\fs.local\info\secur\LastSecur.application
+\\fs.local\info\secur\LastSecur.exe
+\\fs.local\info\secur\LastSecur.pdb

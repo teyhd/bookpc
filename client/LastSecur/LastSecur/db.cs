@@ -1,10 +1,13 @@
 ﻿using System;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
+using MySqlConnector;
 namespace LastSecur
 {
     static class Db
     {
-        public static string connectionString = "server=vr;database=laptop;uid=teyhd;password=258000;";
+        public static string connectionString = "server=db.local;database=laptop;uid=teyhd;password=258000;";
+       // public static string connectionString = "Server=172.24.0.227;Port=3306;Database=laptop;User=teyhd;Password=258000;";
+
         //SELECT story.autor, story.pass FROM story WHERE lapid=12 ORDER BY timestart DESC LIMIT 1;
 
         public static int Isauth()
@@ -19,6 +22,7 @@ namespace LastSecur
                 catch (Exception ex)
                 {
                     Program.Mylog(ex.ToString());
+                    Console.WriteLine("EEEEE");
                     return 0;
                 }          
                 

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using System.Runtime.InteropServices;
+using System.ComponentModel;
+using BenchmarkDotNet.Extensions;
 
 namespace Check
 {
@@ -25,7 +23,7 @@ namespace Check
             static void SetWallpaper(string path)
             {
                 // Вызываем функцию SystemParametersInfo, чтобы установить заставку
-               // SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
+                // SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
             }
             private static int timestart = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             [Obsolete]
@@ -38,115 +36,102 @@ namespace Check
                 // MyIni.Write("checklog", "true");
 
                 AddToStartup("Check.exe", GetApplicationPath());
-                
+
                 while (!stoppingToken.IsCancellationRequested)
                 {
                     var Lapnum = Int32.Parse(MyIni.Read("numb"));
                     Program.Mylog(Lapnum.ToString());
                     Console.WriteLine(Lapnum.ToString());
-                    var Check = Db.GetCheck();
-                    Program.Mylog(Check.ToString());
-                    
-                    
-                    string processName = "PlatonAlarm";
-                    if (IsProcessRunning(processName))
-                    {
-                        Program.Mylog($"Процесс {processName} уже запущен.");
-                    }
-                    else
-                    {
-                        Program.Mylog($"Процесс {processName} не запущен. Запускаем...");
-                        string processPath = "C:\\Windows\\secur\\1\\PlatonAlarm.exe";
-                        StartProcess(processPath);
-                        StartProcess(@"C:\Windows\secur\1\PlatonAlarm.exe");
-                    }
-                    processName = "LastSecur";
+                    int Check = 2;
+
                     int timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                    if (timenow - timestart >= 5)
+                    if (timenow - timestart >= 2)
                     {
+                        Check = Db.GetCheckDB();
+                        Program.Mylog("Check");
+                    }
+                    if (timenow - timestart >= 6)
+                    {
+                        Console.WriteLine($"Замена {timestart}");
+                        timestart = timenow;
+                        Console.WriteLine($"На {timestart}");
+                        Db.CheckHost();
                         AddTask();
-                       // SetWallpaper(wallpaperPath);
+                        AddRebootTask();
+                        AddMyTask();
+                        Program.Mylog("Проверка:");
+                        Program.Mylog(Check.ToString());
+                        // SetWallpaper(wallpaperPath);
                     }
-                        
-                    if (Check == 0)
+
+                    if (Check == 0) //Запустить все
                     {
-                        timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                        Program.Mylog((timenow - timestart).ToString());
-                        int gof = timenow - timestart;
-                        Console.WriteLine(gof);
-                        if (timenow - timestart >= 5)
-                        {
-                            Program.Mylog("Check");
-                            Program.Mylog(gof.ToString());
-                            Console.WriteLine($"Замена {timestart}");
-                            timestart = timenow;
-                            Console.WriteLine($"Замена {timestart}");
-                            Db.UpdatePC();
-                            Db.CheckHost();
-                            AddTask();
-                        }
-                        if (IsProcessRunning(processName))
-                        {
-                            Program.Mylog($"Процесс {processName} уже запущен.");
-                        }
-                        else
-                        {
-                            Program.Mylog($"Процесс {processName} не запущен. Запускаем...");
-                            string processPath = "C:\\Windows\\secur\\LastSecur.exe";
-                            StartProcess(processPath);
-                            StartProcess(@"C:\Windows\secur\LastSecur.exe");
-                        }
+                        StartProg("1\\PlatonAlarm");
+                        StartProg("LastSecur");
                     }
-                    else
+                    if (Check == 1) //Запустить звонок
                     {
-                        timenow = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                        if (timenow - timestart >= 10)
-                        {
-                            timestart = timenow;
-                            Console.WriteLine($"ЗАмена {timestart}");
-                            Db.UpdatePC();
-                        }
+                        StartProg("1\\PlatonAlarm");
+                    }
+                    if (Check == 2) //Ничего не запускать
+                    {
+                        //
                     }
                     // Задержка между выполнениями задачи
                     await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(3), stoppingToken);
                 }
             }
         }
-        
 
-        static void AddTask()
+        static public Boolean deletetask = false;
+        static public Boolean deletetask1 = false;
+        static public Boolean deletetask3 = false;
+
+        static void AddRebootTask()
         {
-            string taskName = "Проверка";
+            string taskName = "Перезагрузка";
             string taskDescription = "Проверка обновлений системы";
-            string taskExecutablePath = @"C:\Windows\secur\Release\Check.exe";
             try
             {
                 using (TaskService taskService = new TaskService())
                 {
                     // Проверяем, существует ли задача с таким именем
-                    // if (taskService.GetTask(taskName)!=null)
+                    if (taskService.GetTask(taskName) != null)
+                    {
+                        if (!deletetask1)
+                        {
+                            taskService.RootFolder.DeleteTask(taskName);
+                            Program.Mylog("Удалил задачу из планировщика.");
+                            deletetask1 = true;
+                        }
 
-                    TaskDefinition taskDefinition = taskService.NewTask();
-                    taskDefinition.RegistrationInfo.Description = taskDescription;
+                    }
+                    else
+                    {
+                        TaskDefinition taskDefinition = taskService.NewTask();
+                        taskDefinition.RegistrationInfo.Description = taskDescription;
+                        taskDefinition.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddHours(21).AddMinutes(10) });
+                        taskDefinition.Settings.DisallowStartIfOnBatteries = false;
+                        taskDefinition.Settings.StopIfGoingOnBatteries = false;
+                        taskDefinition.Settings.WakeToRun = true;
+                        taskDefinition.Settings.DeleteExpiredTaskAfter = TimeSpan.Zero;
+                        taskDefinition.Settings.ExecutionTimeLimit = TimeSpan.Zero;
+                        taskDefinition.Actions.Add(new ExecAction("shutdown", "-s -f -t 30"));
+                        taskDefinition.Settings.AllowDemandStart = true;
+                        taskDefinition.Principal.RunLevel = TaskRunLevel.Highest;
+                        taskDefinition.Principal.UserId = ""; // Пустое значение позволяет использовать текущего пользователя
+                        //taskDefinition.Principal.UserId = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
-                    TimeTrigger minuteTrigger = new TimeTrigger();
-                    minuteTrigger.Repetition.Interval = TimeSpan.FromMinutes(1);
-                    minuteTrigger.StartBoundary = DateTime.Now;
+                       /// taskDefinition.Principal.LogonType = TaskLogonType.InteractiveToken;
+                        taskDefinition.Settings.MultipleInstances = TaskInstancesPolicy.Parallel;
+                        //taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition, TaskCreation.CreateOrUpdate, "NT AUTHORITY\\NETWORKSERVICE", null, TaskLogonType.ServiceAccount);
+                        taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
 
-                    taskDefinition.Triggers.Add(minuteTrigger);
+                        Program.Mylog("Задача успешно добавлена в планировщик.");
 
-                    taskDefinition.Triggers.Add(new LogonTrigger());
-                    taskDefinition.Triggers.Add(new BootTrigger());
-                    taskDefinition.Settings.DisallowStartIfOnBatteries = false;
-                    taskDefinition.Settings.StopIfGoingOnBatteries = false;
-                    taskDefinition.Settings.WakeToRun = true;
-                    taskDefinition.Settings.DeleteExpiredTaskAfter = TimeSpan.Zero;
-                    taskDefinition.Settings.ExecutionTimeLimit = TimeSpan.Zero;
-                    taskDefinition.Actions.Add(new ExecAction(taskExecutablePath));
-                    taskDefinition.Actions.Add(new ExecAction(@"C:\Windows\secur\1\PlatonAlarm.exe"));
-                    taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
+                    }
 
-                    Program.Mylog("Задача успешно добавлена в планировщик задач.");
+
 
                 }
             }
@@ -157,9 +142,168 @@ namespace Check
             }
 
             // Создаем экземпляр планировщика задач
-            
+
+        }
+        
+        public static void AddMyTask(int sinterv = 60)
+        {
+            string taskName = "Скрипт";
+           // string taskDescription = "Проверка обновлений системы";
+            try
+            {
+                using (TaskService taskService = new TaskService())
+                {
+                    // Проверяем, существует ли задача с таким именем
+                    if (taskService.GetTask(taskName) != null)
+                    {
+                        if (!deletetask3)
+                        {
+                            taskService.RootFolder.DeleteTask(taskName);
+                            Program.Mylog("Удалил задачу из планировщика.");
+                            deletetask3 = true;
+                        }
+
+                    }
+                    else
+                    {
+                     /*   TaskDefinition taskDefinition = taskService.NewTask();
+                        taskDefinition.RegistrationInfo.Description = taskDescription;
+
+                        TimeTrigger minuteTrigger = new TimeTrigger();
+                        minuteTrigger.StartBoundary = DateTime.Parse("08:00:00");
+                        minuteTrigger.Repetition.Interval = TimeSpan.FromMinutes(sinterv);
+                       // minuteTrigger.StartBoundary = DateTime.Now;
+                        // minuteTrigger.DaysInterval = 1; 
+                        taskDefinition.Triggers.Add(minuteTrigger);
+                        taskDefinition.Triggers.Add(new LogonTrigger());
+                        taskDefinition.Triggers.Add(new BootTrigger());
+                        taskDefinition.Settings.DisallowStartIfOnBatteries = false;
+                        taskDefinition.Settings.StopIfGoingOnBatteries = false;
+                        taskDefinition.Settings.WakeToRun = true;
+                        taskDefinition.Settings.StartWhenAvailable = true;
+                        taskDefinition.Settings.DeleteExpiredTaskAfter = TimeSpan.Zero;
+                        taskDefinition.Settings.ExecutionTimeLimit = TimeSpan.Zero;
+                        taskDefinition.Actions.Add(new ExecAction("cmd.exe", "/c start /min \"\" powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File \"\\\\fs.local\\info\\scripts\\start.ps1\""));
+
+                        // taskDefinition.Actions.Add(new ExecAction("powershell.exe", "-WindowStyle Hidden -ExecutionPolicy Bypass -File \"\\\\fs.local\\info\\scripts\\start.ps1\""));
+                        //taskDefinition.Actions.Add(new ExecAction("schtasks.exe", "/create /tn \"MyTask\" /tr \"powershell.exe -ExecutionPolicy Bypass -File \"\\\\fs.local\\info\\scripts\\start.ps1\"\" /sc once /st 00:00 /f"));
+
+                        taskDefinition.Settings.AllowDemandStart = true;
+                        taskDefinition.Principal.RunLevel = TaskRunLevel.Highest;
+                        taskDefinition.Principal.UserId = ""; // Пустое значение позволяет использовать текущего пользователя
+                                                              //taskDefinition.Principal.UserId = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                                                              // taskDefinition.Principal.UserId = $"{Environment.MachineName}\\{Environment.UserName}";
+
+                        taskDefinition.Principal.LogonType = TaskLogonType.InteractiveToken;
+                        taskDefinition.Settings.MultipleInstances = TaskInstancesPolicy.Parallel;
+                        //taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition, TaskCreation.CreateOrUpdate, "NT AUTHORITY\\NETWORKSERVICE", null, TaskLogonType.ServiceAccount);
+                        taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
+
+                        Program.Mylog("Задача успешно добавлена в планировщик."); */
+
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Program.Mylog(ex.ToString());
+            }
+
+            // Создаем экземпляр планировщика задач
+
         }
 
+        static void AddTask()
+        {
+            string taskName = "Проверка";
+            string taskDescription = "Проверка обновлений системы";
+            try
+            {
+                using (TaskService taskService = new TaskService())
+                {
+                    // Проверяем, существует ли задача с таким именем
+                    if (taskService.GetTask(taskName) != null)
+                    {
+                        if (!deletetask)
+                        {
+                            //taskService.RootFolder.DeleteTask(taskName);
+                            Program.Mylog("Удалил задачу из планировщика.");
+                            deletetask = true;
+                        }
+
+                    }
+                    else
+                    {
+                        TaskDefinition taskDefinition = taskService.NewTask();
+                        taskDefinition.RegistrationInfo.Description = taskDescription;
+
+                        TimeTrigger minuteTrigger = new TimeTrigger();
+                        minuteTrigger.Repetition.Interval = TimeSpan.FromMinutes(1);
+                        minuteTrigger.StartBoundary = DateTime.Now;
+                       // minuteTrigger.DaysInterval = 1; 
+                        taskDefinition.Triggers.Add(minuteTrigger);
+
+                        taskDefinition.Triggers.Add(new LogonTrigger());
+                        taskDefinition.Triggers.Add(new BootTrigger());
+                        taskDefinition.Settings.DisallowStartIfOnBatteries = false;
+                        taskDefinition.Settings.StopIfGoingOnBatteries = false;
+                        taskDefinition.Settings.WakeToRun = true;
+                        taskDefinition.Settings.StartWhenAvailable = true;
+
+                        taskDefinition.Settings.DeleteExpiredTaskAfter = TimeSpan.Zero;
+                        taskDefinition.Settings.ExecutionTimeLimit = TimeSpan.Zero;
+                        taskDefinition.Actions.Add(new ExecAction(@"C:\Windows\secur\Release\Check.exe"));
+                        taskDefinition.Actions.Add(new ExecAction(@"C:\Windows\secur\1\PlatonAlarm.exe"));
+                        taskDefinition.Settings.AllowDemandStart = true;
+                        taskDefinition.Principal.RunLevel = TaskRunLevel.Highest;
+                        taskDefinition.Principal.UserId = ""; // Пустое значение позволяет использовать текущего пользователя
+                        //taskDefinition.Principal.UserId = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                       // taskDefinition.Principal.UserId = $"{Environment.MachineName}\\{Environment.UserName}";
+
+                        taskDefinition.Principal.LogonType = TaskLogonType.InteractiveToken;
+                        taskDefinition.Settings.MultipleInstances = TaskInstancesPolicy.Parallel;
+                        //taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition, TaskCreation.CreateOrUpdate, "NT AUTHORITY\\NETWORKSERVICE", null, TaskLogonType.ServiceAccount);
+                        taskService.RootFolder.RegisterTaskDefinition(taskName, taskDefinition);
+
+                        Program.Mylog("Задача успешно добавлена в планировщик.");
+
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Program.Mylog(ex.ToString());
+            }
+
+            // Создаем экземпляр планировщика задач
+
+        }
+       
+        static public void StartProg(string processName)
+        {
+            if (IsProcessRunning(processName))
+            {
+                Program.Mylog($"Процесс {processName} уже запущен.");
+            }
+            else
+            {
+                Program.Mylog($"Процесс {processName} не запущен. Запускаем...");
+                string processPath = $"C:\\Windows\\secur\\{processName}.exe";
+                if (processName == "PlatonAlarm")
+                {
+                    processPath = $"C:\\Windows\\secur\\1\\{processName}.exe";
+                }
+                StartProcess(processPath);
+            }
+        }
         static string GetApplicationPath()
         {
             var assembly = System.Reflection.Assembly.GetEntryAssembly();
@@ -187,18 +331,32 @@ namespace Check
             Process[] processes = Process.GetProcessesByName(processName);
             return processes.Length > 0;
         }
+       // private readonly IProcessServices _processServices;
 
         static void StartProcess(string processPath)
         {
             try
             {
+                Process proc = new Process();
+                proc.StartInfo.FileName = processPath;
+                proc.StartInfo.UseShellExecute = true;
+                proc.StartInfo.Verb = "runas";
+                //_processServices.StartProcessAsCurrentUser(processPath);
+                ProcessServices.StartProcessAsCurrentUser(processPath);
+                proc.Start();
                 Process.Start(processPath);
+                //  ProcessExtensions.StartProcessAsCurrentUser(processPath);
+
                 Program.Mylog("Процесс успешно запущен.");
             }
             catch (Exception ex)
             {
                 Program.Mylog($"Ошибка при запуске процесса: {ex.Message}");
+                Db.RepairFolder();
             }
         }
+
+
     }
 }
+

@@ -20,6 +20,7 @@ namespace Check
         [STAThread]
         static async Task Main()
         {
+            //Console.WriteLine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location));
             if (!singleton.WaitOne(TimeSpan.Zero, true))
             {
                 Mylog("Открыт второй экзмепляр");
@@ -36,9 +37,14 @@ namespace Check
         }
         public static void Mylog(string LogsText)
         {
-            System.IO.File.AppendAllText("C:\\Windows\\secur\\logs.txt", $"\n(Check)[{DateTime.Now}] {LogsText}");
+            System.IO.Directory.CreateDirectory("C:\\Windows\\secur\\logs");
+            System.IO.File.AppendAllText($"C:\\Windows\\secur\\logs\\{DateTime.Now:M} logs.txt", $"\n(Check)[{DateTime.Now}] {LogsText}");
             Console.WriteLine($"\n[{DateTime.Now}] {LogsText}");
         }
-        
+        static public string GetPath()
+        {
+            return System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        }
+
     }
 }
