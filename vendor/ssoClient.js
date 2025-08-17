@@ -87,9 +87,25 @@ export function makeSsoClient(opts) {
     return found;                                // если несколько → массив
     }
   async function logout(req, res) {
+    req.session.user = null
+    req.session.state = null
     req.session.destroy(async () => {
       try { let h = await axios.get(LOGOUT);
         console.log(h.data);
+        res.clearCookie("sso.sid", {
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",       // если фронт на другом домене — можно 'none' + secure:true
+        secure: false          // true если HTTPS
+      });
+       res.clearCookie("wherepc", {
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",       // если фронт на другом домене — можно 'none' + secure:true
+        secure: false          // true если HTTPS
+      });
+      
+        //req.session.state = Math.random().toString(36).slice(2);
        } catch (_) {}
        
       res.redirect('/')
@@ -101,9 +117,9 @@ export function makeSsoClient(opts) {
     return (req, res, next) => {
       const roles = req.session.user?.right || 0;
       console.log(roles, role);
-      if (roles >=role) return next();
-      if (roles == 0) return res.redirect(process.env.SSO_BASE + '/auth');
-      return res.redirect( '/')
+      if (roles >= role) return next();
+      //if (roles == 0) return res.redirect(process.env.SSO_BASE + '/auth');
+      return res.redirect(`${process.env.SSO_BASE}/err`)
     };
   }
 

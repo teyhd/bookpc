@@ -1,10 +1,23 @@
 import mysql from 'mysql2'
 let sets = {
     host: process.env.MDBHOST,
-    host: '172.24.0.227',
     user: 'teyhd',
     password : '258000',
-    database: 'laptop',
+    database: process.env.DBNAME,
+    charset : 'utf8mb4_general_ci',
+    waitForConnections: true,
+    connectionLimit: 50,
+    maxIdle: 50, // max idle connections, the default value is the same as `connectionLimit`
+    idleTimeout: 60000, // idle connections timeout, in milliseconds, the default value 60000
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0
+}
+let usets = {
+    host: process.env.MDBHOST,
+    user: 'teyhd',
+    password : '258000',
+    database: process.env.DBUSER,
     charset : 'utf8mb4_general_ci',
     waitForConnections: true,
     connectionLimit: 50,
@@ -16,6 +29,7 @@ let sets = {
 }
 console.dir(sets)
 const pool = mysql.createPool(sets).promise()
+const usr = mysql.createPool(usets).promise()
 
 export async function getActiv(hours) {
     const query = `
@@ -51,7 +65,7 @@ export async function getDevicesInfo() {
     const[rows, fields] = await pool.query(query);
     return rows;
 }
-
+/*
 export async function auth_user(login, pass){
     const qer = `SELECT * from users WHERE login='${login}' AND pass='${pass}'`
     const [rows, fields] = await pool.query(qer)
@@ -61,21 +75,44 @@ export async function get_users(userid){
     const qer = `SELECT * from users WHERE id=${userid}`
     const [rows, fields] = await pool.query(qer)
     return rows[0];
+}*/
+export async function get_status() {
+    // получаем последние записи по каждому lapid
+    const qer = `
+        SELECT s.*
+        FROM story s
+        JOIN (
+            SELECT lapid, MAX(timestart) AS max_timestart
+            FROM story
+            GROUP BY lapid
+        ) latest ON s.lapid = latest.lapid AND s.timestart = latest.max_timestart
+        ORDER BY latest.lapid;
+    `;
+    const [storyRows] = await pool.query(qer);
+
+    if (!storyRows.length) return [];
+
+    // собираем id пользователей
+    const userIds = [...new Set(storyRows.map(r => r.userid))];
+    if (!userIds.length) return storyRows;
+
+    // тянем пользователей уже из базы sso
+    const [userRows] = await usr.query(
+        `SELECT id, name FROM users WHERE id IN (?);`,
+        [userIds]
+    );
+
+    const userMap = Object.fromEntries(userRows.map(u => [u.id, u.name]));
+
+    // объединяем
+    const result = storyRows.map(s => ({
+        ...s,
+        name: userMap[s.userid] || null
+    }));
+
+    return result;
 }
-export async function get_status(){
-    const qer = `SELECT s.*, u.name
-    FROM story s
-    JOIN (
-        SELECT lapid, MAX(timestart) AS max_timestart
-        FROM story
-        GROUP BY lapid
-    ) latest ON s.lapid = latest.lapid AND s.timestart = latest.max_timestart
-    JOIN users u ON s.userid = u.id
-    ORDER BY latest.lapid
-    ;`
-    const [rows, fields] = await pool.query(qer)
-    return rows;
-}
+
 
 export async function get_pc(){
     const qer = `SELECT lapid FROM story GROUP BY lapid ORDER BY lapid;`

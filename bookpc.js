@@ -1,6 +1,6 @@
 import {mlog,say} from './vendor/logs.js'
 import { fileURLToPath } from 'url';
-let test = true
+let test = false
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export let appDir = __dirname;
@@ -21,7 +21,7 @@ import axios from 'axios';
 import urlencode from 'urlencode';
 import 'dotenv/config'
 import { makeSsoClient } from "./vendor/ssoClient.js";
-import {getActiv, getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {getActiv, getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -177,7 +177,7 @@ app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
         if (pc[i].kab == 30) {
             pc[i].kab = "доме"
         }
-        if (req.session.userid==pc[i].userid){
+        if (req.session.user.id==pc[i].userid){
             pc[i].me = 1
         }
     }
@@ -198,10 +198,10 @@ app.get('/story',sso.requireRole(1),async (req,res)=>{
     let laps = await get_pc()
     res.render('story',{
         title: 'История использования',
-        meid: req.session.userid,
+        meid: req.session.user.id,
         name:req.session.name,
         laps: laps,
-        auth: req.session.userid,
+        auth: req.session.user.id,
         role: req.session.role
     });
 })
@@ -236,7 +236,7 @@ app.get('/devs',sso.requireRole(5), async (req, res) => {
             devices: devices, // Передаем устройства для текущей страницы
             totalDevices: devices.length, // Общее количество устройств
             role: req.session.role,
-            auth: req.session.userid // Флаг авторизации
+            auth: req.session.user.id // Флаг авторизации
         });
     } catch (error) {
         console.error('Ошибка при получении данных об устройствах:', error);
@@ -253,11 +253,11 @@ app.get('/ctrl',sso.requireRole(5),async (req,res)=>{
     res.render('ctrl',{
         title: 'Управление ПК',
         cmd: cmd,
-        meid: req.session.userid,
+        meid: req.session.user.id,
         name:req.session.name,
         laps: laps, 
          role: req.session.role,
-        auth: req.session.userid
+        auth: req.session.user.id
     });
 })
 
@@ -286,7 +286,7 @@ app.get('/sendcmd',async (req,res)=>{
     res.send("ok")
 })
 
-app.get('/getstory',async (req,res)=>{
+app.get('/getstory',sso.requireRole(5),async (req,res)=>{
     let laps = await get_pc_story(req.query.lapid)
     for (let j = 0; j < laps.length; j++) {
         if (laps[j].kab == 0) {
@@ -310,7 +310,7 @@ app.get('/auth',async (req,res)=>{
         mlog(ans);
         if (ans!=undefined){
             req.session.name = ans.name
-            req.session.userid = ans.id
+            req.session.user.id = ans.id
             req.session.role = ans.role
             res.send('ok')
         } else {
@@ -319,14 +319,14 @@ app.get('/auth',async (req,res)=>{
     } else{
         res.render('auth',{
             title: 'Авторизация',
-            auth: req.session.userid
+            auth: req.session.user.id
         });
     }
 })  
 */
 app.get('/take',async (req,res)=>{
     console.log(req.query);
-    let resid = await take(req.session.userid, parseInt(req.query.lapid), parseInt(req.query.kab) ,getCurrentUnixTime())
+    let resid = await take(req.session.user.id, parseInt(req.query.lapid), parseInt(req.query.kab) ,getCurrentUnixTime())
     console.log(resid);
     say(`${req.session.name} взял ноутбук №${req.query.lapid} в каб №${req.query.kab}`)
     res.send({st:"ok",id:resid})
@@ -335,7 +335,7 @@ app.get('/take',async (req,res)=>{
 app.get('/rtake',async (req,res)=>{
     console.log(req.query);
     for (let i = 7; i < 16; i++) { 
-        setTimeout(thelp, 30 * i,req.session.userid,req.session.name,i)
+        setTimeout(thelp, 30 * i,req.session.user.id,req.session.name,i)
     }
     
     res.send({st:"ok"})
@@ -349,9 +349,9 @@ async function thelp(userid,name,lapid){
 
 app.get('/retlap',async (req,res)=>{
     console.log(req.query);
-    let resid = await retlap(getCurrentUnixTime(),req.query.komm, parseInt(req.query.lapid), req.session.userid)
+    let resid = await retlap(getCurrentUnixTime(),req.query.komm, parseInt(req.query.lapid), req.session.user.id)
     console.log(resid);
-    console.log(req.session.userid);
+    console.log(req.session.user.id);
     say(`${req.session.name} вернул ноутбук №${req.query.lapid}. \n Комментарий:${req.query.komm}`)
     res.send({st:"ok",id:resid})
 })  
