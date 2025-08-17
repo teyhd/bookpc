@@ -96,13 +96,13 @@ export function makeSsoClient(opts) {
         path: "/",
         httpOnly: true,
         sameSite: "none",       // если фронт на другом домене — можно 'none' + secure:true
-        secure: false          // true если HTTPS
+        secure: true          // true если HTTPS
       });
        res.clearCookie("wherepc", {
         path: "/",
         httpOnly: true,
         sameSite: "none",       // если фронт на другом домене — можно 'none' + secure:true
-        secure: false          // true если HTTPS
+        secure: true          // true если HTTPS
       });
       
         //req.session.state = Math.random().toString(36).slice(2);
