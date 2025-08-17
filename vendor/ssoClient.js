@@ -95,13 +95,13 @@ export function makeSsoClient(opts) {
         res.clearCookie("sso.sid", {
         path: "/",
         httpOnly: true,
-        sameSite: "lax",       // если фронт на другом домене — можно 'none' + secure:true
+        sameSite: "none",       // если фронт на другом домене — можно 'none' + secure:true
         secure: false          // true если HTTPS
       });
        res.clearCookie("wherepc", {
         path: "/",
         httpOnly: true,
-        sameSite: "lax",       // если фронт на другом домене — можно 'none' + secure:true
+        sameSite: "none",       // если фронт на другом домене — можно 'none' + secure:true
         secure: false          // true если HTTPS
       });
       
