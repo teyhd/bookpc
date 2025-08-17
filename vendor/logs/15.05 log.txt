@@ -2641,3 +2641,233 @@
  23:33:27 / undefined 167.94.138.60
  23:33:36 / undefined 167.94.138.60
  23:33:44 /auth undefined 167.94.138.60
+ 00:22:32 / undefined undefined
+ 00:55:09 / undefined undefined
+ 00:55:17 / undefined undefined
+ 01:07:33 / undefined undefined
+ 01:07:34 /auth undefined undefined
+ 01:32:42 / undefined undefined
+ 01:33:02 / undefined undefined
+ 01:40:25 / undefined undefined
+ 01:42:59 / undefined undefined
+ 01:44:57 / undefined undefined
+ 02:20:14 /current_config/passwd undefined undefined
+ 02:20:14 /current_config/Account1 undefined undefined
+ 02:22:46 / undefined undefined
+ 02:22:46 /auth undefined undefined
+ 02:50:44 / undefined undefined
+ 03:03:32 / undefined undefined
+ 03:03:52 / undefined undefined
+ 03:37:50 / undefined undefined
+ 03:37:50 /auth undefined undefined
+ 03:48:08 / undefined undefined
+ 03:58:53 / undefined undefined
+ 04:31:13 / undefined undefined
+ 04:37:42 / undefined undefined
+ 04:56:03 / undefined undefined
+ 04:56:42 / undefined undefined
+ 05:39:01 / undefined undefined
+ 05:40:33 / undefined undefined
+ 05:46:45 / undefined undefined
+ 05:57:26 / undefined undefined
+ 06:10:29 / undefined undefined
+ 06:26:13 / undefined undefined
+ 06:31:16 /aaa9 undefined undefined
+ 06:31:18 /aab8 undefined undefined
+ 06:31:19 / undefined undefined
+ 06:46:51 / undefined undefined
+ 06:57:11 / undefined undefined
+ 07:10:24 / undefined undefined
+ 07:10:30 / undefined undefined
+ 07:26:06 / undefined undefined
+ 07:28:18 / undefined undefined
+ 07:46:28 / undefined undefined
+ 08:01:47 / undefined undefined
+ 08:07:26 / undefined undefined
+ 08:10:57 / undefined undefined
+ 08:46:54 /robots.txt undefined undefined
+ 08:46:54 /auth undefined undefined
+ 08:46:54 / undefined undefined
+ 08:46:55 /auth undefined undefined
+ 08:48:57 / undefined undefined
+ 09:05:25 / undefined undefined
+ 09:30:06 / undefined undefined
+ 09:31:21 / undefined undefined
+ 09:40:11 / undefined undefined
+ 09:42:16 / undefined undefined
+ 09:42:16 /auth undefined undefined
+ 09:42:17 /HNAP1/ undefined undefined
+ 09:42:17 /auth undefined undefined
+ 09:57:46 / undefined undefined
+ 10:01:14 / undefined undefined
+ 10:11:24 / undefined undefined
+ 10:15:33 / undefined undefined
+ 10:15:33 /auth undefined undefined
+ 10:18:58 / undefined undefined
+ 10:30:39 / undefined undefined
+ 10:41:42 / undefined 77.232.185.34
+ 10:41:42 /auth undefined 77.232.185.34
+ 10:41:51 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 10:41:51 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В. 
+ subj:Русский язык 
+ role:0
+ 10:41:52 /auth Мёд С.В. 77.232.185.34
+ 10:41:52 / Мёд С.В. 77.232.185.34
+ 10:42:07 /take Мёд С.В. 77.232.185.34 
+ lapid:23 
+ kab:17
+ 10:42:10 / Мёд С.В. 77.232.185.34
+ 10:59:19 / undefined undefined
+ 11:02:04 / undefined undefined
+ 11:08:47 / undefined undefined
+ 11:15:52 / undefined undefined
+ 11:27:52 / undefined undefined
+ 12:02:18 / undefined undefined
+ 12:14:43 / undefined undefined
+ 12:20:11 / undefined undefined
+ 12:40:42 / undefined undefined
+ 12:43:14 / undefined undefined
+ 12:55:48 / undefined undefined
+ 13:05:29 / undefined undefined
+ 13:11:18 / undefined undefined
+ 13:18:28 / undefined undefined
+ 13:37:39 / undefined 77.232.185.34
+ 13:37:39 /auth undefined 77.232.185.34
+ 13:37:49 /auth undefined 77.232.185.34 
+ login:teacher5 
+ pass:bde3QopB
+ 13:37:49 
+ id:5 
+ login:teacher5 
+ pass:bde3QopB 
+ name:Елисеева З.В. 
+ subj:Математика 
+ role:0
+ 13:37:51 /auth Елисеева З.В. 77.232.185.34
+ 13:37:51 / Елисеева З.В. 77.232.185.34
+ 13:42:42 / undefined undefined
+ 13:45:40 / undefined undefined
+ 14:10:12 / undefined undefined
+ 14:25:47 / undefined undefined
+ 14:31:12 / undefined undefined
+ 14:51:55 / undefined undefined
+ 15:17:23 / undefined undefined
+ 15:22:47 / undefined undefined
+ 15:24:40 / undefined undefined
+ 15:28:29 / undefined undefined
+ 15:35:30 / undefined undefined
+ 15:45:41 / undefined undefined
+ 16:10:16 / undefined undefined
+ 16:13:39 /pdown undefined undefined
+ 16:16:52 / undefined 77.232.185.34
+ 16:16:52 /auth undefined 77.232.185.34
+ 16:30:49 / undefined undefined
+ 16:56:09 / undefined undefined
+ 16:56:38 / undefined undefined
+ 16:59:06 / undefined undefined
+ 17:31:05 / undefined undefined
+ 17:47:42 / undefined undefined
+ 17:48:34 /auth undefined 77.232.185.34 
+ login:p.koroleva 
+ pass:245952
+ 17:48:34 
+ id:60 
+ login:p.koroleva 
+ pass:245952 
+ name:Королёва Алина Андреевна 
+ subj:Наставник  
+ role:0
+ 17:48:35 /auth Королёва Алина Андреевна 77.232.185.34
+ 17:48:35 / Королёва Алина Андреевна 77.232.185.34
+ 17:48:43 /retlap Королёва Алина Андреевна 77.232.185.34 
+ komm:Замечаний нет 
+ lapid:21
+ 17:48:53 /robots.txt undefined 95.108.213.94
+ 17:48:53 /auth undefined 95.108.213.94
+ 17:48:53 / undefined 95.108.213.101
+ 17:48:54 /auth undefined 5.255.231.103
+ 17:50:21 / undefined undefined
+ 18:10:37 / undefined undefined
+ 18:22:12 / undefined undefined
+ 18:30:27 / undefined undefined
+ 18:32:41 / undefined undefined
+ 18:32:48 / undefined undefined
+ 18:32:49 /auth undefined undefined
+ 18:33:00 / undefined undefined 
+ format:json
+ 18:39:03 / undefined undefined
+ 18:41:47 / undefined undefined
+ 18:53:05 / undefined undefined
+ 19:00:36 / undefined undefined
+ 19:24:39 / undefined undefined
+ 19:39:06 / undefined undefined
+ 19:41:42 / undefined undefined
+ 20:07:38 /robots.txt undefined 87.250.224.89
+ 20:07:38 /auth undefined 87.250.224.89
+ 20:07:38 / undefined 5.255.231.184
+ 20:07:39 /auth undefined 213.180.203.130
+ 20:17:21 / undefined undefined
+ 20:36:19 / undefined undefined
+ 20:37:45 / undefined undefined
+ 20:37:54 /manage/account/login undefined undefined
+ 20:38:01 /admin/index.html undefined undefined
+ 20:38:08 /index.html undefined undefined
+ 20:38:15 /+CSCOE+/logon.html undefined undefined
+ 20:38:23 /cgi-bin/login.cgi undefined undefined
+ 20:38:30 /login.htm undefined undefined
+ 20:38:37 /login.html undefined undefined
+ 20:38:45 /login.jsp undefined undefined
+ 20:38:52 /login undefined undefined
+ 20:38:59 /doc/index.html undefined undefined
+ 20:39:06 /remote/login undefined undefined
+ 20:39:14 //admin/login.asp undefined undefined
+ 20:39:21 /web/ undefined undefined
+ 20:39:28 //webpages/login.html undefined undefined
+ 20:45:52 / undefined undefined
+ 20:58:31 / undefined undefined
+ 21:04:34 / undefined undefined
+ 21:07:44 / undefined undefined
+ 21:19:08 / undefined undefined
+ 21:21:50 / undefined undefined
+ 21:27:49 / undefined undefined
+ 21:28:16 /auth undefined undefined
+ 21:38:33 / Система 95.55.78.66
+ 21:38:36 /ctrl Система 95.55.78.66
+ 21:38:39 /lapchg Система 95.55.78.66
+ 21:38:42 /lapchg Система 95.55.78.66
+ 21:38:45 /lapchg Система 95.55.78.66
+ 21:38:48 /lapchg Система 95.55.78.66
+ 21:38:51 /lapchg Система 95.55.78.66
+ 21:38:54 /lapchg Система 95.55.78.66
+ 21:39:01 /devs Система 95.55.78.66
+ 21:39:02 /device-activ/24 Система 95.55.78.66
+ 21:39:05 /device-activ/168 Система 95.55.78.66
+ 21:39:05 / Система 95.55.78.66
+ 21:39:07 /device-activ/24 Система 95.55.78.66
+ 21:39:07 /device-activ/1 Система 95.55.78.66
+ 21:39:09 /device-activ/6 Система 95.55.78.66
+ 21:39:10 /device-activ/12 Система 95.55.78.66
+ 21:39:12 /device-activ/24 Система 95.55.78.66
+ 21:39:13 /device-activ/168 Система 95.55.78.66
+ 21:39:14 /device-activ/720 Система 95.55.78.66
+ 21:43:55 / undefined undefined
+ 21:44:24 / undefined undefined
+ 21:54:29 / undefined undefined
+ 22:17:29 / undefined undefined
+ 22:38:33 /robots.txt undefined 66.249.73.5
+ 22:38:33 /auth undefined 66.249.73.3
+ 22:45:56 / undefined undefined
+ 22:46:18 / undefined undefined
+ 22:46:50 / undefined undefined
+ 22:50:23 / undefined undefined
+ 23:35:00 / undefined undefined
+ 23:46:45 / undefined undefined
+ 23:57:33 / undefined undefined
+ 23:57:34 /auth undefined undefined
+ 23:59:32 / undefined undefined

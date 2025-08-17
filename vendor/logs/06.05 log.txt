@@ -178,3 +178,145 @@
  00:59:38 / undefined undefined
  01:24:06 / undefined undefined
  01:57:52 / undefined undefined
+ 02:25:12 / undefined undefined
+ 03:03:22 / undefined undefined
+ 03:28:37 /robots.txt undefined undefined
+ 03:28:37 /auth undefined undefined
+ 03:28:37 / undefined undefined
+ 03:28:38 /auth undefined undefined
+ 03:29:38 / undefined undefined
+ 03:29:38 /auth undefined undefined
+ 04:11:58 / undefined undefined
+ 04:25:42 / undefined undefined
+ 04:44:02 / undefined undefined
+ 05:03:14 / undefined undefined
+ 05:13:07 / undefined undefined
+ 05:45:44 / undefined 124.220.171.218
+ 05:45:50 /auth undefined 124.220.171.218
+ 06:07:59 / undefined undefined
+ 06:32:55 / undefined undefined
+ 06:32:55 /auth undefined undefined
+ 06:35:11 / undefined undefined
+ 06:48:39 / undefined undefined
+ 07:03:12 / undefined 62.113.113.43
+ 07:03:12 /auth undefined 62.113.113.43
+ 07:14:21 / undefined undefined
+ 07:14:21 /auth undefined undefined
+ 07:19:00 / undefined undefined
+ 07:20:51 / undefined undefined
+ 08:22:12 / undefined undefined
+ 09:24:04 / undefined undefined
+ 09:49:44 / undefined undefined
+ 10:06:04 /auth undefined 77.232.185.34
+ 10:06:56 /auth undefined 77.232.185.34 
+ login:N.sorokina 
+ pass:272308
+ 10:06:56 
+ id:21 
+ login:n.sorokina 
+ pass:272308 
+ name:Сорокина Н.Н. 
+ subj:Информатика 
+ role:2
+ 10:06:57 /auth Сорокина Н.Н. 77.232.185.34
+ 10:06:57 / Сорокина Н.Н. 77.232.185.34
+ 10:06:59 /rtake Сорокина Н.Н. 77.232.185.34 
+ kab:2
+ 10:07:02 / Сорокина Н.Н. 77.232.185.34
+ 10:27:44 / undefined undefined
+ 10:32:43 / undefined undefined
+ 10:32:44 /auth undefined undefined
+ 11:03:47 / undefined undefined
+ 11:03:47 /auth undefined undefined
+ 11:09:53 / undefined undefined
+ 11:09:53 /auth undefined undefined
+ 11:17:26 / undefined 77.232.185.34
+ 11:17:26 /auth undefined 77.232.185.34
+ 11:17:35 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 11:17:35 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В. 
+ subj:Русский язык 
+ role:0
+ 11:17:36 /auth Мёд С.В. 77.232.185.34
+ 11:17:36 / Мёд С.В. 77.232.185.34
+ 11:17:44 /take Мёд С.В. 77.232.185.34 
+ lapid:23 
+ kab:15
+ 11:17:48 / Мёд С.В. 77.232.185.34
+ 11:29:17 / undefined undefined
+ 11:50:44 / undefined undefined
+ 12:22:10 /robots.txt undefined 87.250.224.5
+ 12:22:10 /auth undefined 87.250.224.5
+ 12:22:10 / undefined 213.180.203.18
+ 12:22:11 /auth undefined 87.250.224.237
+ 12:25:27 / undefined undefined
+ 12:47:02 / undefined undefined
+ 12:54:27 / undefined 188.143.244.142
+ 13:34:19 / undefined undefined
+ 14:11:31 / undefined undefined
+ 14:15:55 / undefined 198.235.24.175
+ 14:39:35 / undefined undefined
+ 14:41:02 / undefined undefined
+ 14:43:42 / undefined undefined
+ 14:44:07 / undefined undefined
+ 14:44:07 /auth undefined undefined
+ 14:44:38 / undefined undefined 
+ format:json
+ 14:49:55 / undefined undefined
+ 14:49:56 /auth undefined undefined
+ 14:49:57 /robots.txt undefined undefined
+ 14:49:57 /auth undefined undefined
+ 15:32:55 / undefined undefined
+ 15:36:12 / undefined undefined
+ 16:10:03 / undefined undefined
+ 16:10:03 /auth undefined undefined
+ 16:14:01 /pdown undefined undefined
+ 16:40:00 / undefined undefined
+ 17:20:44 / undefined undefined
+ 18:15:00 / undefined undefined
+ 18:30:26 / undefined undefined
+ 18:30:52 /auth undefined undefined
+ 18:34:30 / undefined undefined
+ 19:18:38 /robots.txt undefined undefined
+ 19:18:38 /auth undefined undefined
+ 19:18:38 / undefined undefined
+ 19:18:39 /auth undefined undefined
+ 19:19:13 / undefined undefined
+ 19:19:14 /auth undefined undefined
+ 19:29:50 / undefined undefined
+ 19:29:51 /auth undefined undefined
+ 19:33:40 / undefined undefined
+ 20:19:20 / undefined undefined
+ 20:31:14 / undefined undefined
+ 21:44:27 / undefined undefined
+ 22:54:21 / undefined undefined
+ 22:58:42 /robots.txt undefined 195.191.219.133
+ 22:58:42 / undefined 195.191.219.133
+ 22:58:42 /auth undefined 195.191.219.133
+ 22:59:53 / undefined undefined
+ 22:59:55 /robots.txt undefined undefined
+ 22:59:55 /auth undefined undefined
+ 22:59:55 / undefined undefined
+ 22:59:56 /auth undefined undefined
+ 23:18:38 /robots.txt undefined undefined
+ 23:18:38 /auth undefined undefined
+ 23:25:51 / undefined undefined
+ 23:26:37 / undefined undefined
+ 23:26:38 /auth/sitemap.xml undefined undefined
+ 23:26:38 /auth/robots.txt undefined undefined
+ 23:26:39 /auth undefined undefined
+ 23:26:39 /auth undefined undefined
+ 23:26:40 /auth undefined undefined
+ 23:27:12 /auth/sitemap.xml undefined undefined
+ 23:27:12 /auth/robots.txt undefined undefined
+ 23:27:12 /auth undefined undefined
+ 23:27:12 /auth undefined undefined
+ 23:32:55 / undefined undefined
+ 23:50:13 / undefined 64.225.76.208
+ 23:50:14 /auth undefined 64.225.76.208
+ 23:57:19 / undefined undefined

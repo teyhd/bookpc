@@ -1,0 +1,84 @@
+<!-- Модальное окно авторизации -->
+<div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+    <!-- Заголовок -->
+    <div class="bg-amber-600 text-white p-4">
+      <h4 class="text-xl font-bold">Авторизуйтесь, пожалуйста!</h4>
+    </div>
+
+    <!-- Форма -->
+    <form id="formauth" class="p-6" action="upl" method="post" enctype="multipart/form-data">
+      <!-- Поле логина -->
+      <div class="mb-4">
+        <input class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+               type="text"
+               name="login"
+               id="logins"
+               placeholder="Введите логин"
+               required>
+      </div>
+
+      <!-- Поле пароля -->
+      <div class="mb-6">
+        <input class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+               type="password"
+               name="pass"
+               id="pass"
+               placeholder="Введите пароль"
+               required>
+      </div>
+
+      <!-- Кнопки -->
+      <div class="flex justify-between">
+        <button type="button"
+                id="closeModalBtn"
+                class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+          Закрыть
+        </button>
+        
+        <button type="submit"
+                class="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          ОК
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Скрипт для управления модальным окном -->
+<script>
+  // Элементы модального окна
+  const authModal = document.getElementById('authModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  
+  // Функции для управления модальным окном
+  function openModal() {
+    authModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+  }
+  
+  function closeModal() {
+    authModal.classList.add('hidden');
+    document.body.style.overflow = ''; // Восстанавливаем скролл
+  }
+  
+  // Обработчики событий
+  closeModalBtn.addEventListener('click', closeModal);
+  
+  // Закрытие при клике вне модального окна
+  authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) {
+      closeModal();
+    }
+  });
+  
+  // Закрытие по клавише Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !authModal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+  
+  // Для открытия модалки используйте openModal() 
+  // Например: document.getElementById('openModalBtn').addEventListener('click', openModal);
+</script>

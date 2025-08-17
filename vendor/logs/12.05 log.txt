@@ -179,3 +179,223 @@
     at start (file:///var/www/html/bookpc/bookpc.js:290:9)
     at file:///var/www/html/bookpc/bookpc.js:326:7
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+ 00:18:30 / undefined undefined
+ 00:36:27 / undefined undefined
+ 00:37:05 / undefined undefined
+ 00:38:20 / undefined undefined
+ 01:39:01 / undefined undefined
+ 02:10:56 / undefined undefined
+ 02:40:00 / undefined undefined
+ 02:42:16 / undefined undefined
+ 03:22:51 / undefined undefined
+ 03:41:45 / undefined undefined
+ 04:10:10 / undefined undefined
+ 04:10:10 / undefined undefined
+ 04:10:10 /auth undefined undefined
+ 04:29:27 / undefined undefined
+ 04:31:03 / undefined undefined
+ 04:42:19 / undefined undefined
+ 04:43:23 /manager/html undefined undefined
+ 04:58:40 / undefined undefined
+ 05:21:47 / undefined undefined
+ 05:35:44 / undefined undefined
+ 05:35:45 /auth undefined undefined
+ 05:45:03 / undefined undefined
+ 05:55:34 /manager/html undefined undefined
+ 06:26:35 / undefined undefined
+ 06:26:35 /auth undefined undefined
+ 06:34:14 / undefined undefined
+ 06:47:31 / undefined undefined
+ 07:14:21 / undefined undefined
+ 07:34:36 / undefined 135.148.100.196
+ 07:34:36 /auth undefined 135.148.100.196
+ 07:37:01 / undefined undefined
+ 07:51:27 / undefined undefined
+ 07:55:34 / undefined undefined
+ 08:15:08 / undefined undefined
+ 08:15:15 / undefined undefined
+ 08:15:15 /auth undefined undefined
+ 08:15:27 / undefined undefined 
+ format:json
+ 08:57:21 / undefined 88.198.104.2
+ 08:57:21 /auth undefined 88.198.104.2
+ 08:57:47 /auth undefined 88.198.104.2 
+ login:teacher17 
+ pass:QPBRwPxm
+ 08:57:47 
+ id:17 
+ login:teacher17 
+ pass:QPBRwPxm 
+ name:Удодова Е.Г. 
+ subj:Английский язык 
+ role:0
+ 08:57:48 /auth Удодова Е.Г. 88.198.104.2
+ 08:57:48 / Удодова Е.Г. 88.198.104.2
+ 08:58:17 /take Удодова Е.Г. 88.198.104.2 
+ lapid:21 
+ kab:15
+ 08:58:21 / Удодова Е.Г. 88.198.104.2
+ 09:00:19 / undefined 77.232.185.34
+ 09:00:19 /auth undefined 77.232.185.34
+ 09:00:27 /auth undefined 77.232.185.34 
+ login:roma 
+ pass:Fr22264802024ujlf!
+ 09:00:27 
+ id:54 
+ login:roma 
+ pass:Fr22264802024ujlf! 
+ name:Рома Кудрин 
+ subj:Робототехник 
+ role:2
+ 09:00:28 /auth Рома Кудрин 77.232.185.34
+ 09:00:28 / Рома Кудрин 77.232.185.34
+ 09:00:30 /rtake Рома Кудрин 77.232.185.34 
+ kab:2
+ 09:00:33 / Рома Кудрин 77.232.185.34
+ 09:00:45 / undefined undefined
+ 09:07:47 /rtake Рома Кудрин 77.232.185.34 
+ kab:2
+ 09:07:49 / Рома Кудрин 77.232.185.34
+ 09:19:22 / undefined undefined
+ 09:39:09 / undefined 77.232.185.34
+ 09:39:09 /auth undefined 77.232.185.34
+ 09:39:12 /auth undefined 77.232.185.34 
+ login:teacher5 
+ pass:bde3QopB
+ 09:39:12 
+ id:5 
+ login:teacher5 
+ pass:bde3QopB 
+ name:Елисеева З.В. 
+ subj:Математика 
+ role:0
+ 09:39:13 /auth Елисеева З.В. 77.232.185.34
+ 09:39:13 / Елисеева З.В. 77.232.185.34
+ 09:42:54 /take Елисеева З.В. 77.232.185.34 
+ lapid:20 
+ kab:14
+ 09:42:57 / Елисеева З.В. 77.232.185.34
+ 09:46:38 / Рома Кудрин 77.232.185.34
+ 09:46:45 / Рома Кудрин 77.232.185.34
+ 09:47:11 / Рома Кудрин 77.232.185.34
+ 09:59:35 / undefined undefined
+ 10:05:37 / undefined undefined
+ 10:50:54 / undefined undefined
+ 11:06:24 / undefined undefined
+ 11:44:33 /retlap Елисеева З.В. 77.232.185.34 
+ komm:Замечаний нет 
+ lapid:20
+ 11:44:37 / Елисеева З.В. 77.232.185.34
+ 11:54:29 / undefined undefined
+ 12:06:26 / undefined undefined
+ 12:08:16 / undefined undefined
+ 13:05:45 / undefined undefined
+ 13:12:08 / undefined 77.232.185.34
+ 13:12:08 /auth undefined 77.232.185.34
+ 13:12:22 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 13:12:22 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В. 
+ subj:Русский язык 
+ role:0
+ 13:12:23 /auth Мёд С.В. 77.232.185.34
+ 13:12:23 / Мёд С.В. 77.232.185.34
+ 13:12:34 /take Мёд С.В. 77.232.185.34 
+ lapid:23 
+ kab:17
+ 13:12:37 / Мёд С.В. 77.232.185.34
+ 13:26:19 / undefined undefined
+ 13:48:15 / undefined undefined
+ 13:53:24 / undefined undefined
+ 14:09:23 / undefined undefined
+ 14:11:02 / undefined undefined
+ 14:39:38 / undefined 77.232.185.34
+ 14:39:38 /auth undefined 77.232.185.34
+ 14:39:51 /auth undefined 77.232.185.34 
+ login:p.koroleva 
+ pass:245952
+ 14:39:51 
+ id:60 
+ login:p.koroleva 
+ pass:245952 
+ name:Королёва Алина Андреевна 
+ subj:Наставник  
+ role:0
+ 14:39:52 /auth Королёва Алина Андреевна 77.232.185.34
+ 14:39:52 / Королёва Алина Андреевна 77.232.185.34
+ 14:40:00 /retlap Королёва Алина Андреевна 77.232.185.34 
+ komm:Замечаний нет 
+ lapid:8
+ 14:41:14 / undefined 77.232.185.34
+ 14:41:15 /auth undefined 77.232.185.34
+ 14:41:16 / undefined undefined
+ 14:50:17 /auth undefined 77.232.185.34 
+ login:p.koroleva 
+ pass:245952
+ 14:50:17 
+ id:60 
+ login:p.koroleva 
+ pass:245952 
+ name:Королёва Алина Андреевна 
+ subj:Наставник  
+ role:0
+ 14:50:18 /auth Королёва Алина Андреевна 77.232.185.34
+ 14:50:18 / Королёва Алина Андреевна 77.232.185.34
+ 14:50:21 /retlap Королёва Алина Андреевна 77.232.185.34 
+ komm:Замечаний нет 
+ lapid:8
+ 14:50:25 / Королёва Алина Андреевна 77.232.185.34
+ 15:02:33 / undefined undefined
+ 15:11:02 / undefined undefined
+ 15:16:44 / undefined undefined
+ 15:16:44 /auth undefined undefined
+ 15:17:21 / undefined undefined
+ 15:26:09 / undefined undefined
+ 15:26:09 /auth undefined undefined
+ 15:38:46 /auth undefined 77.232.185.34
+ 15:38:53 /auth undefined 77.232.185.34 
+ login:I.lavrov 
+ pass:452115
+ 15:38:53 
+ id:56 
+ login:i.lavrov 
+ pass:452115 
+ name:Игорь Лавров 
+ subj:Информатика 
+ role:1
+ 15:38:55 /auth Игорь Лавров 77.232.185.34
+ 15:38:55 / Игорь Лавров 77.232.185.34
+ 15:39:01 /rtake Игорь Лавров 77.232.185.34 
+ kab:2
+ 15:39:05 / Игорь Лавров 77.232.185.34
+ 16:17:33 /pdown undefined undefined
+ 16:20:25 / undefined undefined
+ 16:31:27 / undefined undefined
+ 16:55:40 / undefined undefined
+ 17:13:54 / undefined undefined
+ 17:17:00 / undefined undefined
+ 17:31:18 / undefined undefined
+ 18:21:14 / undefined undefined
+ 18:41:03 / undefined undefined
+ 18:41:03 /auth undefined undefined
+ 18:41:06 / undefined undefined
+ 18:41:34 /auth undefined undefined
+ 18:46:27 / undefined undefined
+ 19:14:20 / undefined undefined
+ 19:25:17 / undefined undefined
+ 19:25:17 /auth undefined undefined
+ 19:30:07 / undefined undefined
+ 19:43:57 / undefined undefined
+ 20:24:54 / undefined undefined
+ 20:32:34 / undefined undefined
+ 21:28:10 / undefined undefined
+ 22:06:13 / undefined undefined
+ 22:19:11 / undefined undefined
+ 22:32:18 / undefined undefined
+ 23:21:12 / undefined undefined
+ 23:38:15 / undefined undefined
+ 23:49:12 / undefined undefined

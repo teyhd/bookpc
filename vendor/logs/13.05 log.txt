@@ -97,3 +97,228 @@
  23:46:59 /auth Система 127.0.0.1
  23:46:59 / Система 127.0.0.1
  23:47:15 / Система 127.0.0.1
+ 00:19:35 / undefined 107.173.160.135
+ 00:19:36 /auth undefined 107.173.160.135
+ 00:32:00 / undefined undefined
+ 00:34:40 / undefined undefined
+ 00:43:13 / undefined undefined
+ 01:12:21 / undefined undefined
+ 01:13:08 / undefined undefined
+ 01:17:51 / undefined undefined
+ 01:38:30 / undefined undefined
+ 01:47:58 / undefined undefined
+ 01:55:00 / undefined undefined
+ 02:26:59 / undefined undefined
+ 02:36:55 / undefined undefined
+ 02:44:49 / undefined undefined
+ 03:02:44 / undefined undefined
+ 03:29:21 / undefined undefined
+ 03:36:28 / undefined undefined
+ 03:44:53 / undefined undefined
+ 03:50:27 / undefined undefined
+ 04:10:46 / undefined undefined
+ 04:20:30 / undefined undefined
+ 04:20:34 / undefined undefined
+ 04:20:35 /auth undefined undefined
+ 04:20:47 / undefined undefined 
+ format:json
+ 04:34:29 / undefined undefined
+ 04:35:37 / undefined undefined
+ 04:56:28 / undefined undefined
+ 05:18:21 / undefined undefined
+ 05:28:14 / undefined undefined
+ 05:57:47 / undefined undefined
+ 06:19:07 / undefined undefined
+ 06:32:16 / undefined undefined
+ 06:50:34 / undefined undefined
+ 06:55:18 / undefined undefined
+ 06:56:44 / undefined undefined
+ 07:00:38 / undefined undefined
+ 07:19:56 / undefined undefined
+ 07:32:22 / undefined undefined
+ 07:38:00 / undefined undefined
+ 08:00:07 / undefined undefined
+ 08:14:43 / undefined undefined
+ 08:27:31 / undefined undefined
+ 08:43:41 / undefined undefined
+ 08:58:58 / undefined 77.232.185.34
+ 08:58:58 /auth undefined 77.232.185.34
+ 08:59:01 / undefined 66.249.83.137
+ 08:59:01 / undefined 66.249.83.68
+ 08:59:02 /auth undefined 66.249.83.2
+ 08:59:02 /auth undefined 66.249.83.2
+ 08:59:03 /auth undefined 77.232.185.34 
+ login:teacher5 
+ pass:bde3QopB
+ 08:59:03 
+ id:5 
+ login:teacher5 
+ pass:bde3QopB 
+ name:Елисеева З.В. 
+ subj:Математика 
+ role:0
+ 08:59:04 /auth Елисеева З.В. 77.232.185.34
+ 08:59:04 / Елисеева З.В. 77.232.185.34
+ 08:59:11 /take Елисеева З.В. 77.232.185.34 
+ lapid:21 
+ kab:14
+ 08:59:14 / Елисеева З.В. 77.232.185.34
+ 09:09:04 / undefined undefined
+ 09:13:11 / undefined undefined
+ 09:16:12 / undefined undefined
+ 09:19:02 / undefined undefined
+ 09:21:48 / undefined undefined
+ 09:23:33 / undefined undefined
+ 09:23:34 /auth undefined undefined
+ 09:25:07 / undefined undefined
+ 09:42:40 /auth undefined 94.25.228.206
+ 09:42:47 /auth undefined 94.25.228.206 
+ login:I.lavrov 
+ pass:452115
+ 09:42:47 
+ id:56 
+ login:i.lavrov 
+ pass:452115 
+ name:Игорь Лавров 
+ subj:Информатика 
+ role:1
+ 09:42:48 /auth Игорь Лавров 94.25.228.206
+ 09:42:48 / Игорь Лавров 94.25.228.206
+ 09:42:49 /rtake Игорь Лавров 94.25.228.206 
+ kab:2
+ 09:42:53 / Игорь Лавров 94.25.228.206
+ 10:01:28 / undefined undefined
+ 10:11:39 / undefined undefined
+ 10:14:31 / undefined undefined
+ 10:15:15 / undefined undefined
+ 10:30:43 / undefined undefined
+ 10:39:53 / undefined undefined
+ 10:44:59 / undefined 77.232.185.34
+ 10:44:59 /auth undefined 77.232.185.34
+ 10:45:16 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 10:45:16 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В. 
+ subj:Русский язык 
+ role:0
+ 10:45:17 /auth Мёд С.В. 77.232.185.34
+ 10:45:17 / Мёд С.В. 77.232.185.34
+ 10:45:25 /take Мёд С.В. 77.232.185.34 
+ lapid:23 
+ kab:15
+ 10:45:29 / Мёд С.В. 77.232.185.34
+ 10:57:21 / undefined undefined
+ 11:02:45 / undefined undefined
+ 11:07:00 / undefined undefined
+ 11:48:04 / undefined undefined
+ 11:50:18 / undefined undefined
+ 11:54:06 / undefined 205.210.31.111
+ 12:12:17 / undefined undefined
+ 12:14:42 / undefined undefined
+ 12:16:34 / undefined undefined
+ 12:31:21 / undefined undefined
+ 13:04:08 / undefined undefined
+ 13:19:01 / undefined undefined
+ 13:24:12 / undefined undefined
+ 13:30:23 /retlap Елисеева З.В. 176.59.23.176 
+ komm:Замечаний нет 
+ lapid:21
+ 13:30:26 / Елисеева З.В. 176.59.23.176
+ 13:30:31 /take Елисеева З.В. 176.59.23.176 
+ lapid:21 
+ kab:14
+ 13:30:34 / Елисеева З.В. 176.59.23.176
+ 13:32:48 / undefined undefined
+ 13:41:35 / undefined undefined
+ 13:57:19 / undefined undefined
+ 13:57:19 /auth undefined undefined
+ 14:05:18 / undefined undefined
+ 14:16:11 / undefined undefined
+ 14:28:49 / undefined undefined
+ 14:36:23 /retlap Елисеева З.В. 176.59.23.176 
+ komm:Замечаний нет 
+ lapid:21
+ 14:36:26 / Елисеева З.В. 176.59.23.176
+ 14:43:24 / undefined undefined
+ 15:08:44 / undefined undefined
+ 15:18:37 / undefined undefined
+ 15:20:48 / undefined 77.232.185.34
+ 15:20:48 /auth undefined 77.232.185.34
+ 15:22:07 / undefined undefined
+ 15:25:35 /robots.txt undefined 66.249.74.67
+ 15:25:35 /auth undefined 66.249.74.67
+ 15:27:14 / undefined undefined
+ 15:40:33 / undefined undefined
+ 15:59:43 / undefined undefined
+ 16:16:14 /pdown undefined undefined
+ 16:16:32 / undefined 77.232.185.34
+ 16:16:32 /auth undefined 77.232.185.34
+ 16:16:37 / undefined 77.232.185.34
+ 16:16:37 /auth undefined 77.232.185.34
+ 16:17:08 /auth undefined 77.232.185.34
+ 16:17:16 /auth undefined 77.232.185.34 
+ login:p.koroleva 
+ pass:245952
+ 16:17:16 
+ id:60 
+ login:p.koroleva 
+ pass:245952 
+ name:Королёва Алина Андреевна 
+ subj:Наставник  
+ role:0
+ 16:17:17 /auth Королёва Алина Андреевна 77.232.185.34
+ 16:17:17 / Королёва Алина Андреевна 77.232.185.34
+ 16:21:05 / undefined undefined
+ 16:22:25 / undefined undefined
+ 16:36:51 / undefined undefined
+ 16:56:21 / undefined undefined
+ 17:11:46 / undefined undefined
+ 17:32:40 / undefined undefined
+ 17:41:37 / undefined undefined
+ 17:52:38 / undefined undefined
+ 18:04:37 / undefined undefined
+ 18:04:45 / undefined undefined
+ 18:06:26 / undefined undefined
+ 18:32:41 / undefined undefined
+ 18:36:42 / undefined undefined
+ 18:36:43 /auth undefined undefined
+ 18:50:34 / undefined undefined
+ 18:53:31 / undefined undefined
+ 19:05:25 / undefined undefined
+ 19:10:18 / undefined undefined
+ 19:10:18 /auth undefined undefined
+ 19:36:28 / undefined undefined
+ 19:51:59 / undefined undefined
+ 19:55:55 / undefined undefined
+ 20:13:17 / undefined undefined
+ 20:13:38 / undefined undefined
+ 20:13:39 /auth/robots.txt undefined undefined
+ 20:13:39 /auth/sitemap.xml undefined undefined
+ 20:13:40 /auth undefined undefined
+ 20:13:40 /auth undefined undefined
+ 20:13:41 /auth undefined undefined
+ 20:13:46 /auth/sitemap.xml undefined undefined
+ 20:13:46 /auth/robots.txt undefined undefined
+ 20:13:46 /auth undefined undefined
+ 20:13:46 /auth undefined undefined
+ 20:32:23 / undefined undefined
+ 20:40:51 / undefined undefined
+ 20:46:16 / undefined undefined
+ 20:46:29 / undefined undefined
+ 20:51:58 / undefined undefined
+ 21:12:30 / undefined undefined
+ 21:17:20 / undefined undefined
+ 21:40:21 / undefined undefined
+ 21:42:50 / undefined undefined
+ 21:59:48 / undefined undefined
+ 22:03:40 / undefined undefined
+ 22:32:04 / undefined undefined
+ 22:42:51 / undefined undefined
+ 22:47:51 / undefined undefined
+ 23:01:42 / undefined undefined
+ 23:48:11 / undefined undefined
+ 23:51:13 / undefined undefined

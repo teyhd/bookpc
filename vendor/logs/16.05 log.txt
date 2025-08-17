@@ -3358,3 +3358,254 @@
  lapid:1,2,3,4,5,6
  21:52:24 /lapchg Система 127.0.0.1
  21:52:27 /lapchg Система 127.0.0.1
+ 00:16:16 / undefined undefined
+ 00:16:20 /auth undefined undefined
+ 00:17:12 / undefined undefined
+ 00:19:50 / undefined undefined
+ 00:32:37 / undefined undefined
+ 00:50:01 / undefined undefined
+ 01:09:53 / undefined undefined
+ 01:14:35 / undefined undefined
+ 01:58:29 / undefined undefined
+ 01:58:55 / undefined undefined
+ 01:59:02 / undefined undefined
+ 02:37:13 / undefined undefined
+ 02:37:27 / undefined undefined
+ 02:49:51 / undefined undefined
+ 03:02:07 / undefined undefined
+ 03:35:07 / undefined undefined
+ 03:37:23 / undefined undefined
+ 03:58:16 / undefined undefined
+ 04:06:11 / undefined undefined
+ 04:06:11 /auth undefined undefined
+ 04:09:05 / undefined undefined
+ 04:19:39 / undefined undefined
+ 04:23:20 / undefined undefined
+ 04:39:26 / undefined undefined
+ 05:00:51 / undefined 124.222.209.139
+ 05:00:52 /auth undefined 124.222.209.139
+ 05:05:59 / undefined undefined
+ 05:17:47 / undefined undefined
+ 05:24:29 / undefined undefined
+ 05:28:46 / undefined undefined
+ 06:02:54 / undefined undefined
+ 06:03:07 / undefined undefined
+ 06:42:37 / undefined undefined
+ 06:56:33 / undefined undefined
+ 07:03:16 / undefined undefined
+ 07:12:23 / undefined undefined
+ 07:41:48 / undefined undefined
+ 07:54:22 / undefined undefined
+ 07:54:22 /auth undefined undefined
+ 08:11:07 / undefined undefined
+ 08:11:52 / undefined undefined
+ 08:15:09 / undefined undefined
+ 08:28:44 / undefined 77.232.185.34
+ 08:28:44 /auth undefined 77.232.185.34
+ 08:28:54 /auth undefined 77.232.185.34 
+ login:roma 
+ pass:Fr22264802024ujlf!
+ 08:28:54 
+ id:54 
+ login:roma 
+ pass:Fr22264802024ujlf! 
+ name:Рома Кудрин 
+ subj:Робототехник 
+ role:2
+ 08:28:55 /auth Рома Кудрин 77.232.185.34
+ 08:28:55 / Рома Кудрин 77.232.185.34
+ 08:28:57 /rtake Рома Кудрин 77.232.185.34 
+ kab:2
+ 08:29:00 / Рома Кудрин 77.232.185.34
+ 08:31:40 / undefined undefined
+ 08:41:44 / undefined undefined
+ 08:57:59 / Рома Кудрин 77.232.185.34
+ 09:13:31 / undefined undefined
+ 09:14:00 / undefined 198.235.24.178
+ 09:18:23 / undefined undefined
+ 09:40:54 / undefined undefined
+ 09:41:57 / undefined 216.81.248.13
+ 09:42:10 /s3cmd.ini undefined 216.81.248.13
+ 09:42:25 /.aws/credentials undefined 216.81.248.13
+ 09:58:27 / undefined undefined
+ 09:58:27 /auth undefined undefined
+ 10:06:24 / undefined 77.232.185.34
+ 10:06:24 /auth undefined 77.232.185.34
+ 10:06:35 /auth undefined 77.232.185.34 
+ login:teacher2 
+ pass:mypass
+ 10:06:35 
+ id:2 
+ login:teacher2 
+ pass:mypass 
+ name:Мёд С.В. 
+ subj:Русский язык 
+ role:0
+ 10:06:36 /auth Мёд С.В. 77.232.185.34
+ 10:06:36 / Мёд С.В. 77.232.185.34
+ 10:06:45 /take Мёд С.В. 77.232.185.34 
+ lapid:23 
+ kab:16
+ 10:06:48 / Мёд С.В. 77.232.185.34
+ 10:09:40 / undefined undefined
+ 10:09:49 / undefined undefined
+ 10:09:49 /auth undefined undefined
+ 10:10:04 / undefined undefined 
+ format:json
+ 10:11:53 / undefined undefined
+ 10:20:17 / undefined undefined
+ 10:40:52 / undefined undefined
+ 10:41:32 / undefined undefined
+ 10:41:33 /auth undefined undefined
+ 10:44:56 / undefined undefined
+ 11:02:27 / undefined undefined
+ 11:19:06 / undefined undefined
+ 11:19:53 / undefined undefined
+ 11:20:18 / undefined undefined
+ 11:29:00 / undefined 77.232.185.34
+ 11:29:00 /auth undefined 77.232.185.34
+ 11:29:12 / undefined 77.232.185.34
+ 11:29:12 /auth undefined 77.232.185.34
+ 11:29:21 /auth undefined 77.232.185.34 
+ login:k.subbotina 
+ pass:7589631
+ 11:29:21 
+ id:55 
+ login:k.subbotina 
+ pass:7589631 
+ name:Субботина Ксения Сергеевна 
+ subj:Русский язык  
+ role:0
+ 11:29:22 /auth Субботина Ксения Сергеевна 77.232.185.34
+ 11:29:22 / Субботина Ксения Сергеевна 77.232.185.34
+ 11:29:50 /take Субботина Ксения Сергеевна 77.232.185.34 
+ lapid:21 
+ kab:21
+ 11:29:54 / Субботина Ксения Сергеевна 77.232.185.34
+ 11:48:29 / undefined undefined
+ 12:04:16 /robots.txt undefined undefined
+ 12:04:16 /auth undefined undefined
+ 12:04:17 /robots.txt undefined undefined
+ 12:04:17 /auth undefined undefined
+ 12:04:18 /robots.txt undefined undefined
+ 12:04:18 /auth undefined undefined
+ 12:04:19 /robots.txt undefined undefined
+ 12:04:19 /auth undefined undefined
+ 12:04:20 /robots.txt undefined undefined
+ 12:04:20 /auth undefined undefined
+ 12:04:21 /robots.txt undefined undefined
+ 12:04:21 /auth undefined undefined
+ 12:04:22 /robots.txt undefined undefined
+ 12:04:22 /auth undefined undefined
+ 12:04:23 /robots.txt undefined undefined
+ 12:04:23 /auth undefined undefined
+ 12:04:24 /robots.txt undefined undefined
+ 12:04:24 /auth undefined undefined
+ 12:04:25 /robots.txt undefined undefined
+ 12:04:25 /auth undefined undefined
+ 12:13:48 / undefined undefined
+ 12:38:33 / undefined undefined
+ 12:42:12 / undefined undefined
+ 12:43:34 / undefined undefined
+ 12:52:12 / undefined 77.232.185.34
+ 12:52:12 /auth undefined 77.232.185.34
+ 12:52:20 /auth undefined 77.232.185.34 
+ login:p.koroleva 
+ pass:245952
+ 12:52:20 
+ id:60 
+ login:p.koroleva 
+ pass:245952 
+ name:Королёва Алина Андреевна 
+ subj:Наставник  
+ role:0
+ 12:52:21 /auth Королёва Алина Андреевна 77.232.185.34
+ 12:52:21 / Королёва Алина Андреевна 77.232.185.34
+ 13:16:50 / undefined undefined
+ 13:30:08 / undefined undefined
+ 14:07:01 / undefined undefined
+ 14:07:02 /auth undefined undefined
+ 14:13:07 / undefined undefined
+ 14:14:26 / undefined undefined
+ 14:14:28 / undefined undefined
+ 14:23:08 / undefined undefined
+ 14:56:56 / undefined undefined
+ 15:01:51 / undefined undefined
+ 15:07:19 /robots.txt undefined 66.249.66.41
+ 15:07:19 /auth undefined 66.249.66.169
+ 15:07:20 /auth undefined 66.249.66.193
+ 15:07:21 /auth undefined 66.249.66.5
+ 15:19:18 / undefined 77.232.185.34
+ 15:19:18 /auth undefined 77.232.185.34
+ 15:19:24 /auth undefined 77.232.185.34 
+ login:k.subbotina 
+ pass:7589631
+ 15:19:24 
+ id:55 
+ login:k.subbotina 
+ pass:7589631 
+ name:Субботина Ксения Сергеевна 
+ subj:Русский язык  
+ role:0
+ 15:19:25 /auth Субботина Ксения Сергеевна 77.232.185.34
+ 15:19:25 / Субботина Ксения Сергеевна 77.232.185.34
+ 15:19:31 /retlap Субботина Ксения Сергеевна 77.232.185.34 
+ komm:Замечаний нет 
+ lapid:21
+ 15:19:34 / Субботина Ксения Сергеевна 77.232.185.34
+ 15:26:27 / undefined undefined
+ 15:28:03 / undefined undefined
+ 15:57:05 / undefined undefined
+ 15:59:27 / undefined undefined
+ 16:10:02 / undefined undefined
+ 16:10:09 /manage/account/login undefined undefined
+ 16:10:11 /admin/index.html undefined undefined
+ 16:10:12 /index.html undefined undefined
+ 16:10:15 /+CSCOE+/logon.html undefined undefined
+ 16:10:20 /cgi-bin/login.cgi undefined undefined
+ 16:10:33 /login.htm undefined undefined
+ 16:10:41 /login.html undefined undefined
+ 16:10:43 /login.jsp undefined undefined
+ 16:10:45 /login undefined undefined
+ 16:10:47 /doc/index.html undefined undefined
+ 16:10:49 /remote/login undefined undefined
+ 16:10:50 //admin/login.asp undefined undefined
+ 16:10:52 /web/ undefined undefined
+ 16:10:54 //webpages/login.html undefined undefined
+ 16:14:20 /pdown undefined undefined
+ 16:30:55 / undefined undefined
+ 16:45:30 / undefined undefined
+ 17:15:53 / undefined undefined
+ 17:20:49 / undefined undefined
+ 17:26:52 / undefined undefined
+ 17:28:02 / undefined undefined
+ 17:28:03 /auth undefined undefined
+ 17:33:41 / undefined undefined
+ 17:40:30 / undefined undefined
+ 17:49:46 / undefined 109.184.40.209
+ 17:49:46 /auth undefined 109.184.40.209
+ 18:16:13 / undefined undefined
+ 18:36:25 / undefined undefined
+ 19:11:38 / undefined undefined
+ 19:11:40 /auth undefined undefined
+ 19:13:23 / undefined undefined
+ 19:43:12 / undefined undefined
+ 19:52:34 / undefined undefined
+ 19:55:12 / undefined undefined
+ 20:02:26 / undefined undefined
+ 20:44:55 / undefined undefined
+ 20:47:06 / undefined undefined
+ 20:53:50 / undefined undefined
+ 21:16:23 / undefined undefined
+ 21:36:50 / undefined undefined
+ 21:48:34 / undefined undefined
+ 21:54:16 / undefined undefined
+ 22:20:03 / undefined undefined
+ 22:27:46 / undefined undefined
+ 22:27:47 /auth undefined undefined
+ 22:41:08 / undefined undefined
+ 22:52:24 / undefined undefined
+ 22:53:47 / Система 5.166.154.122
+ 22:56:34 / undefined undefined
+ 23:25:56 / undefined undefined
+ 23:53:12 / undefined undefined
