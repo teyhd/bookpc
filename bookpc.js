@@ -142,8 +142,10 @@ app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
     //console.log('Cookie:', req.headers);
     //.log('Session:', req.session);
-     mlog(page,req.session.uid,req.session.user.name || null,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
-     next();
+    let name = req.session.user || null
+    if (name!=null) name = name.name
+    mlog(page,req.session.uid,name,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
+    next();
 })
 var cook = null
 app.get('/data',async (req,res)=>{
