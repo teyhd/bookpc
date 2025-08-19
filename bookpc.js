@@ -142,7 +142,7 @@ app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
     //console.log('Cookie:', req.headers);
     //.log('Session:', req.session);
-     mlog(page,req.session.uid,req.session.name,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
+     mlog(page,req.session.uid,req.session.user.name,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
      next();
 })
 var cook = null
@@ -186,7 +186,7 @@ app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
         title: 'Онлайн Платоникс',
         kabs: kabs,
         meid: req.session.user.id,
-        name:req.session.user.name,
+        name:req.session.user.user.name,
         pc: pc,
         auth: req.session.user.right,
         role: req.session.user.right
@@ -199,10 +199,10 @@ app.get('/story',sso.requireRole(1),async (req,res)=>{
     res.render('story',{
         title: 'История использования',
         meid: req.session.user.id,
-        name:req.session.name,
+        name:req.session.user.name,
         laps: laps,
         auth: req.session.user.id,
-        role: req.session.role
+        role: req.session.user.right
     });
 })
 app.get('/device-activ/:hour', async (req, res) => {
@@ -235,7 +235,7 @@ app.get('/devs',sso.requireRole(5), async (req, res) => {
             title: 'Управление устройствами',
             devices: devices, // Передаем устройства для текущей страницы
             totalDevices: devices.length, // Общее количество устройств
-            role: req.session.role,
+            role: req.session.user.right,
             auth: req.session.user.id // Флаг авторизации
         });
     } catch (error) {
@@ -254,7 +254,7 @@ app.get('/ctrl',sso.requireRole(5),async (req,res)=>{
         title: 'Управление ПК',
         cmd: cmd,
         meid: req.session.user.id,
-        name:req.session.name,
+        name:req.session.user.name,
         laps: laps, 
          role: req.session.role,
         auth: req.session.user.id
@@ -298,7 +298,7 @@ app.get('/getstory',sso.requireRole(5),async (req,res)=>{
         laps[j].startf = formatUnixTime(laps[j].timestart)
         laps[j].stopf = formatUnixTime(laps[j].timestop)
     }
-    say(`${req.session.name} запросил истрорию ${req.query.lapid}`)
+    say(`${req.session.user.name} запросил истрорию ${req.query.lapid}`)
     res.json(JSON.stringify(laps))
   //  res.send(laps)
 })
@@ -309,7 +309,7 @@ app.get('/auth',async (req,res)=>{
         let ans = await auth_user(req.query.login,req.query.pass);
         mlog(ans);
         if (ans!=undefined){
-            req.session.name = ans.name
+            req.session.user.name = ans.user.name
             req.session.user.id = ans.id
             req.session.role = ans.role
             res.send('ok')
@@ -328,14 +328,14 @@ app.get('/take',async (req,res)=>{
     console.log(req.query);
     let resid = await take(req.session.user.id, parseInt(req.query.lapid), parseInt(req.query.kab) ,getCurrentUnixTime())
     console.log(resid);
-    say(`${req.session.name} взял ноутбук №${req.query.lapid} в каб №${req.query.kab}`)
+    say(`${req.session.user.name} взял ноутбук №${req.query.lapid} в каб №${req.query.kab}`)
     res.send({st:"ok",id:resid})
 })  
 
 app.get('/rtake',async (req,res)=>{
     console.log(req.query);
     for (let i = 7; i < 16; i++) { 
-        setTimeout(thelp, 30 * i,req.session.user.id,req.session.name,i)
+        setTimeout(thelp, 30 * i,req.session.user.id,req.session.user.name,i)
     }
     
     res.send({st:"ok"})
@@ -352,7 +352,7 @@ app.get('/retlap',async (req,res)=>{
     let resid = await retlap(getCurrentUnixTime(),req.query.komm, parseInt(req.query.lapid), req.session.user.id)
     console.log(resid);
     console.log(req.session.user.id);
-    say(`${req.session.name} вернул ноутбук №${req.query.lapid}. \n Комментарий:${req.query.komm}`)
+    say(`${req.session.user.name} вернул ноутбук №${req.query.lapid}. \n Комментарий:${req.query.komm}`)
     res.send({st:"ok",id:resid})
 })  
 
