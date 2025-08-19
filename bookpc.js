@@ -143,7 +143,7 @@ app.use(async function (req, res, next) {
     //console.log('Cookie:', req.headers);
     //.log('Session:', req.session);
     let usr = req.session.user || null
-    mlog(page,usr ? usr.uid : null ,usr ? usr.name : null,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
+    mlog(page,usr ? usr.id : null ,usr ? usr.name : null,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
     next();
 })
 var cook = null
