@@ -183,12 +183,14 @@ app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
             pc[i].me = 1
         }
     }
+    let name = req.session.user || null
+    if (name!=null) name = name.name
     //console.log(pc);
     res.render('index',{
         title: 'Онлайн Платоникс',
         kabs: kabs,
         meid: req.session.user.id,
-        name:req.session.user.user.name,
+        name:name,
         pc: pc,
         auth: req.session.user.right,
         role: req.session.user.right
@@ -198,10 +200,12 @@ app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
 
 app.get('/story',sso.requireRole(1),async (req,res)=>{
     let laps = await get_pc()
+    let name = req.session.user || null
+    if (name!=null) name = name.name
     res.render('story',{
         title: 'История использования',
         meid: req.session.user.id,
-        name:req.session.user.name,
+        name:req.session.name,
         laps: laps,
         auth: req.session.user.id,
         role: req.session.user.right
@@ -250,13 +254,14 @@ app.get('/ctrl',sso.requireRole(5),async (req,res)=>{
     let laps = await get_info()
     let infst = ['Разблокирован','Заблокирвоан','Не известно']
     var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','LastSecurOFF','ВЫКЛ звук','ВКЛ звук','WIN+D','ALT+F4','CTRL+W','АнтиТим']
-
+    let name = req.session.user || null
+    if (name!=null) name = name.name
     console.log(laps);
     res.render('ctrl',{
         title: 'Управление ПК',
         cmd: cmd,
         meid: req.session.user.id,
-        name:req.session.user.name,
+        name:name,
         laps: laps, 
          role: req.session.role,
         auth: req.session.user.id
@@ -300,7 +305,9 @@ app.get('/getstory',sso.requireRole(5),async (req,res)=>{
         laps[j].startf = formatUnixTime(laps[j].timestart)
         laps[j].stopf = formatUnixTime(laps[j].timestop)
     }
-    say(`${req.session.user.name} запросил истрорию ${req.query.lapid}`)
+    let name = req.session.user || null
+    if (name!=null) name = name.name
+    say(`${name} запросил истрорию ${req.query.lapid}`)
     res.json(JSON.stringify(laps))
   //  res.send(laps)
 })
