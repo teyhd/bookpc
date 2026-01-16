@@ -1,68 +1,66 @@
-<div class="container"> 
-    <div class="row"> 
-    <div class="input-field col s12">
-        <select name="lapto" id="idlasp">
-            <option value="-1" selected disabled>Ноутбуки</option>
-            {{#each laps}}  
-                <option id="{{lapid}}" value="{{lapid}}">№{{lapid}}</option>
-            {{/each}}
-        </select>
-        <label>Выберите ноутбук</label>
+<div class="space-y-6">
+  <div class="glass-panel rounded-2xl border border-border/80 p-6 shadow-glow">
+    <div class="flex flex-col gap-2">
+      <p class="text-xs uppercase tracking-[0.2em] text-slate-400">история</p>
+      <h4 class="text-2xl font-semibold text-slate-50">Движение устройств</h4>
+      <p class="text-sm text-slate-400">Выберите устройство, чтобы увидеть, когда его брали и возвращали.</p>
     </div>
 
-    <div class="input-field col s12">
-      <table>
-        <thead>
+    <div class="mt-5">
+      <label for="idlasp" class="text-sm text-slate-300">Устройство</label>
+      <select name="lapto" id="idlasp" class="mt-2 w-full rounded-lg border border-border/80 bg-[#0b1120] px-3 py-2 text-slate-50 focus:border-brand focus:ring-1 focus:ring-brand/60">
+        <option value="-1" selected disabled>Выберите устройство</option>
+        {{#each laps}}
+          <option id="{{lapid}}" value="{{lapid}}">№{{lapid}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="mt-6 overflow-hidden rounded-xl border border-border/70">
+      <table class="min-w-full text-left text-sm text-slate-200">
+        <thead class="bg-white/5 text-xs uppercase tracking-wide text-slate-400">
           <tr>
-            <th>№</th>
-            <th>Педагог</th>
-            <th>Брал</th>
-            <th>Вернул</th>
-            <th>Кабинет</th>
-            <th>Комментарий</th>
+            <th class="px-4 py-3 font-semibold">#</th>
+            <th class="px-4 py-3 font-semibold">Имя</th>
+            <th class="px-4 py-3 font-semibold">Старт</th>
+            <th class="px-4 py-3 font-semibold">Стоп</th>
+            <th class="px-4 py-3 font-semibold">Кабинет</th>
+            <th class="px-4 py-3 font-semibold">Комментарий</th>
           </tr>
         </thead>
-
-        <tbody id="content">
+        <tbody id="content" class="divide-y divide-border/70 bg-[#0a101d]">
           <tr>
-            <td>1</td>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>$0.87</td>
-            <td>$0.87</td>
+            <td class="px-4 py-3 text-slate-500" colspan="6">Выберите устройство выше, чтобы загрузить историю.</td>
           </tr>
         </tbody>
       </table>
     </div>
-
-
+  </div>
 </div>
 
 <script>
-    $('#content').html(``)
-    $('#idlasp').change(function(){
-        $('#content').html(``)
-        console.log($('#idlasp').val())
-        $.get( `/getstory`, { lapid:$('#idlasp').val()} ).done(function( data ) {
-            console.log(data);
-            data = JSON.parse(data)
-            console.log(data);
-            for (let k = 0; k < data.length; k++) {
-                if (data[k].timestop==0){
-                  data[k].stopf = 'Не вернул'
-                }
-                $('#content').append(`
-                        <tr>
-                            <td>${k+1}</td>
-                            <td>${data[k].name}</td>
-                            <td>${data[k].startf}</td>
-                            <td>${data[k].stopf}</td>
-                            <td>${data[k].kab}</td>
-                            <td>${data[k].komm}</td>
-                        </tr>   
-                `)
-            }
-        })            
-    })
+  $('#content').html(``);
+  $('#idlasp').change(function(){
+    $('#content').html(`<tr><td class="px-4 py-3 text-slate-500" colspan="6">Загружаю историю...</td></tr>`);
+    $.get( `/getstory`, { lapid:$('#idlasp').val()} ).done(function( data ) {
+      if (typeof data === 'string') { data = JSON.parse(data); }
+      const rows = [];
+      for (let k = 0; k < data.length; k++) {
+        if (data[k].timestop==0){
+          data[k].stopf = 'Ещё в работе';
+        }
+        rows.push(`
+          <tr class="hover:bg-white/5 transition">
+            <td class="px-4 py-3 text-slate-300">${k+1}</td>
+            <td class="px-4 py-3 text-slate-100">${data[k].name}</td>
+            <td class="px-4 py-3 text-slate-200">${data[k].startf}</td>
+            <td class="px-4 py-3 text-slate-200">${data[k].stopf}</td>
+            <td class="px-4 py-3 text-slate-200">${data[k].kab}</td>
+            <td class="px-4 py-3 text-slate-300">${data[k].komm || ''}</td>
+          </tr>
+        `);
+      }
+      $('#content').html(rows.join(''));
+    });
+  });
 </script>

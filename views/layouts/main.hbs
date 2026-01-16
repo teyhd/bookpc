@@ -1,16 +1,15 @@
 {{> head}}
-    <body> 
-    {{>navbar}}
-    <div class="container">
-         
-        {{{ body }}}
-      
-        <div class="container"> {{>popup}}</div>
-        
+  <body class="min-h-screen text-slate-100 bg-transparent">
+    <div class="min-h-screen flex flex-col">
+      {{> navbar}}
+      <main class="flex-1 w-full">
+        <div class="mx-auto w-full max-w-6xl px-4 py-8 lg:py-10">
+          {{{ body }}}
+        </div>
+      </main>
+      {{> popup}}
     </div>
- 
     <script src="/lib.js"></script>
-    <script src="/main.js"></script>    
-    
-    </body>
+    <script src="/main.js"></script>
+  </body>
 </html>

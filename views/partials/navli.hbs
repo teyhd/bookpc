@@ -1,14 +1,16 @@
-<li class="divider"></li>
-<li><a href="/">Главная страница<i class="material-icons">exit_to_app</i></a></li>
-<li><a href="/story">История<i class="material-icons">info</i></a></li>
-{{#if_more role 2}} 
-    <li class="divider"></li>
-    <li><a href="/ctrl">Управление ПК<i class="material-icons">devices</i></a></li>
-    <li><a href="/devs">Локальная сеть<i class="material-icons">wifi</i></a></li>
-{{/if_more}} 
-<!--
-<li><a href="/print">Отчет<i class="material-icons">local_printshop</i></a></li>
-<li><a href="/allstat">Общая статистика<i class="material-icons">info</i></a></li>
-<li class="divider"></li>
-
- -->
+<div class="{{#if containerClass}}{{containerClass}}{{else}}flex items-center gap-2{{/if}}">
+  <a href="/" class="{{#if linkClass}}{{linkClass}}{{else}}px-3 py-2 text-sm rounded-lg border border-transparent hover:border-border hover:bg-white/5 transition{{/if}}">
+    Рабочие места
+  </a>
+  <a href="/story" class="{{#if linkClass}}{{linkClass}}{{else}}px-3 py-2 text-sm rounded-lg border border-transparent hover:border-border hover:bg-white/5 transition{{/if}}">
+    История
+  </a>
+  {{#if_more role 2}}
+    <a href="/ctrl" class="{{#if linkClass}}{{linkClass}}{{else}}px-3 py-2 text-sm rounded-lg border border-transparent hover:border-border hover:bg-white/5 transition{{/if}}">
+      Команды
+    </a>
+    <a href="/devs" class="{{#if linkClass}}{{linkClass}}{{else}}px-3 py-2 text-sm rounded-lg border border-transparent hover:border-border hover:bg-white/5 transition{{/if}}">
+      Устройства
+    </a>
+  {{/if_more}}
+</div>

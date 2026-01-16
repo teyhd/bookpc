@@ -1,138 +1,79 @@
-<style>
-   .container {
-    width: 95%;
-    }
-    .checkbox-card {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px;
-    }
-    [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-    position: relative;
-    opacity: 100;
-      }
-</style>
-
-<div class="container"> 
-    <div class="row"> 
-      <h4 class="center-align">Управление ПК</h4>
+<div class="space-y-6">
+  <div class="glass-panel rounded-2xl border border-border/80 p-6 shadow-glow">
+    <p class="text-xs uppercase tracking-[0.2em] text-slate-400">команды</p>
+    <h4 class="mt-2 text-2xl font-semibold text-slate-50">Удалённое управление</h4>
+    <p class="mt-3 text-sm text-slate-400">Отмечайте нужные устройства и запускайте команды одним кликом.</p>
+    <div class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
       {{#each cmd}}
-      <div class="col s6 m3 l2 xl2 input-field center-align">
-        <button class="btn cmdsf mbtn" comd="{{@index}}">{{this}}</button>
-      </div>
-       {{/each}}
-    </div>
-    <div class="row">
-      {{#each laps}}
-      <div class="input-field col s12 m12 l3">
-        <div class="checkbox-card">
-            <label>
-                <input type="checkbox" class="filled-in pcinp" name="d{{lapid}}" value="{{lapid}}">
-                ID:{{lapid}}
-            </label>
-            <span class="right" id="times_{{lapid}}">{{times}}</span>
-            <ul>
-                <li> 
-                  <span class="left" id="host_{{lapid}}">Host: {{host}}</span>
-                  <span class="right" id="ip_{{lapid}}">{{ip}}</span>
-                </li>
-                <li> 
-                  <span class="left">Состояние:</span>
-                  <span class="right" id="lock_{{lapid}}">{{lock}}</span>
-                </li>
-                <li> 
-                  <span class="left">Команда:</span>
-                  <span class="right" id="cmd_{{lapid}}">{{cmd}}</span>
-                </li>
-              </ul>
-        </div>
-      </div>
+        <button class="cmdsf rounded-lg border border-border/80 bg-white/5 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-brand hover:bg-brand/10 hover:text-white" comd="{{@index}}">
+          {{this}}
+        </button>
       {{/each}}
     </div>
+  </div>
 
-
-    </div>
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    {{#each laps}}
+      <label class="glass-panel block rounded-2xl border border-border/80 p-4 shadow-glow transition hover:border-brand/70">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" class="pcinp h-5 w-5 rounded border-border/80 bg-[#0b1120] text-brand focus:ring-brand/60" name="d{{lapid}}" value="{{lapid}}">
+            <div>
+              <p class="text-xs uppercase tracking-[0.15em] text-slate-400">ID {{lapid}}</p>
+              <p class="text-lg font-semibold text-slate-50" id="host_{{lapid}}">{{host}}</p>
+            </div>
+          </div>
+          <span class="text-xs text-slate-400" id="times_{{lapid}}">{{times}}</span>
+        </div>
+        <div class="mt-4 space-y-2 text-sm text-slate-300">
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400">IP</span>
+            <span class="font-mono text-slate-100" id="ip_{{lapid}}">{{ip}}</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400">Статус</span>
+            <span class="text-slate-100" id="lock_{{lapid}}">{{lock}}</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400">Команда</span>
+            <span class="text-slate-100" id="cmd_{{lapid}}">{{cmd}}</span>
+          </div>
+        </div>
+      </label>
+    {{/each}}
+  </div>
 </div>
 
 <script>
-  timerid = setInterval(inspect, 3000)
+  let timerid = setInterval(inspect, 3000);
 
-    function inspect(){
-      $.get( `/lapchg` ).done(function( data ){
-        //console.log(data);
-        data = JSON.parse(data)
-        console.log(data);
-        for (const sparam in data) {
-            $(`#${sparam}`).text(data[sparam])
-            $(`#${sparam}`).parent().after($('#content tr:first-child'))
-        }
-      })
-    }
+  function inspect(){
+    $.get( `/lapchg` ).done(function( data ){
+      try { data = JSON.parse(data); } catch(e) {}
+      for (const sparam in data) {
+        const el = document.getElementById(sparam);
+        if (el) { el.textContent = data[sparam]; }
+      }
+    });
+  }
 
-$('.cmdsf').click(function(){
-    var checked = [];
+  $('.cmdsf').click(function(){
+    const checked = [];
     $('input:checkbox:checked').each(function() {
       checked.push($(this).val());
-    }); 
-    if (checked.length==0){
-      M.toast({html: 'Выберите устройство!', classes: '#ef5350 red lighten-1 rounded'});
+    });
+    if (checked.length === 0){
+      showToast('Выберите устройство для отправки команды', 'error');
       return 0;
     }
 
     $.get( `/sendcmd`, {cmd:$(this).attr('comd'),lapid:checked }).done(function( data ) {
-        console.log(data);
-        if (data=="ok"){
-          M.toast({html: 'Команда ушла', classes: '#26a69a teal lighten-1 rounded'});
-        }
-    })
-    inspect()
-
-})
-
-
+      if (data=="ok"){
+        showToast('Команда отправлена', 'success');
+      } else {
+        showToast('Не удалось отправить команду', 'error');
+      }
+    });
+    inspect();
+  });
 </script>
-
-<!-- 
-      <div class="input-field col s12">
-      <table>
-        <thead>
-          <tr >
-            <th>№ ноутбук</th>
-            <th>Хост</th>
-            <th>IP</th>
-            <th>Блокировка</th>
-            <th>Время</th>
-            <th>Команда</th>
-            <th>Дейсвтие</th>
-          </tr>
-        </thead>
-
-        <tbody id="content">
-        {{#each laps}}    
-          <tr>
-            <td>{{lapid}}</td>
-            <td id="host_{{lapid}}">{{host}}</td>
-            <td id="ip_{{lapid}}">{{ip}}</td>
-            <td id="lock_{{lapid}}">{{lock}}</td>
-            <td id="times_{{lapid}}">{{times}}</td>
-            <td id="cmd_{{lapid}}">{{cmd}}</td>
-            <td>
-            <div class="input-field col s12">
-                <select class="cmdsf" id="idcmd_{{lapid}}">
-                    <option value="-1" selected disabled>Rоманды</option>
-                    {{#each cmds}}  
-                        <option id="{{@index}}" value="{{@index}}">{{this}}</option>
-                    {{/each}}
-                </select>
-                <label>Выберите команду</label>
-            </div>
-
-            </td>
-          </tr>
-        {{/each}}   
-        </tbody>
-      </table>
-    </div>
-
- -->

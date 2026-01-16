@@ -1,45 +1,55 @@
- <nav class="#ff6f00 amber darken-4">
-  <div class="nav-wrapper">
-      <a href="/" class="brand-logo right hide-on-med-and-up">Онлайн Платоникс</a>
-      <a href="/" class="brand-logo center hide-on-small-only">Онлайн Платоникс</a>
-     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Управление<i class="material-icons right">arrow_drop_down</i></a></li>
-    </ul>
+<nav class="sticky top-0 z-40 border-b border-border/80 bg-[#0b1020]/85 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+    <a href="/" class="flex items-center gap-3">
+      <div class="grid h-10 w-10 place-items-center rounded-xl brand-gradient shadow-glow text-xs font-bold uppercase tracking-wider">
+        ПК
+      </div>
+      <div>
+        <p class="text-[11px] uppercase tracking-[0.2em] text-slate-400">Гармония образвания</p>
+        <p class="text-sm font-semibold text-slate-50">Панель аренды</p>
+      </div>
+    </a>
+
+    <div class="hidden items-center gap-3 md:flex">
+      {{> navli containerClass="flex items-center gap-2" linkClass="px-3 py-2 text-sm rounded-lg border border-transparent hover:border-border hover:bg-white/5 transition-colors"}}
+      <div class="h-6 w-px bg-border/60"></div>
+      {{#if auth}}
+        <a href="/logout" class="px-3 py-2 text-sm rounded-lg border border-border/80 bg-white/5 hover:bg-white/10 transition">
+          Выйти
+        </a>
+      {{else}}
+        <a href="#modal1" class="modal-trigger px-4 py-2 text-sm font-semibold rounded-lg brand-gradient shadow-glow transition">
+          Войти
+        </a>
+      {{/if}}
+    </div>
+
+    <button id="mobile-menu-toggle" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border/80 bg-white/5 text-slate-100 transition hover:border-brand hover:text-white">
+      <span class="material-icons">menu</span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden hidden border-t border-border/80 bg-[#0b1020]/95 px-4 pb-4 backdrop-blur">
+    <div class="flex flex-col gap-2 pt-2">
+      {{> navli containerClass="flex flex-col gap-2" linkClass="px-3 py-2 text-sm rounded-lg border border-border/70 hover:border-brand/60 hover:bg-white/5 transition"}}
+      <div class="flex gap-2 pt-2">
+        {{#if auth}}
+          <a href="/logout" class="w-full px-3 py-2 text-center text-sm rounded-lg border border-border/80 bg-white/5 hover:bg-white/10 transition">Выйти</a>
+        {{else}}
+          <a href="#modal1" class="modal-trigger w-full px-3 py-2 text-center text-sm font-semibold rounded-lg brand-gradient shadow-glow transition">Войти</a>
+        {{/if}}
+      </div>
+    </div>
   </div>
 </nav>
 
-  <!-- ВЫПАДАЮЩЕЕ МЕНЮ -->
-  <div class="dropdown-content row" id="dropdown1" >
-        <ul >
-          {{log auth}}
-        {{#if auth}}
-        <li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
-        {{else}}
-        <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons">account_circle</i></a></li>
-        {{/if}}  
-         {{>navli}}  
-      </ul>
-  </div>
-
- <!-- МЕНЮ ДЛЯ ТЕЛЕФОНА -->
-  <ul class="sidenav" id="mobile-demo">
-        {{#if auth}}
-        <li><a href="/logout">Выход<i class="material-icons">account_circle</i></a></li>
-        {{else}}
-        <li><a class="modal-trigger" href="#modal1" name="login">Вход<i class="material-icons">account_circle</i></a></li>
-        {{/if}}    
-         {{>navli}}
-  </ul>
-
-<script> 
-$( document ).ready(function () {
-  $(".dropdown-trigger").dropdown(
-    {
-    alignment:'right',
-    constrainWidth:false,
-    coverTrigger:false,
-    hover:true});
-  $('.sidenav').sidenav();
-})
-</script>    
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  });
+</script>

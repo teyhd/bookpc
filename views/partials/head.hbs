@@ -1,37 +1,163 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="Контроль записи">
-        <meta name="author" content="TEYHD">
-        <script
-        src="jquery.js"
-        integrity="sha256-2RT7lXr+XgEbKBMEzcwALfoNzs2Rs74Hr1p/38Fr1FA="
-        crossorigin="anonymous"></script>
-        <script src="/materialize.js"></script>
-        <link href="/css/materialize.css" rel="stylesheet"> 
-        <link href="/stylesheet.css" rel="stylesheet">
-        <link href="/css/main.css" rel="stylesheet">
-                        <!-- Yandex.Metrika counter -->
-        <script type="text/javascript" >
-           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-           m[i].l=1*new Date();
-           for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-           k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-        
-           ym(99316009, "init", {
-                clickmap:true,
-                trackLinks:true,
-                accurateTrackBounce:true,
-                webvisor:true,
-                ecommerce:"dataLayer"
-           });
-        </script>
-        <script type="text/javascript" src="https://api.uxrocket.ru/js/uxrocket.js" authkey="E7TH49MVLG" fetchpriority="high"></script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Сервисы Платоникс" />
+    <meta name="author" content="TEYHD" />
+    <meta name="theme-color" content="#0b7db4" />
 
-        <noscript><div><img src="https://mc.yandex.ru/watch/99316009" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-        <!-- /Yandex.Metrika counter -->
-        <title>{{title}}</title>
-    </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/stylesheet.css" rel="stylesheet">
+
+    <script src="/jquery.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: '#0b7db4',
+              brandGlow: '#12a8e0',
+              surface: '#0c1424',
+              panel: '#0f182a',
+              border: '#1f2a3d',
+              accent: '#7ae0ff'
+            },
+            fontFamily: {
+              sans: ['"Manrope"', 'ui-sans-serif', 'system-ui']
+            },
+            boxShadow: {
+              glow: '0 10px 40px rgba(18,168,224,0.25)'
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        font-family: "Manrope", system-ui, sans-serif;
+        background: radial-gradient(circle at 15% 20%, rgba(18,168,224,0.08), transparent 25%),
+                    radial-gradient(circle at 80% 0%, rgba(11,125,180,0.15), transparent 28%),
+                    linear-gradient(135deg, #050a14 0%, #0b1120 40%, #0b1f36 100%);
+        color: #e5e7eb;
+      }
+      .glass-panel {
+        background: rgba(15, 24, 42, 0.7);
+        border: 1px solid rgba(124, 136, 152, 0.2);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+      }
+      .brand-gradient {
+        background: linear-gradient(135deg, #0b7db4 0%, #12a8e0 100%);
+        color: #0a0f1a;
+      }
+      .brand-gradient:hover { box-shadow: 0 10px 30px rgba(18, 168, 224, 0.35); }
+      .modal-backdrop { background: rgba(3, 7, 18, 0.65); }
+      .toast-shell { backdrop-filter: blur(10px); }
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in { animation: fade-in 0.25s ease-out; }
+    </style>
+
+    <script>
+      (function () {
+        function ensureToastRoot() {
+          let root = document.getElementById('toast-root');
+          if (!root) {
+            root = document.createElement('div');
+            root.id = 'toast-root';
+            root.className = 'fixed right-4 top-4 z-50 space-y-3';
+            document.body.appendChild(root);
+          }
+          return root;
+        }
+
+        window.showToast = function (message, tone = 'info') {
+          const root = ensureToastRoot();
+          const toast = document.createElement('div');
+          const palette = {
+            success: 'from-emerald-500/20 via-emerald-400/10 to-transparent border-emerald-400/30',
+            error: 'from-rose-500/20 via-rose-400/10 to-transparent border-rose-400/30',
+            info: 'from-sky-500/20 via-sky-400/10 to-transparent border-sky-400/30'
+          };
+          toast.className = `toast-shell glass-panel relative overflow-hidden border rounded-xl px-4 py-3 shadow-glow animate-fade-in bg-gradient-to-br ${palette[tone] || palette.info}`;
+          toast.innerHTML = `<div class="text-sm leading-relaxed">${message}</div>`;
+          root.appendChild(toast);
+          setTimeout(() => toast.remove(), 3200);
+        };
+
+        window.M = {
+          toast: ({ html = '', classes = '' }) => {
+            const cls = (classes || '').toLowerCase();
+            const tone = cls.includes('red') ? 'error' : (cls.includes('teal') || cls.includes('green')) ? 'success' : 'info';
+            window.showToast(html, tone);
+          }
+        };
+
+        function openModal(el) {
+          el.classList.remove('hidden');
+          document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal(el) {
+          el.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
+
+        window.toggleModal = function (id, state = true) {
+          const el = document.getElementById(id);
+          if (!el) return;
+          state ? openModal(el) : closeModal(el);
+        };
+
+        function initModalSystem() {
+          document.querySelectorAll('.modal-trigger[href^="#"]').forEach((trigger) => {
+            const target = document.querySelector(trigger.getAttribute('href'));
+            if (!target) return;
+            trigger.addEventListener('click', (e) => {
+              e.preventDefault();
+              openModal(target);
+            });
+          });
+
+          document.querySelectorAll('.modal').forEach((modal) => {
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+            modal.querySelectorAll('.modal-close').forEach((btn) =>
+              btn.addEventListener('click', (e) => { e.preventDefault(); closeModal(modal); })
+            );
+          });
+        }
+
+        document.addEventListener('DOMContentLoaded', initModalSystem);
+      })();
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(99316009, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:"dataLayer"
+      });
+    </script>
+    <script type="text/javascript" src="https://api.uxrocket.ru/js/uxrocket.js" authkey="E7TH49MVLG" fetchpriority="high"></script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/99316009" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <title>{{title}}</title>
+  </head>

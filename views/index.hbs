@@ -1,176 +1,201 @@
-<style>
-  table{
-    height: 35vh;
-  }
-  .container {
-    width: 90%;
-}
-</style>
-<div class="container"> 
-    <div class="row">
-        <h5>Учет использования</h5>
-         {{#if_more role 4}} 
-            <a id="romabtn" class="modal-close btn mbtn">Взять все ноутбки 2-го кабинета</a>
-         {{/if_more}} 
-        <p>{{name}}</p>
-        {{#each pc}}    
-            <div id="num{{id}}" class="pcard input-field col s12 m6 l3 xl3">
-                <table class="centered">
-                <tr>
-                    <th class="center">Ноутбук №{{lapid}}</th>  
-                    {{#if_eq timestop 0}} 
-                        {{#if_eq me 1}} 
-                             <th class="center #f06292 pink lighten-2" id="bis1">{{pass}}</th>
-                        {{else}}
-                              <th class="center #f06292 pink lighten-2" id="bis1">Занят</th>
-                        {{/if_eq}}   
-                     {{else}}
-                  <th class="center #a7ffeb teal accent-1" id="bis1">Свободен</th>
-                     {{/if_eq}}
-                </tr> <!--ряд с ячейками заголовков-->
-                <tr><td colspan="2">{{startf}} был в {{kab}} </td></tr> <!--ряд с ячейками тела таблицы-->
-                <tr><td colspan="2">Последний: {{name}}</td></tr>
-                <tr><td colspan="2">{{komm}}</td></tr>
-                <tr> 
-                    {{#if_eq timestop 0}} 
-                        {{#if_eq me 1}} 
-                             <td colspan="2"><a name="{{lapid}}" class="btn mbtn #ef5350 red lighten-1 modal-trigger aftr"  href="#retul">Вернуть</a></td>
-                        {{else}}
-                              <td colspan="2" class="center #f06292 pink lighten-2" id="bis1">Занят</td>
-                        {{/if_eq}}        
-                     {{else}}
-                        <td colspan="2"><a id="{{lapid}}" class="waves-effect waves-light btn modal-trigger mbtn before" href="#take">Взять</a></td>
-                     {{/if_eq}}
-                </tr>           
-                </table>
-            </div>
-            {{/each}}     
-    </div>      
+<div class="space-y-6">
+  <div class="flex flex-col gap-3">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <h5 class="text-2xl font-semibold text-slate-50">Учёт оборудования</h5>
+      </div>
+      {{#if_more role 4}}
+        <a id="romabtn" class="modal-close inline-flex items-center justify-center rounded-lg border border-brand/50 bg-brand/10 px-4 py-2 text-sm font-semibold text-brand shadow-glow transition hover:bg-brand/20">
+          Быстро взять каб. 2
+        </a>
+      {{/if_more}}
+    </div>
+    <p class="text-sm text-slate-400">Вы: <span class="text-slate-100 font-medium">{{name}}</span></p>
+  </div>
 
-  <div id="take" class="modal" style="height: 40%;">
-    <div class="modal-content">
-      <h4>Где вы собираетесь работать с ноутбуком?</h4>
-      <div id="idkabdiv" class="input-field col s12 l12 m4">
-        <i class="material-icons prefix">computer</i>    
-        <select name="kab" id="idkab">
-            <option value="-1" selected disabled>Кабинеты</option>
-            <option id="0" value="0">13 ложа</option>
-            <option id="30" value="30">Дома</option>
-            {{#each kabs}}  
-                {{#if kab}}
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    {{#each pc}}
+      <div id="num{{id}}" class="glass-panel rounded-2xl border border-border/80 p-5 shadow-glow transition hover:border-brand/60">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Ноутбук</p>
+            <h3 class="text-xl font-semibold text-slate-50">№{{lapid}}</h3>
+          </div>
+          {{#if_eq timestop 0}}
+            {{#if_eq me 1}}
+              <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-200 border border-emerald-400/40 shadow-glow">Ваш PIN: {{pass}}</span>
+            {{else}}
+              <span class="rounded-full bg-rose-500/15 px-3 py-1 text-xs font-semibold text-rose-200 border border-rose-400/40">На руках</span>
+            {{/if_eq}}
+          {{else}}
+            <span class="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-200 border border-emerald-400/30">Свободно</span>
+          {{/if_eq}}
+        </div>
+
+        <div class="mt-4 space-y-2 text-sm text-slate-300">
+          <div class="flex justify-between gap-3">
+            <span class="text-slate-400">Кабинет №</span>
+            <span class="text-right text-slate-100">{{kab}}</span>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2 text-sm text-slate-300">
+          <div class="flex justify-between gap-3">
+            <span class="text-slate-400">Начало</span>
+            <span class="text-right text-slate-100">{{startf}}</span>
+          </div>
+          <div class="flex justify-between gap-3">
+            <span class="text-slate-400">Пользователь</span>
+            <span class="text-right text-slate-100">{{name}}</span>
+          </div>
+          <div class="flex justify-between gap-3">
+            <span class="text-slate-400">Комментарий</span>
+            <span class="text-right text-slate-200">{{komm}}</span>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          {{#if_eq timestop 0}}
+            {{#if_eq me 1}}
+              <a name="{{lapid}}" class="modal-trigger aftr inline-flex w-full items-center justify-center rounded-lg bg-rose-500/80 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-rose-500" href="#retul">
+                Вернуть
+              </a>
+            {{else}}
+              <div class="w-full rounded-lg border border-rose-400/40 bg-rose-500/10 px-4 py-2 text-center text-sm font-semibold text-rose-100">Занято</div>
+            {{/if_eq}}
+          {{else}}
+            <a id="{{lapid}}" class="before modal-trigger inline-flex w-full items-center justify-center rounded-lg brand-gradient px-4 py-2 text-sm font-semibold shadow-glow transition" href="#take">
+              Взять
+            </a>
+          {{/if_eq}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<div id="take" class="modal fixed inset-0 z-50 hidden modal-backdrop px-4 py-8">
+  <div class="mx-auto flex h-full max-w-lg items-center justify-center">
+    <div class="w-full rounded-2xl glass-panel border border-border/80 p-6 shadow-glow">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">бронь</p>
+          <h4 class="mt-1 text-xl font-semibold text-slate-50">Взять устройство</h4>
+          <p class="text-sm text-slate-400">Укажите кабинет, куда переносите устройство.</p>
+        </div>
+        <button class="modal-close h-9 w-9 rounded-lg border border-border/70 bg-white/5 text-slate-300 transition hover:text-white" aria-label="Закрыть">
+          <span class="material-icons text-base">close</span>
+        </button>
+      </div>
+
+      <div class="mt-5 space-y-4">
+        <div>
+          <label for="idkab" class="text-sm text-slate-300">Кабинет</label>
+          <select name="kab" id="idkab" class="mt-2 w-full rounded-lg border border-border/80 bg-[#0b1120] px-3 py-2 text-slate-50 focus:border-brand focus:ring-1 focus:ring-brand/60">
+            <option value="-1" selected disabled>Выберите кабинет</option>
+            <option id="0" value="0">13 кабинет</option>
+            <option id="30" value="30">Выездной</option>
+            {{#each kabs}}
+              {{#if kab}}
                 <option id="{{kab}}" value="{{kab}}">№{{kab}}</option>
-                {{/if}}
+              {{/if}}
             {{/each}}
-        </select>
-        <label>Кабинет</label>
-      </div>
+          </select>
+        </div>
         <input hidden type="text" name="lap" id="lapid">
-      <a id="takebtn" class="modal-close btn mbtn">Взять</a>
-    </div>
-  </div>
-
-  <div id="retul" class="modal" >
-    <div class="modal-content">
-      <h4>Возникали технические проблемы?</h4>
-      <div id="idretuldiv" class="input-field col s12 l12 m4">
-            <textarea placeholder="Ваш комментарий" name="new_text" id="new_text" class="materialize-textarea"></textarea>
-            <label for="new_text">Нужно что-то чинить, исправлять</label>
+        <div class="flex justify-end gap-3">
+          <button class="modal-close inline-flex items-center justify-center rounded-lg border border-border/80 bg-white/5 px-4 py-2 text-sm text-slate-100 transition hover:bg-white/10" type="button">Отмена</button>
+          <button id="takebtn" class="inline-flex items-center justify-center rounded-lg brand-gradient px-4 py-2 text-sm font-semibold shadow-glow transition disabled:cursor-not-allowed disabled:opacity-60" type="button" disabled>Взять</button>
+        </div>
       </div>
-        <input hidden type="text" name="laps" id="lapidr">
-      <button id="retulbtn" class="modal-close btn mbtn">Вернул на место</button>
     </div>
   </div>
+</div>
 
+<div id="retul" class="modal fixed inset-0 z-50 hidden modal-backdrop px-4 py-8">
+  <div class="mx-auto flex h-full max-w-lg items-center justify-center">
+    <div class="w-full rounded-2xl glass-panel border border-border/80 p-6 shadow-glow">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">возврат</p>
+          <h4 class="mt-1 text-xl font-semibold text-slate-50">Вернуть устройство</h4>
+          <p class="text-sm text-slate-400">Добавьте короткий комментарий, если нужно.</p>
+        </div>
+        <button class="modal-close h-9 w-9 rounded-lg border border-border/70 bg-white/5 text-slate-300 transition hover:text-white" aria-label="Закрыть">
+          <span class="material-icons text-base">close</span>
+        </button>
+      </div>
+
+      <div class="mt-5 space-y-4">
+        <div>
+          <label for="new_text" class="text-sm text-slate-300">Комментарий</label>
+          <textarea placeholder="Например: вернул в 204, всё ок" name="new_text" id="new_text" class="mt-2 min-h-[120px] w-full rounded-lg border border-border/80 bg-[#0b1120] px-3 py-2 text-slate-50 placeholder:text-slate-500 focus:border-brand focus:ring-1 focus:ring-brand/60"></textarea>
+        </div>
+        <input hidden type="text" name="laps" id="lapidr">
+        <div class="flex justify-end gap-3">
+          <button class="modal-close inline-flex items-center justify-center rounded-lg border border-border/80 bg-white/5 px-4 py-2 text-sm text-slate-100 transition hover:bg-white/10" type="button">Отмена</button>
+          <button id="retulbtn" class="modal-close inline-flex items-center justify-center rounded-lg brand-gradient px-4 py-2 text-sm font-semibold shadow-glow transition" type="button">Вернул</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    //romabtn
-       $( "#romabtn" ).click(function() {
-            $.get( `/rtake`, {kab:2} ).done(function( data ) {
-                console.log(data);
-               // data = JSON.parse(data)
-                if (data.st=='ok') {
-                M.toast({html: 'Удачного пользования', classes: '#26a69a teal lighten-1 rounded'});
-                
-                } else {
-                M.toast({html: `Ошибка`, classes: '#ef5350 red lighten-1 rounded'});
-                }
-                reload(1)
-            })    
-  
-       })
+  $('#romabtn').click(function() {
+    $.get( `/rtake`, {kab:2} ).done(function( data ) {
+      if (data.st=='ok') {
+        showToast('Ноутбуки закреплены за кабинетом 2', 'success');
+      } else {
+        showToast('Не удалось выполнить действие', 'error');
+      }
+      reload(1);
+    });
+  });
 
-       $( "#retulbtn" ).click(function() {
-            if (!$('#new_text').val()){
-                $('#new_text').val('Замечаний нет')
-            }
-            console.log($('#lapidr').val())
-            $.get( `/retlap`, { komm:$('#new_text').val(),lapid:$('#lapidr').val()} ).done(function( data ) {
-                console.log(data);
-                if (data.st=='ok') {
-                M.toast({html: 'Спасибо', classes: '#26a69a teal lighten-1 rounded'});
-                } else {
-                M.toast({html: `Ошибка`, classes: '#ef5350 red lighten-1 rounded'});
-                }
-                reload(1)
-            }) 
-        })
+  $('#retulbtn').click(function() {
+    if (!$('#new_text').val()){
+      $('#new_text').val('Вернул без комментария');
+    }
+    $.get( `/retlap`, { komm:$('#new_text').val(),lapid:$('#lapidr').val()} ).done(function( data ) {
+      if (data.st=='ok') {
+        showToast('Спасибо! Устройство отмечено как возвращённое', 'success');
+      } else {
+        showToast('Не получилось обновить статус', 'error');
+      }
+      reload(1);
+    });
+  });
 
-       $( "#takebtn" ).click(function() {
-        if ($('#lapid').val()){
-            $.get( `/take`, { lapid:$('#lapid').val(),kab:$('#idkab').val()} ).done(function( data ) {
-                console.log(data);
-               // data = JSON.parse(data)
-                if (data.st=='ok') {
-                M.toast({html: 'Удачного пользования', classes: '#26a69a teal lighten-1 rounded'});
-                
-                } else {
-                M.toast({html: `Ошибка`, classes: '#ef5350 red lighten-1 rounded'});
-                }
-                reload(1)
-            })    
+  $('#takebtn').click(function() {
+    if ($('#lapid').val()){
+      $.get( `/take`, { lapid:$('#lapid').val(),kab:$('#idkab').val()} ).done(function( data ) {
+        if (data.st=='ok') {
+          showToast('Устройство забронировано', 'success');
+        } else {
+          showToast('Ошибка при бронировании', 'error');
         }
-  
-       })
-        
-        $( "#takebtn" ).prop('disabled', true);
+        reload(1);
+      });
+    }
+  });
 
-        $( ".aftr" ).click(function() {
-            $('#lapidr').val( $( this ).attr('name'))
-        })
+  $('#takebtn').prop('disabled', true);
 
-        $( ".before" ).click(function() {
-            $( "#takebtn" ).prop('disabled', true);
-            $('#lapid').val( $( this ).attr('id'))
-        })
+  $('.aftr').click(function() {
+    $('#lapidr').val( $( this ).attr('name'));
+  });
 
-        $('#idkab').change(function(){
-            $( "#takebtn" ).prop('disabled', false);
-            console.dir($('#idkab').val());
-            })
+  $('.before').click(function() {
+    $('#takebtn').prop('disabled', true);
+    $('#lapid').val( $( this ).attr('id'));
+  });
 
-         var maxh = 0
-         function set(){
-         $('table').each(function (){ 
-          if ($(this).height()>maxh){
-            maxh = $(this).height()
-          }
-         
-          } )    
-           $('table').each(function (){ 
-            $(this).height(maxh)
-          } )  
-          $('table').height(maxh)
-         }
+  $('#idkab').change(function(){
+    $('#takebtn').prop('disabled', false);
+  });
 
-$(document).click(function(){ $('li[id^="select-options"]').on('touchend', function (e) { e.stopPropagation(); }); });
-          $(window).on('resize', function(){
-            set()
-          });
-            set()
-            setTimeout(set, 50);
-        function reload(p){
-            if (p) setTimeout(reload, 50);
-            else location.reload();
-            }
+  function reload(p){
+    if (p) setTimeout(reload, 50);
+    else location.reload();
+  }
 </script>
