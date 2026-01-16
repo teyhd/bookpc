@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+    <ChartData>
+      <Categories>
+        <Category>ALttP</Category>
+      </Categories>
+      <Series label="37EMocY6gHARTO9NI61Yod8cYX9">
+        <Point>
+          <Value type="y">12345</Value>
+        </Point>
+      </Series>
+    </ChartData>

