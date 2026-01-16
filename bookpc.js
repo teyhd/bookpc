@@ -143,7 +143,7 @@ app.use(async function (req, res, next) {
     //console.log('Cookie:', req.headers);
     //.log('Session:', req.session);
     let usr = req.session.user || null
-    mlog(page,usr ? usr.id : null ,usr ? usr.name : null,req.session.info,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
+    mlog(page,usr ? usr.id : null ,usr ? usr.name : null,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
     next();
 })
 var cook = null
@@ -165,7 +165,7 @@ app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
 
     var kabs = []
 
-    for (let j = 0; j < 24; j++) {
+    for (let j = 0; j < 28; j++) {
         kabs[j] = {kab:j}
        // const element = array[j];
     }
