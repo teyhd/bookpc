@@ -1,8 +1,14 @@
+function requireEnvironment(name) {
+  const value = process.env[name];
+  if (!value) throw new Error('Missing environment variable: ' + name);
+  return value;
+}
+
 import mysql from 'mysql2'
 let sets = {
     host: process.env.MDBHOST,
-    user: 'teyhd',
-    password : '258000',
+    user: requireEnvironment('DB_USER'),
+    password : requireEnvironment('DB_PASSWORD'),
     database: process.env.DBNAME,
     charset : 'utf8mb4_general_ci',
     waitForConnections: true,
@@ -15,8 +21,8 @@ let sets = {
 }
 let usets = {
     host: process.env.MDBHOST,
-    user: 'teyhd',
-    password : '258000',
+    user: requireEnvironment('DB_USER'),
+    password : requireEnvironment('DB_PASSWORD'),
     database: process.env.DBUSER,
     charset : 'utf8mb4_general_ci',
     waitForConnections: true,

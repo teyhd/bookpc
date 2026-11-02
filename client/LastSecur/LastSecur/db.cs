@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 //using MySql.Data.MySqlClient;
 using MySqlConnector;
 namespace LastSecur
 {
     static class Db
     {
-        public static string connectionString = "server=db.local;database=laptop;uid=teyhd;password=258000;";
-       // public static string connectionString = "Server=172.24.0.227;Port=3306;Database=laptop;User=teyhd;Password=258000;";
+        public static string connectionString = System.Environment.GetEnvironmentVariable("LASTSECUR_DB_CONNECTION_STRING") ?? throw new System.InvalidOperationException("LASTSECUR_DB_CONNECTION_STRING is required");
 
         //SELECT story.autor, story.pass FROM story WHERE lapid=12 ORDER BY timestart DESC LIMIT 1;
 

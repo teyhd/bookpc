@@ -1,3 +1,9 @@
+function requireEnvironment(name) {
+  const value = process.env[name];
+  if (!value) throw new Error('Missing environment variable: ' + name);
+  return value;
+}
+
 import {mlog,say} from './vendor/logs.js'
 import { fileURLToPath } from 'url';
 let test = false
@@ -85,7 +91,7 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views','views');
 app.set('trust proxy', 1); // за Nginx/Traefik/Cloudflare
-app.use(session({name: 'wherepc',resave:true,saveUninitialized:false, secret: 'TEyhdsecurservice1345no', cookie: 
+app.use(session({name: 'wherepc',resave:true,saveUninitialized:false, secret: requireEnvironment('SESSION_SECRET'), cookie: 
   {secure: false, // ⚠️ обязательно false на HTTP!
   httpOnly: true}
 }))

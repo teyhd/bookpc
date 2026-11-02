@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 //using MySql.Data.MySqlClient;
 using System.Net;
 using System.Diagnostics;
@@ -13,7 +13,7 @@ namespace Check
     class Db
     {
         private static string IPstr = "0";
-        public static string connectionString = "server=db.local;database=laptop;uid=teyhd;password=258000;";
+        public static string connectionString = System.Environment.GetEnvironmentVariable("CHECK_DB_CONNECTION_STRING") ?? throw new System.InvalidOperationException("CHECK_DB_CONNECTION_STRING is required");
         public static MyProg.IniFile MyIni = new MyProg.IniFile(@"C:\Windows\secur\0\settings.ini");
         public static int GetId()
         {

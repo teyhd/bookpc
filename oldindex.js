@@ -1,3 +1,9 @@
+function requireEnvironment(name) {
+  const value = process.env[name];
+  if (!value) throw new Error('Missing environment variable: ' + name);
+  return value;
+}
+
 import {mlog,say} from './vendor/logs.js'
 let test = false
 var appDir = path.dirname(import.meta.url);
@@ -81,7 +87,7 @@ if (test){
 console.log(path.join(appDir, 'public'));
 app.use(cookieParser());
 //app.use(fileUpload());
-app.use(session({resave:false,saveUninitialized:false, secret: 'keyboard cat', cookie: {  }}))
+app.use(session({resave:false,saveUninitialized:false, secret: requireEnvironment('SESSION_SECRET'), cookie: {  }}))
 app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : TEMPFOLDER,

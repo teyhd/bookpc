@@ -102,9 +102,9 @@ namespace LastSecur
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(502, 108);
+            this.checkBox1.Location = new System.Drawing.Point(506, 105);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(149, 21);
+            this.checkBox1.Size = new System.Drawing.Size(148, 20);
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "Через платформу";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@ namespace LastSecur
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(113, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
+            this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Логин";
             this.label3.Visible = false;
@@ -134,7 +134,7 @@ namespace LastSecur
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(259, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 17);
+            this.label4.Size = new System.Drawing.Size(56, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Пароль";
             this.label4.Visible = false;
@@ -144,7 +144,7 @@ namespace LastSecur
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(352, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.Size = new System.Drawing.Size(62, 16);
             this.label5.TabIndex = 6;
             this.label5.Text = "Кабинет";
             this.label5.Visible = false;
