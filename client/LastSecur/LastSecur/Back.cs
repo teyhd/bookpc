@@ -53,14 +53,7 @@ namespace LastSecur
                // if (!Program.isoff && !LastSecur.Program.AdminMode)
                 if (!LastSecur.Program.AdminMode)
                 {
-                    try
-                    {
-                        checkdb();
-                    } catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                        Application.Exit();
-                    }
+                    checkdb();
                 } 
                 if (Program.first)
                 {

@@ -20,7 +20,7 @@
        // $( "#btnl" ).submit();
         let tosend = $( "#pass" ).val();
         let logins = $( "#logins" ).val();
-        $.get( "https://platoniks.ru/sso/auth", {pin: tosend} )
+        $.get( "/auth", {login:logins,pass: tosend} )
         .done(function( data ) {
           console.log( "Data Loaded: " + data );
             if (data=='ok'){
@@ -45,7 +45,7 @@
     }
 
     function reload(p){
-      if (p) setTimeout(reload, 50);
+      if (p) setTimeout(reload, 950);
       else location.reload();
     }
     

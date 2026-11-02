@@ -15,7 +15,7 @@ namespace LastSecur
     public partial class Form1 : Form
     {
         private int timestartblock = (int)(long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-        const int timesstop = 45;
+        const int timesstop = 30;
         public int timeout = timesstop;
         private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
         private const UInt32 SWP_NOSIZE = 0x0001;
@@ -73,12 +73,11 @@ namespace LastSecur
         {
             if (!checkBox1.Checked)
             {
-                if (textBox1.Text == LastSecur.Db.GetPass().ToString() || textBox1.Text == "dkfljc")
+                if (textBox1.Text == LastSecur.Db.GetPass().ToString() || textBox1.Text == "147123456")
                 {
-                    if (textBox1.Text == "dkfljc")
+                    if (textBox1.Text == "147123456")
                     {
                         Program.AdminMode = true;
-                        Program.Mylog("АДМИН ПАРОЛЬ");
                     }
                     LastSecur.Db.AuthPC();
                     killme();
@@ -94,37 +93,29 @@ namespace LastSecur
             {
                 if (textBox1.Text.Length>0 && textBox2.Text.Length > 0 && textBox3.Text.Length > 0) 
                 {
-                    try
+                    int userid = LastSecur.Db.GetLoginPass(textBox2.Text, textBox1.Text);
+                    if (userid > 0)
                     {
-                        int userid = LastSecur.Db.GetLoginPass(textBox2.Text, textBox1.Text);
-                        if (userid > 0)
+                        if (int.TryParse(textBox3.Text, out int kab))
                         {
-                            if (int.TryParse(textBox3.Text, out int kab))
-                            {
-                                LastSecur.Db.Take(userid, kab);
-                                Console.WriteLine($"Вы ввели целое число: {kab}");
-                                LastSecur.Db.AuthPC();
-                                killme();
-                                //     Application.Exit();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Укажите только цифру кабинета", "Ошибка");
-                                Program.Mylog("Укажите только цифру кабинета");
-                            }
-                            //Авторизация
+                            LastSecur.Db.Take(userid, kab);
+                            Console.WriteLine($"Вы ввели целое число: {kab}");
+                            LastSecur.Db.AuthPC();
+                            killme();
+                       //     Application.Exit();
                         }
                         else
                         {
-                            MessageBox.Show("Неверный логин или пароль", "Ошибка");
-                            Program.Mylog("Неверный логин или пароль");
+                            MessageBox.Show("Укажите только цифру кабинета", "Ошибка");
+                            Program.Mylog("Укажите только цифру кабинета");
                         }
-                    } 
-                    catch (Exception ert)
-                    {
-                        Program.Mylog(ert.ToString());
+                        //Авторизация
                     }
-                    
+                    else
+                    {
+                        MessageBox.Show("Неверный логин или пароль", "Ошибка");
+                        Program.Mylog("Неверный логин или пароль");
+                    }
                 } else
                 {
                     MessageBox.Show("Заполните все поля", "Ошибка");

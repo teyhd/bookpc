@@ -1,9 +1,15 @@
+function requireEnvironment(name) {
+  const value = process.env[name];
+  if (!value) throw new Error('Missing environment variable: ' + name);
+  return value;
+}
+
 import {mlog,say} from './vendor/logs.js'
-import { fileURLToPath } from 'url';
 let test = false
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-export let appDir = __dirname;
+var appDir = path.dirname(import.meta.url);
+appDir = appDir.split('///')
+appDir = appDir[1]
+console.log(appDir);
 
 process.on('uncaughtException', (err) => {
     mlog('Глобальный косяк приложения!!! ', err.stack);
@@ -19,9 +25,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import axios from 'axios';
 import urlencode from 'urlencode';
-import 'dotenv/config'
-import { makeSsoClient } from "./vendor/ssoClient.js";
-import {getActiv, getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
+import {getActiv, getDevicesStory,getDevicesInfo, setcmd, rtake,get_info,auth_user,get_users,get_status,take,retlap,get_pc,get_pc_story} from './vendor/db.js'
 
 const app = express();
 const hbs = exphbs.create({
@@ -84,11 +88,6 @@ const TEMPFOLDER = path.join(appDir,'public/temp');
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views','views');
-app.set('trust proxy', 1); // за Nginx/Traefik/Cloudflare
-app.use(session({name: 'wherepc',resave:true,saveUninitialized:false, secret: 'TEyhdsecurservice1345no', cookie: 
-  {secure: false, // ⚠️ обязательно false на HTTP!
-  httpOnly: true}
-}))
 
 if (test){
     app.use(express.static(path.join(appDir, 'public')));
@@ -99,52 +98,35 @@ if (test){
 }
 
 console.log(path.join(appDir, 'public'));
-app.use(express.json()); // для application/json
 app.use(cookieParser());
 //app.use(fileUpload());
-
-
-const sso = makeSsoClient({ //process.env.M
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  redirectUri: process.env.REDIRECT_URI,
-  ssoBase: process.env.SSO_BASE,
-  jwtSecret: process.env.JWT_SECRET,  // такой же, как на SSO             // srv_id из таблицы srvs (например 1 = "portal")
-});
-
+app.use(session({resave:false,saveUninitialized:false, secret: requireEnvironment('SESSION_SECRET'), cookie: {  }}))
 app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : TEMPFOLDER,
     defCharset: 'utf8',
     defParamCharset: 'utf8'
 }));
-// Роуты SSO
-app.get("/dbg", (req, res) => {
-    req.session.usertt = 15
-  res.json({
-    cookie: req.headers.cookie || null,
-    session: req.session || null,
-  });
-  console.log(req.session);
-  console.log("cookie header:", req.headers.cookie);
-   
-});
 
-app.get("/cb", sso.callback);
-
-app.get("/er", sso.ensureAuth, (req, res) => {
-  res.send(`Привет, user=${req.session.user.id}, роли=${req.session.user.right}`);
-});
-app.get("/wer", sso.ensureAuth, sso.requireRole("admin"), (req, res) => {
-  res.send("Только для админов");
-});
 app.use(async function (req, res, next) {
     let page = req._parsedOriginalUrl.pathname;
-    //console.log('Cookie:', req.headers);
-    //.log('Session:', req.session);
-    let usr = req.session.user || null
-    mlog(page,usr ? usr.id : null ,usr ? usr.name : null,req.headers['nip'],getcurip(req.socket.remoteAddress),req.query)
-    next();
+
+    if (page=='/data' || page=='/ctrlqw' || page=='/lapchgqw' || page=='/addmat' || page=='/device-history'  ) {
+        next();
+        return 1
+    }
+    if (req.session.name==undefined) {
+        if (page!='/auth') {
+            res.redirect("/auth")
+        } else next();
+    } else {
+        if (page=='/auth') {
+            res.redirect("/")
+        } else next();
+    }
+
+    mlog(page,req.session.name,req.headers['nip'],req.query)
+    
 })
 var cook = null
 app.get('/data',async (req,res)=>{
@@ -160,14 +142,15 @@ app.get('/data',async (req,res)=>{
     //res.send(req.session)
 })
 
-app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
+app.get('/',async (req,res)=>{
     let pc = await get_status()
 
     var kabs = []
 
-    for (let j = 0; j < 28; j++) {
+    for (let j = 0; j < 24; j++) {
         kabs[j] = {kab:j}
        // const element = array[j];
+        
     }
 
     for (let i = 0; i < pc.length; i++) {
@@ -178,36 +161,32 @@ app.get('/',sso.ensureAuth,sso.requireRole(1),async (req,res)=>{
         if (pc[i].kab == 30) {
             pc[i].kab = "доме"
         }
-        if (req.session.user.id==pc[i].userid){
+        if (req.session.userid==pc[i].userid){
             pc[i].me = 1
         }
     }
-    let name = req.session.user || null
-    if (name!=null) name = name.name
     //console.log(pc);
     res.render('index',{
         title: 'Онлайн Платоникс',
         kabs: kabs,
-        meid: req.session.user.id,
-        name:name,
+        meid: req.session.userid,
+        name:req.session.name,
         pc: pc,
-        auth: req.session.user.right,
-        role: req.session.user.right
+        auth: req.session.userid,
+        role: req.session.role
     });
 
 })
 
-app.get('/story',sso.requireRole(1),async (req,res)=>{
+app.get('/story',async (req,res)=>{
     let laps = await get_pc()
-    let name = req.session.user || null
-    if (name!=null) name = name.name
     res.render('story',{
         title: 'История использования',
-        meid: req.session.user.id,
+        meid: req.session.userid,
         name:req.session.name,
         laps: laps,
-        auth: req.session.user.id,
-        role: req.session.user.right
+        auth: req.session.userid,
+        role: req.session.role
     });
 })
 app.get('/device-activ/:hour', async (req, res) => {
@@ -230,7 +209,7 @@ app.get('/device-history/:deviceId', async (req, res) => {
     }
 });
 
-app.get('/devs',sso.requireRole(5), async (req, res) => {
+app.get('/devs', async (req, res) => {
     try {
         // Получаем данные об устройствах из базы данных
         const devices = await getDevicesInfo(); // Предположим, что эта функция возвращает массив устройств
@@ -240,8 +219,8 @@ app.get('/devs',sso.requireRole(5), async (req, res) => {
             title: 'Управление устройствами',
             devices: devices, // Передаем устройства для текущей страницы
             totalDevices: devices.length, // Общее количество устройств
-            role: req.session.user.right,
-            auth: req.session.user.id // Флаг авторизации
+            role: req.session.role,
+            auth: req.session.userid // Флаг авторизации
         });
     } catch (error) {
         console.error('Ошибка при получении данных об устройствах:', error);
@@ -249,21 +228,20 @@ app.get('/devs',sso.requireRole(5), async (req, res) => {
     }
 });
 
-app.get('/ctrl',sso.requireRole(5),async (req,res)=>{
+app.get('/ctrl',async (req,res)=>{
     let laps = await get_info()
     let infst = ['Разблокирован','Заблокирвоан','Не известно']
     var cmd = ['Нет команды','Выключить','Перезагрузить','Заблокировать','Выйти из ПК','Обновить ПК','LastSecurOFF','ВЫКЛ звук','ВКЛ звук','WIN+D','ALT+F4','CTRL+W','АнтиТим']
-    let name = req.session.user || null
-    if (name!=null) name = name.name
+
     console.log(laps);
     res.render('ctrl',{
         title: 'Управление ПК',
         cmd: cmd,
-        meid: req.session.user.id,
-        name:name,
+        meid: req.session.userid,
+        name:req.session.name,
         laps: laps, 
          role: req.session.role,
-        auth: req.session.user.id
+        auth: req.session.userid
     });
 })
 
@@ -292,7 +270,7 @@ app.get('/sendcmd',async (req,res)=>{
     res.send("ok")
 })
 
-app.get('/getstory',sso.requireRole(5),async (req,res)=>{
+app.get('/getstory',async (req,res)=>{
     let laps = await get_pc_story(req.query.lapid)
     for (let j = 0; j < laps.length; j++) {
         if (laps[j].kab == 0) {
@@ -304,21 +282,19 @@ app.get('/getstory',sso.requireRole(5),async (req,res)=>{
         laps[j].startf = formatUnixTime(laps[j].timestart)
         laps[j].stopf = formatUnixTime(laps[j].timestop)
     }
-    let name = req.session.user || null
-    if (name!=null) name = name.name
-    say(`${name} запросил истрорию ${req.query.lapid}`)
+    say(`${req.session.name} запросил истрорию ${req.query.lapid}`)
     res.json(JSON.stringify(laps))
   //  res.send(laps)
 })
-/*
+
 app.get('/auth',async (req,res)=>{
     console.log(req.query);
     if (req.query.pass!=undefined) {
         let ans = await auth_user(req.query.login,req.query.pass);
         mlog(ans);
         if (ans!=undefined){
-            req.session.user.name = ans.user.name
-            req.session.user.id = ans.id
+            req.session.name = ans.name
+            req.session.userid = ans.id
             req.session.role = ans.role
             res.send('ok')
         } else {
@@ -327,23 +303,23 @@ app.get('/auth',async (req,res)=>{
     } else{
         res.render('auth',{
             title: 'Авторизация',
-            auth: req.session.user.id
+            auth: req.session.userid
         });
     }
 })  
-*/
+
 app.get('/take',async (req,res)=>{
     console.log(req.query);
-    let resid = await take(req.session.user.id, parseInt(req.query.lapid), parseInt(req.query.kab) ,getCurrentUnixTime())
+    let resid = await take(req.session.userid, parseInt(req.query.lapid), parseInt(req.query.kab) ,getCurrentUnixTime())
     console.log(resid);
-    say(`${req.session.user.name} взял ноутбук №${req.query.lapid} в каб №${req.query.kab}`)
+    say(`${req.session.name} взял ноутбук №${req.query.lapid} в каб №${req.query.kab}`)
     res.send({st:"ok",id:resid})
 })  
 
 app.get('/rtake',async (req,res)=>{
     console.log(req.query);
     for (let i = 7; i < 16; i++) { 
-        setTimeout(thelp, 30 * i,req.session.user.id,req.session.user.name,i)
+        setTimeout(thelp, 30 * i,req.session.userid,req.session.name,i)
     }
     
     res.send({st:"ok"})
@@ -357,28 +333,28 @@ async function thelp(userid,name,lapid){
 
 app.get('/retlap',async (req,res)=>{
     console.log(req.query);
-    let resid = await retlap(getCurrentUnixTime(),req.query.komm, parseInt(req.query.lapid), req.session.user.id)
+    let resid = await retlap(getCurrentUnixTime(),req.query.komm, parseInt(req.query.lapid), req.session.userid)
     console.log(resid);
-    console.log(req.session.user.id);
-    say(`${req.session.user.name} вернул ноутбук №${req.query.lapid}. \n Комментарий:${req.query.komm}`)
+    console.log(req.session.userid);
+    say(`${req.session.name} вернул ноутбук №${req.query.lapid}. \n Комментарий:${req.query.komm}`)
     res.send({st:"ok",id:resid})
 })  
 
-//app.get("/logout", sso.logout);
-// bookpc
-app.get('/logout', (req, res) => {
-  const returnTo = process.env.BOOKPC_BASE + '/'; // куда вернуться после SSO-логаута
-  const ssoLogout = new URL('/logout', process.env.SSO_BASE);
-  ssoLogout.searchParams.set('post_logout_redirect_uri', returnTo);
-  ssoLogout.searchParams.set('client_id', process.env.CLIENT_ID);
-
-  req.session.destroy(() => {
-    // Стираем только СВОЙ cookie (домен bookpc)
-    res.clearCookie('wherepc', { path: '/' /* , domain: process.env.COOKIE_DOMAIN (если задавали при set) */ });
-    // НЕ пытаемся чистить sso.sid — это другой домен
-    res.redirect(ssoLogout.toString());
-  });
-});
+app.get('/logout', function(req, res) {
+    mlog( req.session.name,"вышел из системы");
+    req.session.auth = null;
+    req.session.name = null
+    req.session.userid = null
+    //res.send('ok');
+    console.dir(req.session)
+    req.session.save(function (err) {
+      if (err) next(err)
+      req.session.regenerate(function (err) {
+        if (err) next(err)
+        res.redirect('/')
+      })
+    })
+})
 
 function getcurip(str) {
     let arr = str.split(':');
