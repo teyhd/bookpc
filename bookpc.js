@@ -130,6 +130,7 @@ app.get("/dbg", (req, res) => {
    
 });
 
+app.use(sso.checkSession);
 app.get("/cb", sso.callback);
 
 app.get("/er", sso.ensureAuth, (req, res) => {

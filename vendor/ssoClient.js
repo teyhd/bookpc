@@ -1,10 +1,13 @@
 //npm i express express-session axios jsonwebtoken
 // ssoClient.js
+import { randomBytes } from 'node:crypto';
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import { mlog } from './logs.js'
 
 export function makeSsoClient(opts) {
+  const requireLinkedSession = opts.requireLinkedSession ?? ['1', 'true'].includes(process.env.SSO_REQUIRE_LINKED_SESSION?.toLowerCase());
+  const fetchImpl = opts.fetchImpl || globalThis.fetch;
   const {
     clientId,
     clientSecret,
@@ -16,10 +19,44 @@ export function makeSsoClient(opts) {
   const AUTHZ  = `${ssoBase}/authorize`;
   const TOKEN  = `${ssoBase}/token`;
   const LOGOUT = `${ssoBase}/logout`;
+  const INTROSPECT = `${ssoBase.replace(/\/$/, '')}/introspect`;
+  const isOpaqueToken = value => typeof value === 'string' && /^[A-Za-z0-9_-]{43}$/.test(value);
+
+  async function checkSession(req, res, next) {
+    const current = req.session;
+    // The callback and local logout must be reachable with an expired cookie.
+    if (!current?.user?.id || req.path === '/cb' || req.path === '/logout') return next();
+    try {
+      let active = !current.ssoSid && (!requireLinkedSession || !current.tokens);
+      if (current.ssoSid && isOpaqueToken(current.tokens?.refresh_token)) {
+        const result = await fetchImpl(INTROSPECT, {
+          method: 'POST',
+          headers: { authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}` },
+          body: new URLSearchParams({ token: current.tokens.refresh_token, session_only: '1' }),
+          signal: AbortSignal.timeout(1800),
+          redirect: 'error',
+        });
+        if (!result.ok) throw new Error('Introspection request failed');
+        const session = await result.json();
+        active = session.active === true && session.sid === current.ssoSid &&
+          String(session.sub) === String(current.user.id);
+      }
+      if (active) return next();
+
+      await new Promise((resolve, reject) => current.regenerate(error => error ? reject(error) : resolve()));
+      res.clearCookie('wherepc', { path: '/' });
+      if (req.path.startsWith('/api/') || !['GET', 'HEAD'].includes(req.method)) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
+      return next();
+    } catch {
+      return res.status(503).send('Проверка входа временно недоступна. Попробуйте ещё раз.');
+    }
+  }
 
   function ensureAuth(req, res, next) {
     if (req.session?.user) return next();
-    const state = Math.random().toString(36).slice(2);
+    const state = randomBytes(16).toString('hex');
     req.session.state = state;
    // console.log(req.session);
     
@@ -39,7 +76,10 @@ export function makeSsoClient(opts) {
     console.log(req.session);
     console.log("cookie header:", req.headers.cookie);*/
     try {
-      if (req.query.state != req.session.state) return res.status(400).send(`state mismatch ${req.query.state } YY ${req.session.state}`);
+      if (typeof req.query.code !== 'string' || !req.query.code ||
+          typeof req.query.state !== 'string' || !req.query.state || req.query.state !== req.session.state) {
+        return res.status(400).send('Не удалось подтвердить вход. Начните вход заново.');
+      }
 
       const params = new URLSearchParams({
         grant_type: "authorization_code",
@@ -55,7 +95,13 @@ export function makeSsoClient(opts) {
 
       const tok = r.data;
       const payload = jwt.verify(tok.access_token, jwtSecret);
-      console.log(payload);
+      const opaqueRefresh = isOpaqueToken(tok.refresh_token);
+      const ssoSid = opaqueRefresh && typeof payload.sid === 'string' && payload.sid ? payload.sid : null;
+      if ((requireLinkedSession || opaqueRefresh) && !ssoSid) {
+        return res.status(503).send('Не удалось связать вход с порталом. Попробуйте снова.');
+      }
+      req.session.ssoSid = ssoSid;
+
       // сохраняем в сессии
       req.session.user = {
         id: payload.sub,
@@ -123,5 +169,5 @@ export function makeSsoClient(opts) {
     };
   }
 
-  return { ensureAuth, callback, logout, requireRole };
+  return { checkSession, ensureAuth, callback, logout, requireRole };
 }
