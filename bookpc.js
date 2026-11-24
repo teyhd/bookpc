@@ -1,3 +1,4 @@
+import { registerPortalRolePreview } from './vendor/rolePreview.mjs';
 import {mlog,say} from './vendor/logs.js'
 import { fileURLToPath } from 'url';
 let test = false
@@ -85,6 +86,28 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views','views');
 app.set('trust proxy', 1); // за Nginx/Traefik/Cloudflare
+app.use(['/internal/integrations/mainportal/v1/role-preview', '/audit/exchange'], express.json({ limit: '1kb' }));
+registerPortalRolePreview(app, {
+    service: 'bookpc',
+    secret: process.env.CLIENT_SECRET,
+    origin: 'https://pc.platoniks.ru',
+    project: user => user,
+    entry: () => '/',
+    allowRead: route => route === '/' || route === '/story',
+    assets: ['/jquery.js', '/lib.js', '/main.js'],
+    styles: ['/stylesheet.css'],
+    audit: ({ actorId, subjectId }) => mlog('role_preview_open actor=' + actorId + ' subject=' + subjectId),
+});
+app.use((req, res, next) => {
+    const user = req.rolePreview;
+    if (!user) return next();
+    if (!(Math.max(...user.roles) > 0)) {
+        return res.status(403).send('<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>BookPC</title></head><body><main><h1>BookPC</h1><p>У этой роли нет доступа к BookPC.</p></main></body></html>');
+    }
+    const right = user.roles.length === 1 ? user.roles[0] : user.roles;
+    req.session = { name: user.name, user: { id: user.id, name: user.name, right } };
+    return next();
+});
 app.use(session({name: 'wherepc',resave:true,saveUninitialized:false, secret: 'TEyhdsecurservice1345no', cookie: 
   {secure: false, // ⚠️ обязательно false на HTTP!
   httpOnly: true}
