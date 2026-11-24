@@ -101,10 +101,10 @@ registerPortalRolePreview(app, {
 app.use((req, res, next) => {
     const user = req.rolePreview;
     if (!user) return next();
-    if (!(Math.max(...user.roles) > 0)) {
+    const right = user.roles.length === 1 ? user.roles[0] : user.roles;
+    if (!(right >= 1)) {
         return res.status(403).send('<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>BookPC</title></head><body><main><h1>BookPC</h1><p>У этой роли нет доступа к BookPC.</p></main></body></html>');
     }
-    const right = user.roles.length === 1 ? user.roles[0] : user.roles;
     req.session = { name: user.name, user: { id: user.id, name: user.name, right } };
     return next();
 });
